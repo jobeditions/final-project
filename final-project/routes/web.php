@@ -11,6 +11,19 @@
 |
 */
 
+Route::post('/category/store', [
+	'uses' => 'CategoriesController@store',
+	'as' => 'category.store'
+	]);
+    
+Route::resource('posts','PostController');
+Route::resource('category','CategoriesController');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
