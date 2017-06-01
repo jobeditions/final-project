@@ -17,7 +17,8 @@
                       </a>
                       <ul class="sub">
                           <li><a href="/posts/create" class="">Ajouter un article</a></li>                          
-                          <li><a class="" href="">Modifier un Article</a></li>
+                          <li><a class="" href="/posts">Modifier un Article</a></li>
+                          <li><a class="" href="/trash">Corbeille</a></li>
                       </ul>
                   </li>       
                   <li class="sub-menu">

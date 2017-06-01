@@ -16,7 +16,16 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+         $posts=Post::orderby('created_at','desc')->get();
+        $posts=Post::paginate(10);
+        return view('admin.posts.indexpost',compact('posts'));
+    }
+
+    public function trash()
+    {
+         $posts=Post::onlyTrashed()->get();
+    
+        return view('admin.posts.trashpost',compact('posts'));
     }
 
     /**
@@ -31,8 +40,9 @@ class PostController extends Controller
         $categories=Category::all();
         if($categories->count()==0)
         {
-            Session::flash('info','Vous devez créé une catégorie pour des articles');
+            
             return redirect()->back();
+            Session::flash('success','Vous devez créé une catégorie pour des articles');
         }
 
         return view('admin.posts.createpost',compact('categories'));
@@ -55,7 +65,7 @@ class PostController extends Controller
           'content' => 'required',
           'excerpt' => 'required',
           'category_id' => 'required',
-          'postslug' => 'required',
+          'slug' => 'required|alpha_dash|min:5|max:255',
            ]);
 
         //dd($request->all());
@@ -78,11 +88,11 @@ class PostController extends Controller
             'featured' => 'assets/uploads/posts/'.$featuredNew,
             'excerpt' => $request->excerpt,
             'category_id' => $request->category_id,
-            'postslug' => str_slug('title'),
+            'slug' => $request->title,
         ]);
-    Session::flash('success','Vous avez créé la catégorie avec succès');
+    Session::flash('success','Vous avez créé une article avec succès');
 
-    return redirect()->back();
+    return redirect('/posts');
         
     }
 
@@ -128,6 +138,17 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post=Post::find($id);
+        $post->delete();
+        Session::flash('success','Article a été supprimée avec succès');
+        return redirect('/posts');
+    }
+
+    public function kill($id)
+    {
+        $post=Post::onlyTrashed()->where('id',$id)->first();
+        $post->forcedelete();
+        Session::flash('success','Article a été supprimée avec succès');
+        return redirect('/trash');
     }
 }

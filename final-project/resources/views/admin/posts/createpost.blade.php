@@ -23,6 +23,11 @@
                                               </div>
 
                                               <div class="col-sm-10">
+                                                 <label class="control-label col-sm-1" for="slug">Slug</label>
+                                                 <input class="form-control" type="text" id="slug" name="slug">
+                                              </div>
+
+                                              <div class="col-sm-10">
                                                  <label class="control-label col-sm-1" for="featured" >Image</label>
                                                  <input class="form-control" type="file" id="featured" name="featured">
                                               </div>
