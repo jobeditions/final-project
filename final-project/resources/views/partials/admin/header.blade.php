@@ -4,7 +4,7 @@
             </div>
 
             <!--logo start-->
-            <a href="index.html" class="logo">Blog <span class="lite">Écrivain</span></a>
+            <a href="/" class="logo">Blog <span class="lite">Écrivain</span></a>
             <!--logo end-->
 
             <div class="nav search-row" id="top_menu">

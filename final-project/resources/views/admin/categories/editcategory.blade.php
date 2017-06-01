@@ -14,9 +14,10 @@
 
                                   <div class="panel-body">
                                       <div class="form">
-                                          <!--<form action="/category/{{$cat->id}}" method="POST" class="form-horizontal">-->
-                                              <form action="{{route('category.update',['id'=>$cat->id])}}" method="POST" class="form-horizontal">
+                                          <form action="/category/{{$cat->id}}" method="POST" class="form-horizontal">
+                                          <!--<form action="{{route('category.update',['id'=>$cat->id])}}" method="POST" class="form-horizontal">-->
                                               {{csrf_field()}}
+                                              {{method_field('PUT')}}
 
                                               
                                               <div class="col-sm-10">

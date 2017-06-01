@@ -16,8 +16,8 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="">Ajouter un article</a></li>                          
-                          <li><a class="" href="form_validation.html">Éditer un Article</a></li>
+                          <li><a href="/posts/create" class="">Ajouter un article</a></li>                          
+                          <li><a class="" href="">Modifier un Article</a></li>
                       </ul>
                   </li>       
                   <li class="sub-menu">
@@ -28,7 +28,7 @@
                       </a>
                       <ul class="sub">
                           <li><a class="" href="/category/create">Ajouter une catégorie</a></li>
-                          <li><a class="" href="/category">Éditer une catégorie</a></li>
+                          <li><a class="" href="/category">Modifier une catégorie</a></li>
                           
                       </ul>
                   </li>

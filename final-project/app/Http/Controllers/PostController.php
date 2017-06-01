@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
 use App\Post;
+use App\Category;
 
 class PostController extends Controller
 {
@@ -23,8 +25,17 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
     {
-        return view('admin.posts.create');
+
+        $categories=Category::all();
+        if($categories->count()==0)
+        {
+            Session::flash('info','Vous devez créé une catégorie pour des articles');
+            return redirect()->back();
+        }
+
+        return view('admin.posts.createpost',compact('categories'));
     }
 
     /**
@@ -43,10 +54,36 @@ class PostController extends Controller
           'featured' => 'required|image',
           'content' => 'required',
           'excerpt' => 'required',
-                     ]);
+          'category_id' => 'required',
+          'postslug' => 'required',
+           ]);
 
-        dd($request->all());
+        //dd($request->all());
 
+        $featuredImage = $request->featured;
+        $featuredNew = time().$featuredImage->getClientOriginalName();
+        $featuredImage ->move('assets/uploads/posts',$featuredNew);
+
+        //$post = new Post;
+        //$post->title = $request->title;
+        //$post->content = $request->content;
+        //$post->excerpt = $request->excerpt;
+        //$post->featured ='assets/uploads/posts/'.$featuredNew;
+        //$post->category_id = $request->category_id;
+        //$post->save();
+
+        $post = Post::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'featured' => 'assets/uploads/posts/'.$featuredNew,
+            'excerpt' => $request->excerpt,
+            'category_id' => $request->category_id,
+            'postslug' => str_slug('title'),
+        ]);
+    Session::flash('success','Vous avez créé la catégorie avec succès');
+
+    return redirect()->back();
+        
     }
 
     /**

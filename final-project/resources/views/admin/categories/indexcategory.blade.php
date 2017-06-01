@@ -7,6 +7,7 @@
                       <section class="panel">
                           <header class="panel-heading">
                               Liste des Catégories
+                              
                           </header>
                           
                           <table class="table table-striped table-advance table-hover">
@@ -18,12 +19,14 @@
                                  <th><i class="icon_tag"></i> Catégorie</th>
                                  <th><i class="icon_tags"></i> Slug</th>
                                  <th><i class="icon_calendar"></i> Date</th>
-                                 <th><i class=""></i></th>
-                                 <th><i class="icon_cogs"></i> Action</th>
-                                 
+                                 <th><i class="icon_calendar"></i> Modifié le</th>
+                                 <th></th>
+                                 <th><i class="icon_cogs"></i> Action</a></th>
                               </thead>
                               <tbody>
-                               @foreach($cat as $categ)
+                                
+                                @foreach($cat as $categ)
+
                               <tr>
                                  
                                  <td>
@@ -31,6 +34,7 @@
                                  <td>{{$categ->order}}</td>
                                  <td>{{$categ->name}}</td>
                                  <td>{{$categ->slug}}</td>
+                                 <td>{{$categ->created_at->format('F d,Y')}}</td>
                                  <td>{{$categ->created_at->format('F d,Y')}}</td>
                                   
                                  <td></td>
@@ -46,6 +50,7 @@
                                   <!--</div>-->
                                   </td>
                               </tr>
+                             
                               @endforeach
                                                      
                            </tbody>
