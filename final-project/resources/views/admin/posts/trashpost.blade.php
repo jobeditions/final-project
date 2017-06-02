@@ -18,7 +18,7 @@
                                  <th><i class="icon_image"></i> Image</th>
                                  <th><i class="icon_document_alt"></i> Titre</th>
                                  <th><i class="icon_tags"></i> Slug</th>
-                                 <th><i class="icon_calendar"></i> Supprimé le</th>
+                                 <th><i class="icon_calendar"></i> Supprimé</th>
                                  
                                  <th></th>
                                  <th><i class="icon_cogs"></i> Action</a></th>
@@ -40,12 +40,16 @@
                                  <td></td>
                                  <td>
                                   <!--<div class="btn-group">-->
-                                      <a class="btn btn-primary btn-s" href="{{'/posts/'.$posting->id.'/edit'}}"><i class="icon_plus_alt2"></i>  Modifier</a>
-                                      <!--<a class="btn btn-success btn-s" href="#"><i class="icon_check_alt2"></i></a>-->
-                                      <form  class="form-group pull-left" action="{{'/trash/'.$posting->id}}" method="POST">
+                                      <form  class="form-group " action="{{'/restore/'.$posting->id}}" method="POST">
                                       {{csrf_field()}}
                                       {{method_field('DELETE')}}
-                                      <button class="btn btn-danger" type="submit"><i class="icon_trash"></i>  Corbeille</button>
+                                      <button class="btn btn-success" type="submit"><i class="icon_check"></i> Restaurer</button>
+                                      </form>
+                                      <!--<a class="btn btn-success btn-s" href="#"><i class="icon_check_alt2"></i></a>-->
+                                      <form  class="form-group" action="{{'/trash/'.$posting->id}}" method="POST">
+                                      {{csrf_field()}}
+                                      {{method_field('DELETE')}}
+                                      <button class="btn btn-danger" type="submit"><i class="icon_trash"></i> Supprimer</button>
                                       </form>
                                   <!--</div>-->
                                   </td>

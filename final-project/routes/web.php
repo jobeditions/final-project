@@ -20,6 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/trash', 'PostController@trash');
 Route::delete('/trash/{id}', 'PostController@kill');
+Route::delete('/restore/{id}', 'PostController@restoretrash');
+
 
 Route::get('/', function () {
     return view('welcome');

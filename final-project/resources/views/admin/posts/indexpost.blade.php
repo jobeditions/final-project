@@ -17,9 +17,9 @@
                                  <th><i class=""></i></th>
                                  <th><i class="icon_image"></i> Image</th>
                                  <th><i class="icon_document_alt"></i> Titre</th>
-                                 <th><i class="icon_tags"></i> Slug</th>
-                                 <th><i class="icon_calendar"></i> Date</th>
-                                 <th><i class="icon_calendar"></i> Modifié le</th>
+                                 <th><i class="icon_tags"></i> Catégorie</th>
+                                 <th><i class="icon_calendar"></i> Créé</th>
+                                 <th><i class="icon_calendar"></i> Modifié</th>
                                  <th></th>
                                  <th><i class="icon_cogs"></i> Action</a></th>
                               </thead>

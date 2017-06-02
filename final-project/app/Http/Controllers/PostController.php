@@ -40,9 +40,9 @@ class PostController extends Controller
         $categories=Category::all();
         if($categories->count()==0)
         {
-            
-            return redirect()->back();
             Session::flash('success','Vous devez créé une catégorie pour des articles');
+            return redirect()->back();
+            
         }
 
         return view('admin.posts.createpost',compact('categories'));
@@ -82,13 +82,13 @@ class PostController extends Controller
         //$post->category_id = $request->category_id;
         //$post->save();
 
-        $post = Post::create([
+        $posts = Post::create([
             'title' => $request->title,
             'content' => $request->content,
             'featured' => 'assets/uploads/posts/'.$featuredNew,
             'excerpt' => $request->excerpt,
             'category_id' => $request->category_id,
-            'slug' => $request->title,
+            'slug' => $request->slug,
         ]);
     Session::flash('success','Vous avez créé une article avec succès');
 
@@ -115,7 +115,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $posts=Post::find($id);
+        $categories=Category::all();
+        return view('admin.posts.editpost',compact('posts','categories'));
     }
 
     /**
@@ -127,7 +129,34 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $this -> validate($request,[
+          
+          'title' => 'required|max:255',
+          'content' => 'required',
+          'excerpt' => 'required',
+          'category_id' => 'required',
+          'slug' => 'required|alpha_dash|min:5|max:255',
+           ]);
+    if($request->hasFile('featured'))
+
+        {
+        $featuredImage = $request->featured;
+        $featuredNew = time().$featuredImage->getClientOriginalName();
+        $featuredImage ->move('assets/uploads/posts',$featuredNew);
+        $posts->featured = 'assets/uploads/posts/'.$featuredNew;
+    }
+
+        $posts=Post::find($id);
+        $posts->title=$request->title;
+        $posts->slug=$request->slug;
+        $posts->content=$request->content;
+        $posts->excerpt=$request->excerpt;
+        $posts->category_id=$request->category_id;
+
+        $posts->save();
+        Session::flash('success','La catégorie a été modifiée avec succès');
+        return redirect('/posts');
     }
 
     /**
@@ -138,17 +167,25 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post=Post::find($id);
-        $post->delete();
+        $posts=Post::find($id);
+        $posts->delete();
         Session::flash('success','Article a été supprimée avec succès');
         return redirect('/posts');
     }
 
     public function kill($id)
     {
-        $post=Post::onlyTrashed()->where('id',$id)->first();
-        $post->forcedelete();
+        $posts=Post::onlyTrashed()->where('id',$id)->first();
+        $posts->forcedelete();
         Session::flash('success','Article a été supprimée avec succès');
         return redirect('/trash');
+    }
+
+    public function restoretrash($id)
+    {
+        $posts=Post::onlyTrashed()->where('id',$id)->first();
+        $posts->restore();
+        Session::flash('success','Article a été restaurer avec succès');
+        return redirect('/posts');
     }
 }
