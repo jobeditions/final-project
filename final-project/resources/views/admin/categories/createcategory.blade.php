@@ -14,7 +14,7 @@
 
                                   <div class="panel-body">
                                       <div class="form">
-                                          <form action="{{route('category.store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                                          <form action="{{route('categorie.store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                                               {{csrf_field()}}
 
                                               

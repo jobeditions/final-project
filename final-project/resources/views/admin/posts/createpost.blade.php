@@ -35,9 +35,9 @@
                                               <div class="col-sm-10">
                                                  <label class="control-label col-sm-1" for="category" >Catégorie</label>
                                                  <select class="form-control" id="category" name="category_id">
-                                                 @foreach($categories as $cat)
-                                                 <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                                 @endforeach
+                                                   @foreach($categories as $cat)
+                                                   <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                   @endforeach
                                                  </select>
                                               </div>
                                                   

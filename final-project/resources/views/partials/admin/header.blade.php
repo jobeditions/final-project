@@ -29,7 +29,7 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="../images/img-admin/avatar1_small.jpg">
+                                <img alt="" src="">
                             </span>
                             <span class="username">{{ Auth::user()->name }}</span>
                             <b class="caret"></b>

@@ -16,7 +16,7 @@ class CategoriesController extends Controller
     public function index()
 
     {   
-        $cat=Category::orderby('created_at','desc')->get();
+        $cat=Category::orderby('order','asc')->get();
         $cat=Category::paginate(10);
         return view('admin.categories.indexcategory',compact('cat'));
         //return view('admin.categories.editcategory')->('cat',Category::all());
@@ -53,7 +53,7 @@ class CategoriesController extends Controller
         $cat->slug = $request->slug;
         $cat->save();
         Session::flash('success','Vous avez créé la catégorie avec succès');
-        return redirect('/category');
+        return redirect('/categorie');
 
     }
 
@@ -95,7 +95,7 @@ class CategoriesController extends Controller
         $cat->order=$request->order;
         $cat->save();
         Session::flash('success','La catégorie a été modifiée avec succès');
-        return redirect('/category');
+        return redirect('/categorie');
     }
 
     /**
@@ -109,7 +109,7 @@ class CategoriesController extends Controller
         $cat=Category::find($id);
         $cat->delete();
         Session::flash('success','La catégorie a été supprimée avec succès');
-        return redirect('/category');
+        return redirect('/categorie');
 
     }
     }

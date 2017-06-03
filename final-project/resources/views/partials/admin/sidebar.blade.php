@@ -9,15 +9,15 @@
                           <span>Tableau de bord</span>
                       </a>
                   </li>
-				  <li class="sub-menu">
+				        <li class="sub-menu">
                       <a href="javascript:;" class="">
                           <i class="icon_document_alt"></i>
                           <span>Articles</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a href="/posts/create" class="">Ajouter un article</a></li>                          
-                          <li><a class="" href="/posts">Modifier un Article</a></li>
+                          <li><a href="/articles/create" class="">Ajouter un article</a></li>                          
+                          <li><a class="" href="/articles">Modifier un Article</a></li>
                           <li><a class="" href="/trash">Corbeille</a></li>
                       </ul>
                   </li>       
@@ -28,16 +28,23 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="/category/create">Ajouter une catégorie</a></li>
-                          <li><a class="" href="/category">Modifier une catégorie</a></li>
+                          <li><a class="" href="/categorie/create">Ajouter une catégorie</a></li>
+                          <li><a class="" href="/categorie">Modifier une catégorie</a></li>
                           
                       </ul>
                   </li>
-                  <li>
-                      <a class="" href="widgets.html">
-                          <i class="icon_genius"></i>
-                          <span>Widgets</span>
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="icon_profile"></i>
+                          <span>Utilisateurs</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
+                      <ul class="sub">
+                          <li><a class="" href="/utilisateurs/create"> Ajouter un Utilisateur</a></li>
+                          <li><a class="" href="/utilisateurs"> Modifier un Utilisateur</a></li>
+                          <li><a class="" href="/"> Corbeille</a></li>
+                          
+                      </ul>
                   </li>
                   <li>                     
                       <a class="" href="chart-chartjs.html">

@@ -135,7 +135,7 @@ class PostController extends Controller
           'title' => 'required|max:255',
           'content' => 'required',
           'excerpt' => 'required',
-          'category_id' => 'required',
+          //'category_id' => 'required',
           'slug' => 'required|alpha_dash|min:5|max:255',
            ]);
     if($request->hasFile('featured'))
