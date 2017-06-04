@@ -22,6 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/trash', 'PostController@trash');
 Route::delete('/trash/{id}', 'PostController@kill');
 Route::delete('/restore/{id}', 'PostController@restoretrash');
+Route::get('/auteur/{id}', 'UserController@author');
+Route::get('/users/{id}', 'UserController@user');
 
 
 Route::get('/', function () {

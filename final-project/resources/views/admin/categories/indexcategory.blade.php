@@ -39,7 +39,11 @@
                                   
                                  <td></td>
                                  <td>
-                                  <!--<div class="btn-group">-->
+                                 @if($categ->id==1)
+                                 <div class="btn-group"></div>
+                                 @else
+                                  <div class="btn-group">
+                                  <div class="btn-group">
                                       <a class="btn btn-primary btn-s" href="{{'/categorie/'.$categ->id.'/edit'}}"><i class="icon_plus_alt2"></i>  Modifier</a>
                                       <!--<a class="btn btn-success btn-s" href="#"><i class="icon_check_alt2"></i></a>-->
                                       <form  class="form-group pull-left" action="{{'/categorie/'.$categ->id}}" method="POST">
@@ -47,7 +51,8 @@
                                       {{method_field('DELETE')}}
                                       <button class="btn btn-danger" type="submit"><i class="icon_close_alt2"></i>  Supprimer</button>
                                       </form>
-                                  <!--</div>-->
+                                  </div>
+                                  @endif
                                   </td>
                               </tr>
                              

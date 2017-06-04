@@ -11,19 +11,26 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $user=App\User::create([
+           $user=App\User::create([
             'name' => 'Marcella Sandrine',
             'email' => 'jobeditions@gmail.com',
             'password' => bcrypt('password'),
-            'admin' => 1,
-        ]);
+            'admin' => 2,
+           ]);
 
         App\Profile::create([
             'user_id'=> $user->id,
+            'firstname' => 'Marcella',
+            'lastname' => 'Sandrine',
             'avatar' => '/assets/uploads/avatar/avatar1.jpg',
-            'about' => '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."',
+            'about' => '"Bonjour, je suis Jenifer Smith, un expert en écriture créatif spécialisé dans le domain de surrealisme. Mon diplôme de Université Massey avec un Bachelor spécialisé dans lécriture créative."',
             'facebook' => 'facebook.com',
-            'youtube' => 'youtube.com',
+            'twitter' => 'twitter.com',
+            'country' => 'France',
+            'birthday' => '23rd March 1987',
+            'occupation' => 'Écrivain',
+            'mobile' => '0651634750',
+            
             
         ]);
     }

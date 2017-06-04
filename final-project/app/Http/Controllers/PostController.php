@@ -92,7 +92,7 @@ class PostController extends Controller
         ]);
     Session::flash('success','Vous avez créé une article avec succès');
 
-    return redirect('/posts');
+    return redirect('/articles');
         
     }
 
