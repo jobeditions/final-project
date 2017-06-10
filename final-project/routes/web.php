@@ -16,18 +16,25 @@
 Route::resource('articles','PostController');
 Route::resource('categorie','CategoriesController');
 Route::resource('utilisateurs','UserController');
+Route::resource('profile','ProfileController');
+
 
 Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/trash', 'PostController@trash');
 Route::delete('/trash/{id}', 'PostController@kill');
 Route::delete('/restore/{id}', 'PostController@restoretrash');
-Route::get('/auteur/{id}', 'UserController@author');
-Route::get('/users/{id}', 'UserController@user');
+Route::get('/util/{id}', 'UserController@util');
+Route::get('/no-util/{id}', 'UserController@noutil');
+
+Route::get('/', 'PageController@frontpage');
+Route::get('/contact', 'PageController@contact');
+Route::get('/about', 'PageController@about');
+Route::get('/posts', 'PageController@about');
 
 
-Route::get('/', function () {
-    return view('welcome');
 });
 
 

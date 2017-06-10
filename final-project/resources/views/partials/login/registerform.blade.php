@@ -1,3 +1,4 @@
+
 <form class="login-form" role="form" method="POST"  action="{{ route('register') }}">
         {{ csrf_field() }}       
         <div class="login-wrap">

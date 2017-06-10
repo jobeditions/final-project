@@ -1,5 +1,7 @@
 @extends('layouts.app3')
-
+    @section('title')
+    Ajouter une Catégorie
+    @endsection
 	  @section('content')
 
 	                       <div class="col-lg-12"> 
@@ -21,11 +23,6 @@
                                               <div class="col-sm-10">
                                                  <label class="control-label col-sm-1" for="name">Catégorie</label>
                                                  <input class="form-control" type="text" id="name" name="name">
-                                              </div>
-
-                                              <div class="col-sm-10">
-                                                 <label class="control-label col-sm-1" for="slug">Slug</label>
-                                                 <input class="form-control" type="text" id="slug" name="slug">
                                               </div>
 
                                               <div class="col-sm-10">

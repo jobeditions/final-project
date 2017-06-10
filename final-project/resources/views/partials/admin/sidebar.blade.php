@@ -42,7 +42,7 @@
                       <ul class="sub">
                           <li><a class="" href="/utilisateurs/create"> Ajouter un Utilisateur</a></li>
                           <li><a class="" href="/utilisateurs"> Modifier un Utilisateur</a></li>
-                          <li><a class="" href="/"> Corbeille</a></li>
+                          <li><a class="" href="/profile"> Profile</a></li>
                           
                       </ul>
                   </li>

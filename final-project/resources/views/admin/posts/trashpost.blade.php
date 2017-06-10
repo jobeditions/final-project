@@ -1,4 +1,7 @@
 @extends('layouts.app3')
+    @section('title')
+    Corbeille
+    @endsection
 
 	  @section('content')
 

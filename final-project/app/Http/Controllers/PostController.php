@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Storage;
 use Session;
 use App\Post;
 use App\Category;
@@ -17,8 +18,9 @@ class PostController extends Controller
     public function index()
     {
          $posts=Post::orderby('created_at','desc')->get();
+         $category=Category::get();
         $posts=Post::paginate(10);
-        return view('admin.posts.indexpost',compact('posts'));
+        return view('admin.posts.indexpost',compact('posts','category'));
     }
 
     public function trash()
@@ -61,18 +63,20 @@ class PostController extends Controller
         $this -> validate($request,[
           
           'title' => 'required|max:255',
-          'featured' => 'required|image',
+          'featured' => 'sometimes|image',
           'content' => 'required',
           'excerpt' => 'required',
           'category_id' => 'required',
-          'slug' => 'required|alpha_dash|min:5|max:255',
+          
            ]);
 
-        //dd($request->all());
-
+        /*dd($request->all());*/
+        if($request->hasFile('featured'))
+        {
         $featuredImage = $request->featured;
         $featuredNew = time().$featuredImage->getClientOriginalName();
-        $featuredImage ->move('assets/uploads/posts',$featuredNew);
+        $featuredImage ->move('images/image',$featuredNew);
+        }
 
         //$post = new Post;
         //$post->title = $request->title;
@@ -84,11 +88,12 @@ class PostController extends Controller
 
         $posts = Post::create([
             'title' => $request->title,
+            'order' => $request->order,
             'content' => $request->content,
-            'featured' => 'assets/uploads/posts/'.$featuredNew,
+            'featured' => 'images/image/'.$featuredNew,
             'excerpt' => $request->excerpt,
             'category_id' => $request->category_id,
-            'slug' => $request->slug,
+            'slug' => str_slug($request->title),
         ]);
     Session::flash('success','Vous avez créé une article avec succès');
 
@@ -116,7 +121,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $posts=Post::find($id);
-        $categories=Category::all();
+        $categories=Category::get();
         return view('admin.posts.editpost',compact('posts','categories'));
     }
 
@@ -135,19 +140,26 @@ class PostController extends Controller
           'title' => 'required|max:255',
           'content' => 'required',
           'excerpt' => 'required',
+          'slug' => 'required',
+          'featured' => 'sometimes|image',
           //'category_id' => 'required',
-          'slug' => 'required|alpha_dash|min:5|max:255',
+          
            ]);
-    if($request->hasFile('featured'))
-
-        {
-        $featuredImage = $request->featured;
-        $featuredNew = time().$featuredImage->getClientOriginalName();
-        $featuredImage ->move('assets/uploads/posts',$featuredNew);
-        $posts->featured = 'assets/uploads/posts/'.$featuredNew;
-    }
 
         $posts=Post::find($id);
+       
+
+       if($request->hasFile('featured'))
+
+        {
+        //add new photo
+        $featuredImage = $request->featured;
+        $featuredNew = time().$featuredImage->getClientOriginalName();
+        //Storage::delete();
+        $featuredImage ->move('images/image',$featuredNew);
+        $posts->featured = 'images/image/'.$featuredNew;
+       }
+
         $posts->title=$request->title;
         $posts->slug=$request->slug;
         $posts->content=$request->content;
@@ -156,7 +168,7 @@ class PostController extends Controller
 
         $posts->save();
         Session::flash('success','La catégorie a été modifiée avec succès');
-        return redirect('/posts');
+        return redirect('/articles');
     }
 
     /**
@@ -170,7 +182,7 @@ class PostController extends Controller
         $posts=Post::find($id);
         $posts->delete();
         Session::flash('success','Article a été supprimée avec succès');
-        return redirect('/posts');
+        return redirect('/articles');
     }
 
     public function kill($id)
@@ -186,6 +198,6 @@ class PostController extends Controller
         $posts=Post::onlyTrashed()->where('id',$id)->first();
         $posts->restore();
         Session::flash('success','Article a été restaurer avec succès');
-        return redirect('/posts');
+        return redirect('/articles');
     }
 }

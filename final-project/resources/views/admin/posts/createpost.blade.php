@@ -1,5 +1,9 @@
 @extends('layouts.app3')
 
+    @section('title')
+    Ajouter un Article
+    @endsection
+
 	  @section('content')
 
 	                       <div class="col-lg-12"> 
@@ -14,7 +18,7 @@
 
                                   <div class="panel-body">
                                       <div class="form">
-                                          <form action="/posts" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                                          <form action="/articles" method="POST" class="form-horizontal" enctype="multipart/form-data">
                                               {{csrf_field()}}
                                               
                                               <div class="col-sm-10">
@@ -23,8 +27,8 @@
                                               </div>
 
                                               <div class="col-sm-10">
-                                                 <label class="control-label col-sm-1" for="slug">Slug</label>
-                                                 <input class="form-control" type="text" id="slug" name="slug">
+                                                 <label class="control-label col-sm-1" for="order">Ordre</label>
+                                                 <input class="form-control" type="number" id="order" name="order">
                                               </div>
 
                                               <div class="col-sm-10">

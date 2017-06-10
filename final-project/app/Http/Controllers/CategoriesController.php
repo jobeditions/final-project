@@ -44,13 +44,12 @@ class CategoriesController extends Controller
           
           'name' => 'required|max:255',
           'order' => 'required',
-          'slug' => 'required',
                      ]);
 
         $cat = new Category;
         $cat->name = $request->name;
         $cat->order = $request->order;
-        $cat->slug = $request->slug;
+        $cat->slug = str_slug($request->name);
         $cat->save();
         Session::flash('success','Vous avez créé la catégorie avec succès');
         return redirect('/categorie');

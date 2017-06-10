@@ -1,4 +1,7 @@
 @extends('layouts.app3')
+    @section('title')
+    Modifier un Utilisateur
+    @endsection
 
 	  @section('content')
 
@@ -38,10 +41,10 @@
                                  @if($using->admin==2)
                                  Admin
                                  
-                                 @elseif($using->admin==1)
-                                 Auteur
-                                 @elseif($using->admin==0)
+                                 @elseif($using->admin==0 AND $using->approve==1)
                                  Utilisateur
+                                 @else
+                                 En attendant
                                  @endif
                                  </td>
                                  <td>{{$using->profile->occupation}}</td>
@@ -49,27 +52,28 @@
                                  <td>
                                  @if($using->admin==2)
                                  <div class="btn-group"></div>
-                                 @elseif($using->admin==1)
+                                  
+                                 @elseif($using->admin==0)
                                   <div class="btn-group">
-                                       <a class="btn btn-primary btn-s" href="{{'/users/'.$using->id}}"><i class="icon_minus_alt2"></i>  Retirer</a>
-                                      <!--<a class="btn btn-success btn-s" href="#"><i class="icon_check_alt2"></i></a>-->
-                                      <form  class="form-group pull-left " action="{{'/utilisateurs/'.$using->id}}" method="POST">
-                                      {{csrf_field()}}
-                                      {{method_field('DELETE')}}
-                                      <button class="btn btn-danger" type="submit"><i class="icon_trash"></i>  Corbeille</button>
-                                      </form>
 
-                                    
-                                  </div>
-                                   @elseif($using->admin==0)
-                                  <div class="btn-group">
-                                       <a class="btn btn-success btn-s" href="{{'/autuer/'.$using->id}}"><i class="icon_plus_alt2"></i> Ajouter</a>
+                                       @if($using->approve==0)
+                                      <a class="btn btn-success btn-s " href="{{'/util/'.$using->id}}"><i class="icon_plus_alt2"></i> Ajouter</a>
                                       <!--<a class="btn btn-success btn-s" href="#"><i class="icon_check_alt2"></i></a>-->
-                                      <form  class="form-group pull-left " action="{{'/utilisateurs/'.$using->id}}" method="POST">
+                                      <form  class="form-group pull-left" action="{{'/utilisateurs/'.$using->id}}" method="POST">
+                                      {{csrf_field()}}
+                                      {{method_field('DELETE')}}
+                                      <button class="btn btn-danger " type="submit"><i class="icon_trash"></i>  Corbeille</button>
+                                      </form>
+                                      @elseif($using->approve==1)
+                                      <a class="btn btn-primary btn-s" href="{{'/no-util/'.$using->id}}"><i class="icon_plus_alt2"></i> Retirer</a>
+                                      <!--<a class="btn btn-success btn-s" href="#"><i class="icon_check_alt2"></i></a>-->
+                                      <form  class="form-group pull-left" action="{{'/utilisateurs/'.$using->id}}" method="POST">
                                       {{csrf_field()}}
                                       {{method_field('DELETE')}}
                                       <button class="btn btn-danger" type="submit"><i class="icon_trash"></i>  Corbeille</button>
                                       </form>
+                                      @endif
+                                      </div>
                                     @endif
                                   </td>
                               </tr>

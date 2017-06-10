@@ -14,7 +14,7 @@
 
                                   <div class="panel-body">
                                       <div class="form">
-                                          <form action="/posts/{{$posts->id}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                                          <form action="/articles/{{$posts->id}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                                               {{csrf_field()}}
                                               
                                               {{method_field('PUT')}}
@@ -45,12 +45,12 @@
                                                   
                                               <div class="col-sm-10">
                                                   <label class="control-label col-sm-1">TEXTE</label>
-                                                  <textarea class="form-control" name="content" rows="6" value="{{$posts->content}}"></textarea>
+                                                  <textarea class="form-control" name="content" rows="6">{{($posts->content)}}</textarea>
                                               </div>
 
                                               <div class="col-sm-10">
                                                   <label class="control-label col-sm-1">EXTRAIT</label>
-                                                  <textarea class="form-control" name="excerpt" rows="6" value="{{$posts->excerpt}}"></textarea>
+                                                  <textarea class="form-control" name="excerpt" rows="6">{{$posts->excerpt}}</textarea>
                                               </div>
 
                                               <div class="col-sm-10"><p></p><p></p></div>

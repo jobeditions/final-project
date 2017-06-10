@@ -11,8 +11,13 @@
                 <!--  search form start -->
                 <ul class="nav top-menu">                    
                     <li>
-                        <form class="navbar-form">
-                            <input class="form-control" placeholder="Search" type="text">
+                        <form class="navbar-form" action={{route('articles.index')}} method="get">
+                        {{csrf_field()}}
+                            <input class="form-control" placeholder="Chercher des Articles" type="text" id="s" name="s" >
+                        
+                        <button class="btn btn-primary" type="submit">Q</button>
+                    
+                        
                         </form>
                     </li>                    
                 </ul>
@@ -29,7 +34,7 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="">
+                                <img alt="" src="{{Auth::user()->profile->avatar}}" width=40px height=40px/>
                             </span>
                             <span class="username">{{ Auth::user()->name }}</span>
                             <b class="caret"></b>
@@ -41,6 +46,9 @@
                             </li>
                             <li>
                                 <a href="/home"><i class="icon_key_alt"></i>You are logged in</a>
+                            </li>
+                            <li>
+                                <a href="/profile"><i class="icon_key_alt"></i>Profile</a>
                             </li>
                             <li>
                                         <a href="{{ route('logout') }}"

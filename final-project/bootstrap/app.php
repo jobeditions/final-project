@@ -25,6 +25,9 @@ $app = new Illuminate\Foundation\Application(
 | incoming requests to this application from both the web and CLI.
 |
 */
+//$app->singleton('filesystem', function ($app) {
+   // return $app->loadComponent('filesystems', 'Illuminate\Filesystem\FilesystemServiceProvider', 'filesystem');
+//});
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,

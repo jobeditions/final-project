@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'jobeditions@gmail.com',
             'password' => bcrypt('password'),
             'admin' => 2,
+            'approve' =>1,
            ]);
 
         App\Profile::create([

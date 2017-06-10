@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Session;
 use App\User;
 use App\Profile;
 use App\Http\Controllers\Controller;
@@ -69,6 +70,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'admin' =>0,
+            'approve'=>0,
         ]);
 
 

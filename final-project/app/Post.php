@@ -13,7 +13,7 @@ class Post extends Model
     use SoftDeletes;
 
       protected $fillable = [
-        'title', 'content', 'excerpt','featured','category_id','slug',
+        'title', 'content', 'excerpt','featured','category_id','slug','order',
       ];
 
       protected $dates = ['deleted_at'];
@@ -23,8 +23,10 @@ class Post extends Model
         return $this->belongsTo('App\Category');
     }
 
-    //public function getFeaturedAttribute($featured)
-    //{
-     //   return asset('$featured');
-   // }
+    public function scopeSearch($query,$s)
+    {
+        return $query->where('title','LIKE','%'.$s.'%');
+                     //->orWhere('content','L','%'.$s.'%');
+                     //->orWhere('excerpt','LIKE','%'.$s.'%');
+    }
 }

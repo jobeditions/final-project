@@ -1,5 +1,7 @@
 @extends('layouts.app3')
-
+    @section('title')
+    Ajouter un Compte
+    @endsection
     @section('content')
 
                          <div class="col-lg-12"> 
@@ -31,9 +33,7 @@
                                                  <label class="control-label col-sm-1" for="category" >Catégorie</label>
                                                  <select class="form-control" id="category" name="admin">
                                                    
-                                                   <option value="1">Admin</option>
-                                                   <option value="2">Auteur</option>
-                                                   <option value="O">Utilisateur</option>
+                                                   <option value="0">Utilisateur</option>
                                                   
                                                  </select>
                                               </div>
