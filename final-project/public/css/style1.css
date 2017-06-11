@@ -77,9 +77,9 @@ font-size: 1.3em;
 }
 .top-left label {
 background: #354157;
-width: 255px;
-height: 2px;
-margin: 0px 0 11px;
+width: 100%;
+height: 4px;
+margin: 0 auto ;
 }
 .project ul{
 	padding:0;
@@ -119,7 +119,13 @@ margin: 0px 0 11px;
 .project a:hover{
 	color: #888888;
 }
+.border-blue{
+	width:100%;
+	height:5px;
+	color:354157;
+}
 .banner {
+/*background: url(/images/images/banner.jpg) no-repeat;*/
 background: url(/images/images/banner.jpg) no-repeat;
 background-size: cover;
 -webkit-background-size: cover;
@@ -154,6 +160,15 @@ color: #fff;
 line-height: 1.8em;
 font-weight: 400;
 }
+
+#banner-img1:hover,#banner-img2:hover,#banner-img3:hover{
+	border:5px solid #FFF;
+	overflow:visible;
+	transition-duration:.5s;
+	transform: scale(1.2,1.2);
+	transform: translate(-50px,20px);
+}
+
 .welcome {
 padding: 2em 0;
 border-bottom: 1px solid #D7D3D3;

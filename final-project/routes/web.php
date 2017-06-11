@@ -32,9 +32,8 @@ Route::get('/no-util/{id}', 'UserController@noutil');
 Route::get('/', 'PageController@frontpage');
 Route::get('/contact', 'PageController@contact');
 Route::get('/about', 'PageController@about');
-Route::get('/posts', 'PageController@about');
+Route::get('/posts', 'PageController@blog');
 
 
-});
 
 

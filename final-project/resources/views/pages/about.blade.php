@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 @section('title')
-Blog écrivain-about
+Blog écrivain-A Propos
 @endsection
 @section ('content')
 			<div class="col-sm-9 top-right">

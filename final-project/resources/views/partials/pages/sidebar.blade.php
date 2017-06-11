@@ -11,10 +11,10 @@
                 <div class="head-nav">
                     <span class="menu"> </span>
                         <ul>
-                            <li class="active"><a href="/">Home</a></li>
-                            <li><a href="/about">About</a></li>
-                            <li><a href="/archive">Archives</a></li>
-                            <li><a href="/posts">Blog</a></li>
+                            <li class="active"><a href="/">Accueil</a></li>
+                            <li><a href="/about">À propos</a></li>
+                            <li><a href="/archive">Des Archives</a></li>
+                            <li><a href="/posts">Articles</a></li>
                             <!--<li><a href="404.html">Shop</a></li>-->
                             <li><a href="/contact">Contact</a></li>
                            
@@ -23,8 +23,8 @@
                     @if (Auth::check())
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
+                        <a href="{{ url('/login') }}">Identifier</a>
+                        <a href="{{ url('/register') }}">Inscrire</a>
                     @endif
                 </div>
             @endif
@@ -44,13 +44,13 @@
                 <div class="clearfix"> </div>
                 
                 <div class="project">
-                    <h4>Category</h4>
+                    <h4>Catégorie</h4>
                     <label></label>
                     <ul>
-                        <li><a href="#">Category 1</a></li>
-                        <li><a href="#">Category 2</a></li>
-                        <li><a href="#">Category 3</a></li>
-                        <li><a href="#">Category 4</a></li>
+                    @foreach($category as $categ)
+                        <li><a href="#">{{$categ->name}}</a></li>
+                    @endforeach
+                        
                     </ul>
                 </div>
                 <div class="project">

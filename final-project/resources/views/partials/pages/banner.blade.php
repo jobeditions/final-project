@@ -6,9 +6,9 @@
 						<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin.</p>
 					</div>
 					<div class="col-md-4 banner-right">
-						<img src="/images/images/img1.jpg" class="img-responsive" alt="" />
-						<img src="/images/images/img2.jpg" class="img-responsive" alt="" />
-						<img src="/images/images/img3.jpg" class="img-responsive" alt="" />
+						<img src="/images/images/img16.jpg" class="img-responsive" alt="" />
+						<img src="/images/images/img18.jpg" class="img-responsive" alt="" />
+						<img src="/images/images/img17.jpg" class="img-responsive" alt="" />
 					</div>
 						<div class="clearfix"> </div>
 				</div>

@@ -10,13 +10,8 @@ Blog écrivain-archives
 					@include ('partials.postsarchives1')
 					@include ('partials.postsarchive')
 					@include ('partials.postsarchives1')
-					
-					
-					
-					
-					
 				</div>
-	 </div>
+	        </div>
 		<div class="clearfix"> </div>
 	</div>
 	</div>
