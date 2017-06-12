@@ -7,6 +7,7 @@ use Storage;
 use Session;
 use App\Post;
 use App\Category;
+use App\User;
 
 class PostController extends Controller
 {
@@ -15,6 +16,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
          $posts=Post::orderby('created_at','desc')->get();

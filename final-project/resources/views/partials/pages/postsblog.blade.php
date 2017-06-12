@@ -1,9 +1,9 @@
 
 		<div class="grid box">
 			<div class="grid-header">
-				<h3><a href="posts/{{ $posting->id }}">{{ $posting->title }}</a></h3>
+				<h3><a href="articles/{{ $posting->id }}">{{ $posting->title }}</a></h3>
 				<ul>
-				<li><span>Post By <a href="#">Admin</a> on {{ $posting->created_at->format('F d,Y')}} </span></li>
+				<li><span>Post By <a href="#"></a> on {{ $posting->created_at->format('F d,Y')}} </span></li>
 				<li><a href="#">5 comments</a></li>
 				</ul>
 			</div>

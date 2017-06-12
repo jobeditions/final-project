@@ -47,9 +47,9 @@
                       </ul>
                   </li>
                   <li>                     
-                      <a class="" href="chart-chartjs.html">
-                          <i class="icon_piechart"></i>
-                          <span>Charts</span>
+                      <a class="" href="/settings/create">
+                          <i class="icon_cogs"></i>
+                          <span>Paramètres</span>
                           
                       </a>
                                          

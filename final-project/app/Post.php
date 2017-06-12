@@ -13,7 +13,7 @@ class Post extends Model
     use SoftDeletes;
 
       protected $fillable = [
-        'title', 'content', 'excerpt','featured','category_id','slug','order',
+       'author_id', 'title', 'content', 'excerpt','featured','category_id','slug','order',
       ];
 
       protected $dates = ['deleted_at'];
@@ -28,5 +28,11 @@ class Post extends Model
         return $query->where('title','LIKE','%'.$s.'%');
                      //->orWhere('content','L','%'.$s.'%');
                      //->orWhere('excerpt','LIKE','%'.$s.'%');
+    }
+
+    
+    public function author()
+    {
+        $this->belongsTo('App\User', 'author_id');
     }
 }
