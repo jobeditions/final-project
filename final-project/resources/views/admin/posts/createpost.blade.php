@@ -6,15 +6,55 @@
 
 	  @section('content')
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    
     <script>tinymce.init({
-     selector:'textarea',
-      plugins: 'autolink lists link code image charmap print preview hr anchor pagebreak searchreplace wordcount visualblocks visualchars media nonbreaking save table contextmenu directionality emoticons paste textcolor colorpicker textpattern',
+       selector:'textarea',
+       plugins: 'advlist autolink lists link code image charmap print preview hr anchor pagebreak searchreplace wordcount visualblocks visualchars media nonbreaking save table contextmenu directionality emoticons paste textcolor colorpicker textpattern',
 
      
-      toolbar: 'insertfile undo redo | styleselect | bold italic |Formats forecolor backcolor | alignleft aligncenter alignright alignjustify | indent outdent | link image media',
-      
+       toolbar1: 'insertfile undo redo | styleselect | bold italic |Formats forecolor backcolor | alignleft aligncenter alignright alignjustify | indent outdent | link image media',
+       toolbar2: 'print preview | forecolor backcolor emoticons',
+
+       image_advtab: true,
+       file_picker_callback: function(callback, value, meta) {
+       if (meta.filetype == 'image') {
+        $('#upload').trigger('click');
+        $('#upload').on('change', function() {
+          var file = this.files[0];
+          var reader = new FileReader();
+         
+          reader.onload = function(e) {
+            callback(e.target.result, {
+              alt: ''
+            });
+          };
+
+          reader.readAsDataURL(file);
+         });
+        }
+       },
+      file_picker_callback: function(callback, value, meta) {
+       if (meta.filetype == 'media') {
+        $('#upload').trigger('click');
+        $('#upload').on('change', function() {
+          var file = this.files[0];
+          var reader = new FileReader();
+         
+          reader.onload = function(e) {
+            callback(e.target.result, {
+              alt: ''
+            });
+          };
+          
+          reader.readAsDataURL(file);
+         });
+        }
+       },
      });
-     </script>
+      </script>
+
+
+    
 
 	                       <div class="col-lg-12"> 
                          @include('partials.error')    
@@ -65,6 +105,8 @@
                                               <div class="col-sm-10">
                                                   <label class="control-label col-sm-1">TEXTE</label>
                                                   <textarea class="form-control" name="content" rows="6"></textarea>
+                                                  <input class="hidden" type="file" id="upload" name="image">
+                                                  <input class="hidden" type="file" id="upload" name="media">
                                               </div>
 
                                               <div class="col-sm-10">
