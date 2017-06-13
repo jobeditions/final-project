@@ -8,7 +8,7 @@
 					<div class="col-md-4 banner-right">
 						<img src="/images/images/img16.jpg" class="img-responsive" alt="" />
 						<img src="/images/images/img18.jpg" class="img-responsive" alt="" />
-						<img src="/images/images/img17.jpg" class="img-responsive" alt="" />
+						<img src="/images/images/img171.jpg" class="img-responsive" alt="" />
 					</div>
 						<div class="clearfix"> </div>
 				</div>

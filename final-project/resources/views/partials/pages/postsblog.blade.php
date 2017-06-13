@@ -8,9 +8,9 @@
 				</ul>
 			</div>
 			<div class="grid-img-content">
-				<a href=""><img src="{{$posting->featured}}" width="400px" height="250px"/></a>
+				<a href="articles/{{ $posting->id }}"><img src="{{$posting->featured}}" width="400px" height="250px"/></a>
 				
-				{{ $posting->content }}
+				{!! $posting->excerpt !!}
 
 				<div class="clearfix"> </div>
 			</div>

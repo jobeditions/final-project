@@ -30,9 +30,8 @@ class Post extends Model
                      //->orWhere('excerpt','LIKE','%'.$s.'%');
     }
 
-    
-    public function author()
+    public function tags()
     {
-        $this->belongsTo('App\User', 'author_id');
+       return $this->belongsToMany('App\Tag');
     }
 }

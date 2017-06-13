@@ -21,9 +21,9 @@
                                  <th><i class=""></i></th>
                                  <th><i class="icon_image"></i> Image</th>
                                  <th><i class="icon_document_alt"></i> Titre</th>
-                                 <th><i class="icon_tags"></i> Catégorie</th>
-                                 <th><i class="icon_calendar"></i> Créé</th>
-                                 <th><i class="icon_calendar"></i> Modifié</th>
+                                 <th><i class="icon_tag"></i> Catégorie</th>
+                                 <th><i class="icon_tags"></i> Étiquettes</th>
+                                 <th><i class="icon_calendar"></i> Créé le</th>
                                  <th></th>
                                  <th><i class="icon_cogs"></i> Action</a></th>
                               </thead>
@@ -35,12 +35,11 @@
                                  
                                  <td>
                                  </td>
-                                 <td><img src="{{$posting->featured}}" width="140px" height="90px"/></td>
+                                 <td><a href="articles/{{ $posting->id }}"><img src="{{$posting->featured}}" width="140px" height="90px"/></a></td>
                                  <td>{{$posting->title}}</td>
                                  <td>{{$posting->category->name}}</td>
+                                 <td></td>
                                  <td>{{$posting->created_at->format('F d,Y')}}</td>
-                                 <td>{{$posting->updated_at->format('F d,Y')}}</td>
-                                  
                                  <td></td>
                                  <td>
                                   <!--<div class="btn-group">-->

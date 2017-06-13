@@ -14,7 +14,7 @@
 						</div>
 						<div class="singlepage">
 							<img src="/{{$post->featured}}" width="820px" height="400px"/>
-							{{ $post->content }}
+							{!! $post->content !!}
 							
 							<div class="clearfix"> </div>
 						</div>

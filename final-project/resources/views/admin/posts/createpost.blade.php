@@ -5,6 +5,16 @@
     @endsection
 
 	  @section('content')
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>tinymce.init({
+     selector:'textarea',
+      plugins: 'autolink lists link code image charmap print preview hr anchor pagebreak searchreplace wordcount visualblocks visualchars media nonbreaking save table contextmenu directionality emoticons paste textcolor colorpicker textpattern',
+
+     
+      toolbar: 'insertfile undo redo | styleselect | bold italic |Formats forecolor backcolor | alignleft aligncenter alignright alignjustify | indent outdent | link image media',
+      
+     });
+     </script>
 
 	                       <div class="col-lg-12"> 
                          @include('partials.error')    
@@ -45,7 +55,13 @@
                                                  </select>
                                               </div>
                                               
-                                                  
+                                              <div class="col-sm-10">
+                                              <label class="control-label col-sm-1" for="category" >Étiquettes:</label></br>
+                                                   @foreach($tags as $tageg)
+                                                  <label class="checkbox-inline"><input type="checkbox" name="tags[]" value="{{$tageg->id}}">{{$tageg->tags}}</label>
+                                                   @endforeach
+                                              </div>
+
                                               <div class="col-sm-10">
                                                   <label class="control-label col-sm-1">TEXTE</label>
                                                   <textarea class="form-control" name="content" rows="6"></textarea>

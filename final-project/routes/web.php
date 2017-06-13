@@ -17,6 +17,7 @@ Route::resource('articles','PostController');
 Route::resource('categorie','CategoriesController');
 Route::resource('utilisateurs','UserController');
 Route::resource('profile','ProfileController');
+Route::resource('tags','TagController');
 
 
 Auth::routes();

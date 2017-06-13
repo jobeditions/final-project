@@ -35,6 +35,18 @@
                   </li>
                   <li class="sub-menu">
                       <a href="javascript:;" class="">
+                          <i class="icon_tags"></i>
+                          <span>Étiquettes</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="/tags/create">Ajouter une Étiquette</a></li>
+                          <li><a class="" href="/tags">Modifier une Étiquette</a></li>
+                          
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
                           <i class="icon_profile"></i>
                           <span>Utilisateurs</span>
                           <span class="menu-arrow arrow_carrot-right"></span>

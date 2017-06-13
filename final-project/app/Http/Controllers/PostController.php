@@ -8,6 +8,7 @@ use Session;
 use App\Post;
 use App\Category;
 use App\User;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -21,8 +22,9 @@ class PostController extends Controller
     {
          $posts=Post::orderby('created_at','desc')->get();
          $category=Category::get();
-        $posts=Post::paginate(10);
-        return view('admin.posts.indexpost',compact('posts','category'));
+         $tags=Tag::get();
+         $posts=Post::paginate(10);
+        return view('admin.posts.indexpost',compact('posts','category','tags'));
     }
 
     public function trash()
@@ -39,9 +41,10 @@ class PostController extends Controller
      */
     public function create()
 
-    {
-
+    {  
+       
         $categories=Category::all();
+        $tags=Tag::all();
         if($categories->count()==0)
         {
             Session::flash('success','Vous devez créé une catégorie pour des articles');
@@ -49,7 +52,14 @@ class PostController extends Controller
             
         }
 
-        return view('admin.posts.createpost',compact('categories'));
+        if($tags->count()==0)
+        {
+            Session::flash('success','Vous devez créé une tag pour des articles');
+            return redirect()->back();
+            
+        }
+
+        return view('admin.posts.createpost',compact('categories','tags'));
     }
 
     /**
@@ -60,7 +70,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-    
+        
 
         $this -> validate($request,[
           
@@ -69,6 +79,7 @@ class PostController extends Controller
           'content' => 'required',
           'excerpt' => 'required',
           'category_id' => 'required',
+          'tags'=> 'required',
           
            ]);
 
@@ -80,14 +91,6 @@ class PostController extends Controller
         $featuredImage ->move('images/image',$featuredNew);
         }
 
-        //$post = new Post;
-        //$post->title = $request->title;
-        //$post->content = $request->content;
-        //$post->excerpt = $request->excerpt;
-        //$post->featured ='assets/uploads/posts/'.$featuredNew;
-        //$post->category_id = $request->category_id;
-        //$post->save();
-
         $posts = Post::create([
             'title' => $request->title,
             'order' => $request->order,
@@ -97,6 +100,8 @@ class PostController extends Controller
             'category_id' => $request->category_id,
             'slug' => str_slug($request->title),
         ]);
+
+        $posts->tags()->attach($request->tags);
     Session::flash('success','Vous avez créé une article avec succès');
 
     return redirect('/articles');
@@ -126,7 +131,8 @@ class PostController extends Controller
     {
         $posts=Post::find($id);
         $categories=Category::get();
-        return view('admin.posts.editpost',compact('posts','categories'));
+        $tags=Tag::get();
+        return view('admin.posts.editpost',compact('posts','categories','tags'));
     }
 
     /**
