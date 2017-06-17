@@ -11,25 +11,14 @@
                 <div class="head-nav">
                     <span class="menu"> </span>
                         <ul>
-                            <li class="active"><a href="/">Accueil</a></li>
+                            <li class="active"><a href="/">Page d'Accueil</a></li>
                             <li><a href="/about">À propos</a></li>
                             <li><a href="/archive">Des Archives</a></li>
                             <li><a href="/posts">Articles</a></li>
                             <!--<li><a href="404.html">Shop</a></li>-->
                             <li><a href="/contact">Contact</a></li>
-                           
-                            <li> @if (Route::has('login'))
-                       <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Identifier</a>
-                        <a href="{{ url('/register') }}">Inscrire</a>
-                    @endif
-                </div>
-            @endif
-</li>
-                                <div class="clearfix"> </div>
+                        
+                            <div class="clearfix"> </div>
                         </ul>
                         <!-- script-for-nav -->
                     <script>
@@ -41,7 +30,20 @@
                     </script>
                 <!-- script-for-nav -->     
                 </div>
-                <div class="clearfix"> </div>
+                <div class="clearfix">
+                               @if (Route::has('login'))
+                               <div class="top-right links">
+                                  @if (Auth::check())
+                                  <a href="{{ url('/home') }}"><h4>Accueil Utilisateur</h4></a>
+                                  @else
+                                 <a href="{{ url('/login') }}"><h4>Identifier</h4></a>
+                                 <a href="{{ url('/register') }}"><h4>Inscrire</h4></a>
+                                  @endif
+                               </div>
+                             @endif
+                </div>
+
+                <div class="project"></div>
                 
                 <div class="project">
                     <h4>Catégorie</h4>
@@ -49,6 +51,16 @@
                     <ul>
                     @foreach($category as $categ)
                         <li><a href="#">{{$categ->name}}</a></li>
+                    @endforeach
+                        
+                    </ul>
+                </div>
+                <div class="project">
+                    <h4>Étiquettes</h4>
+                    <label></label>
+                    <ul>
+                    @foreach($tags as $tegeg)
+                        <li><a href="#">{{$tegeg->tags}}</a></li>
                     @endforeach
                         
                     </ul>

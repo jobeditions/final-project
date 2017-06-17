@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
+use App\Settings;
 use App\User;
-use App\Profile;
-use Auth;
 
-
-class ProfileController extends Controller
+class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +15,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-     $users=User::orderby('admin','desc')->get();
-     $profile = Profile::get();   
-     return view('admin.users.profile',compact('users','profile'));
+        $setting = Settings::first();
+        return view ('admin.settings.settings',compact('setting'));
     }
 
     /**
@@ -30,7 +26,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -63,7 +59,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //$user=User::find($id);
+        //
     }
 
     /**
@@ -73,9 +69,10 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {   
-         
+    public function update()
+    {
+         $setting = Settings::first();
+        
     }
 
     /**

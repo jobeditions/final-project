@@ -61,6 +61,7 @@ Modifier/Tags
                                                      
                            </tbody>
                         </table>
+                         {{$tags->links()}}
                       </section>
                   </div>
               </div>

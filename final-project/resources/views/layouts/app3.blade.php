@@ -20,16 +20,7 @@
     <!-- font icon -->
     <link href="/css/elegant-icons-style.css" rel="stylesheet" />
     <link href="/css/font-awesome.min.css" rel="stylesheet" />    
-    <!-- full calendar css-->
-    <!--<link href="/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
-	<link href="/assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
-    <!-- easy pie chart-->-->
-   <!-- <link href="/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
-    <!-- owl carousel -->
-   <!-- <link rel="stylesheet" href="/css/owl.carousel.css" type="text/css">
-	<link href="/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
-    <!-- Custom styles -->
-	<!--<link rel="stylesheet" href="/css/fullcalendar.css">-->
+    
 	<link href="/css/widgets.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
     <link href="/css/style-responsive.css" rel="stylesheet" />
@@ -59,7 +50,7 @@
 		  
 		 @yield('content')
               
-         @include('partials.admin.footer')  
+       
           
       </section>
       <!--main content end-->
@@ -79,18 +70,12 @@
     <!-- charts scripts -->
     <script src="/assets/jquery-knob/js/jquery.knob.js"></script>
     <script src="/js/jquery.sparkline.js" type="text/javascript"></script>
-    <script src="/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
-    <script src="/js/owl.carousel.js" ></script>
-    <!-- jQuery full calendar -->
-    <<script src="/js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
-	<script src="/assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
-    <!--script for this page only-->
+   
     <script src="/js/calendar-custom.js"></script>
-	<script src="/js/jquery.rateit.min.js"></script>
+	
     <!-- custom select -->
     <script src="/js/jquery.customSelect.min.js" ></script>
-	<script src="assets/chart-master/Chart.js"></script>
-   
+	
     <!--custome script for all page-->
     <script src="/js/scripts.js"></script>
     <!-- custom script for this page-->
@@ -101,7 +86,7 @@
 	<script src="/js/gdp-data.js"></script>	
 	<script src="/js/morris.min.js"></script>
 	<script src="/js/sparklines.js"></script>	
-	<script src="/js/charts.js"></script>
+	
   <script src="/js/toastr.min.js"></script>
 	<script src="/js/jquery.slimscroll.min.js"></script>
 

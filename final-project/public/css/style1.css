@@ -126,7 +126,7 @@ margin: 0 auto ;
 }
 .banner {
 /*background: url(/images/images/banner.jpg) no-repeat;*/
-background: url(/images/images/banner.jpg) no-repeat;
+background: url(/images/img-admin/bg-8.jpg) no-repeat;
 background-size: cover;
 -webkit-background-size: cover;
 -moz-background-size: cover;
@@ -161,7 +161,7 @@ line-height: 1.8em;
 font-weight: 400;
 }
 
-#banner-img1:hover,#banner-img2:hover,#banner-img3:hover{
+.banner-right img:hover{
 	border:5px solid #FFF;
 	overflow:visible;
 	transition-duration:.5s;

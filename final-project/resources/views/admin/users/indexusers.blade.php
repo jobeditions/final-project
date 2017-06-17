@@ -81,7 +81,9 @@
                               @endforeach
                                                      
                            </tbody>
+
                         </table>
+                       {{ $users->links() }}
                       </section>
                   </div>
               </div>

@@ -17,9 +17,9 @@ class CategoriesController extends Controller
 
     {   
         $cat=Category::orderby('order','asc')->get();
-        $cat=Category::paginate(10);
+        $cat=Category::paginate(7);
         return view('admin.categories.indexcategory',compact('cat'));
-        //return view('admin.categories.editcategory')->('cat',Category::all());
+        
     }
 
     /**

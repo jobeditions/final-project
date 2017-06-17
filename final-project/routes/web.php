@@ -18,7 +18,7 @@ Route::resource('categorie','CategoriesController');
 Route::resource('utilisateurs','UserController');
 Route::resource('profile','ProfileController');
 Route::resource('tags','TagController');
-
+//Route::resource('settings','SettingsController@index');
 
 Auth::routes();
 
@@ -29,6 +29,15 @@ Route::delete('/trash/{id}', 'PostController@kill');
 Route::delete('/restore/{id}', 'PostController@restoretrash');
 Route::get('/util/{id}', 'UserController@util');
 Route::get('/no-util/{id}', 'UserController@noutil');
+Route::get('/settings',[
+	'uses'=>'SettingsController@index',
+	'as'=>'settings']);
+
+Route::post('/settings/updating',[
+    'uses'=>'SettingsController@updating',
+    'as'=>'settings.updating',
+	]);
+
 
 Route::get('/', 'PageController@frontpage');
 Route::get('/contact', 'PageController@contact');

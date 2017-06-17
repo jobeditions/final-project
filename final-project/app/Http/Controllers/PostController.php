@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Storage;
 use Session;
+use Purifier;
 use App\Post;
 use App\Category;
 use App\User;
 use App\Tag;
+use Image;
 
 class PostController extends Controller
 {
@@ -23,7 +25,7 @@ class PostController extends Controller
          $posts=Post::orderby('created_at','desc')->get();
          $category=Category::get();
          $tags=Tag::get();
-         $posts=Post::paginate(10);
+         $posts=Post::paginate(7);
         return view('admin.posts.indexpost',compact('posts','category','tags'));
     }
 
@@ -90,14 +92,23 @@ class PostController extends Controller
         $featuredNew = time().$featuredImage->getClientOriginalName();
         $featuredImage ->move('images/image',$featuredNew);
         }
+        /*if($request->hasFile('featured')){
+            $image = $request->file('featured');
+            $filename=time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/image' . $filename);
+            $image = save($location);
+
+        }*/
 
         $posts = Post::create([
             'title' => $request->title,
             'order' => $request->order,
-            'content' => $request->content,
+            'content' => Purifier::clean($request->content, 'youtube'),
             'featured' => 'images/image/'.$featuredNew,
-            'excerpt' => $request->excerpt,
+            //'featured'=>$filename,
+            'excerpt' => Purifier::clean($request->excerpt, 'youtube'),
             'category_id' => $request->category_id,
+
             'slug' => str_slug($request->title),
         ]);
 
@@ -144,7 +155,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+       
         $this -> validate($request,[
           
           'title' => 'required|max:255',
@@ -162,18 +173,19 @@ class PostController extends Controller
        if($request->hasFile('featured'))
 
         {
-        //add new photo
+        
         $featuredImage = $request->featured;
         $featuredNew = time().$featuredImage->getClientOriginalName();
-        //Storage::delete();
+        $oldfile = $posts->featured;
         $featuredImage ->move('images/image',$featuredNew);
         $posts->featured = 'images/image/'.$featuredNew;
+        Storage::delete($oldfile);
        }
 
         $posts->title=$request->title;
         $posts->slug=$request->slug;
-        $posts->content=$request->content;
-        $posts->excerpt=$request->excerpt;
+        $posts->content=Purifier::clean($request->content, 'youtube');
+        $posts->excerpt=Purifier::clean($request->excerpt, 'youtube');
         $posts->category_id=$request->category_id;
 
         $posts->save();
@@ -198,6 +210,7 @@ class PostController extends Controller
     public function kill($id)
     {
         $posts=Post::onlyTrashed()->where('id',$id)->first();
+        Storage::delete($posts->featured);
         $posts->forcedelete();
         Session::flash('success','Article a été supprimée avec succès');
         return redirect('/trash');

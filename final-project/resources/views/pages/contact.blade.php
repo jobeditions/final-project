@@ -12,12 +12,12 @@ Blog écrivain-contacter nous
 		     </div>
 			 <div class="contact-details">				 
 			 <form>
-				 <input type="text" placeholder="Name" required/>
-				 <input type="text" placeholder="Email" required/>
-				 <input type="text" placeholder="Phone" required/>
-				 <input type="text" placeholder="City Name" required/>
-				 <textarea placeholder="Message"></textarea>
-				 <input type="submit" value="Send message">
+				 <input type="text" placeholder="Votre Nom" required/>
+				 <input type="text" placeholder="Votre mail-électronique" required/>
+				 <input type="text" placeholder="Numéro de Contact" required/>
+				 <input type="text" placeholder="Ville" required/>
+				 <textarea placeholder="Laissez votre Message"></textarea>
+				 <input type="submit" value="Envoyer">
 			 </form>
 		  </div>
 		  <div class="contact-details">

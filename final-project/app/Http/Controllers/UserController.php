@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
+use Storage;
 use App\User;
 use App\Profile;
 
@@ -17,7 +18,7 @@ class UserController extends Controller
     public function index()
     {
         $users=User::orderby('admin','desc')->get();
-        $users=User::paginate(10);
+        $users=User::paginate(7);
         return view('admin.users.indexusers',compact('users'));
     }
 
@@ -121,8 +122,10 @@ class UserController extends Controller
         {
             
         $avatarImage = $request->avatar;
+        $oldFile = $user->profile->avatar;
         $avatarNew = time().$avatarImage->getClientOriginalName();
         $avatarImage ->move('images/avatar/',$avatarNew);
+        Storage::delete($oldFile);
         $user->profile->avatar = 'images/avatar/'.$avatarNew;
        }
 
@@ -159,7 +162,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-
+        Storage::delete($user->profile->avatar);
         $user->delete();
         Session::flash('success','Vous avez supprimer un compte avec succès');
 

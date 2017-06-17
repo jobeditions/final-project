@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
             'user_id'=> $user->id,
             'firstname' => 'Marcella',
             'lastname' => 'Sandrine',
-            'avatar' => '/assets/uploads/avatar/avatar1.jpg',
+            'avatar' => '/images/img-admin/avatar1.jpg',
             'about' => '"Bonjour, je suis Jenifer Smith, un expert en écriture créatif spécialisé dans le domain de surrealisme. Mon diplôme de Université Massey avec un Bachelor spécialisé dans lécriture créative."',
             'facebook' => 'facebook.com',
             'twitter' => 'twitter.com',

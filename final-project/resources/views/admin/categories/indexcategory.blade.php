@@ -63,6 +63,7 @@ Modifier une Categorie
                                                      
                            </tbody>
                         </table>
+                        {{$cat->links()}}
                       </section>
                   </div>
               </div>

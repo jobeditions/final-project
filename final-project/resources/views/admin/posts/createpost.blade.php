@@ -12,11 +12,11 @@
        plugins: 'advlist autolink lists link code image charmap print preview hr anchor pagebreak searchreplace wordcount visualblocks visualchars media nonbreaking save table contextmenu directionality emoticons paste textcolor colorpicker textpattern',
 
      
-       toolbar1: 'insertfile undo redo | styleselect | bold italic |Formats forecolor backcolor | alignleft aligncenter alignright alignjustify | indent outdent | link image media',
-       toolbar2: 'print preview | forecolor backcolor emoticons',
+       toolbar1: 'insertfile undo redo | styleselect | bold italic |Formats forecolor backcolor | alignleft aligncenter alignright alignjustify | indent outdent | link image media ',
+       toolbar2: 'print preview | forecolor backcolor emoticons ',
 
-       image_advtab: true,
-       file_picker_callback: function(callback, value, meta) {
+        image_advtab: true,
+      file_picker_callback: function(callback, value, meta) {
        if (meta.filetype == 'image') {
         $('#upload').trigger('click');
         $('#upload').on('change', function() {
@@ -28,7 +28,6 @@
               alt: ''
             });
           };
-
           reader.readAsDataURL(file);
          });
         }
@@ -50,6 +49,8 @@
          });
         }
        },
+
+       
      });
       </script>
 
@@ -112,6 +113,8 @@
                                               <div class="col-sm-10">
                                                   <label class="control-label col-sm-1">EXTRAIT</label>
                                                   <textarea class="form-control" name="excerpt" rows="6"></textarea>
+                                                  <input class="hidden" type="file" id="upload" name="image">
+                                                  <input class="hidden" type="file" id="upload" name="media">
                                               </div>
 
                                               <div class="col-sm-10"><p></p><p></p></div>

@@ -113,6 +113,7 @@
                                               <div class="col-sm-10">
                                                   <label class="control-label col-sm-1">EXTRAIT</label>
                                                   <textarea class="form-control" name="excerpt" rows="6">{{$posts->excerpt}}</textarea>
+                                                  
                                               </div>
 
                                               <div class="col-sm-10"><p></p><p></p></div>

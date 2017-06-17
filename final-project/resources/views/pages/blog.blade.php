@@ -15,18 +15,10 @@ Blog écrivain-Articles
 	</div>
 	<div class="clearfix"> </div>
  </div>
-<div class="clearfix"> </div>
-		<div class="content-pagenation">
-						<li><a href="#">First</a></li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><span>....</span></a></li>
-						<li><a href="#">Last</a></li>
-						<div class="clear"> </div>
-					</div>
-					<div class="clearfix"> </div>
-			</div>
+        <div class="clearfix"> </div>
+		{{$posts->links()}}
+		<div class="clearfix"> </div>
+		</div>
 		</div>
 		<div class="clearfix"> </div>
 	</div>
