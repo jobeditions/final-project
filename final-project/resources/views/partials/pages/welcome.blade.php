@@ -3,13 +3,13 @@
 					<div class="welcome-top">
 						<div class="col-md-6 welcome-left">
 							<div class="view view-tenth">
-							  <a href="singlepage.html">
+							  <a href="{{route('single.posting',['slug'=>$secondpost->slug])}}">
 							   <div class="inner_content clearfix">
 								<div class="product_image">
-									<img src="/images/images/img5.jpg" class="img-responsive of-my" alt=""/>
+									<img src="{{$secondpost->featured}}" class="img-responsive of-my" alt=""/>
 									<div class="mask" >
-										<h4>Hand made design</h4>
-										<p>Proin gravida nibh vquis bibendum auct, nec sagittis sem nibh id elit. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin</p>
+										<h4>{{$secondpost->title}}</h4>
+										<p>{!!$secondpost->excerpt!!}</p>
 										<h5>Continue reading...</h5>
 									</div>
 									</div>
@@ -19,14 +19,14 @@
 						</div>
 						<div class="col-md-6 welcome-right">
 							<div class="view view-tenth">
-							  <a href="singlepage.html">
+							  <a href="{{route('single.posting',['slug'=>$thirdpost->slug])}}">
 							   <div class="inner_content clearfix">
 								<div class="product_image">
-									<img src="images/images/img4.jpg" class="img-responsive of-my" alt=""/>
+									<img src="{{$thirdpost->featured}}" class="img-responsive of-my" alt=""/>
 									<div class="mask" >
-										<h4>Hand made design</h4>
-										<p>Proin gravida nibh vel velinsequat ipsum, nec sagittis sem nibh id elit. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin</p>
-										<h5>Continue reading...</h5>
+										<h4>{{$thirdpost->title}}</h4>
+										<p>{!!$thirdpost->excerpt!!}</p>
+										<a href="{{route('single.posting',['slug'=>$thirdpost->slug])}}"><h5>Continue reading...</h5></a>
 									</div>
 									</div>
 								 </div>
@@ -38,11 +38,11 @@
 				<!-- welcome-bottom -->
 					<div class="welcome-bottom">
 						<div class="col-md-6 welcome-left1">
-							<a href="singlepage.html"><img src="/images/images/img6.jpg" class="img-responsive" alt="" /></a>
-							<h3><a href="singlepage.html">Useful Design Tools</a></h3>
-							<h6>Oct 18 , 2014 • 7 Comments</h6>
-							<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.</p>
-							<a href="singlepage.html">Continue reading...</a>
+							<a href=""><img src="{{$firstpost->featured}}" class="img-responsive" alt="" /></a>
+							<h3><a href="{{route('single.posting',['slug'=>$firstpost->slug])}}">{{$firstpost->title}}</a></h3>
+							<h6>{{ $firstpost->created_at->diffForHumans()}}</h6>
+							<p>{!!$firstpost->excerpt!!}</p>
+							<a href="{{route('single.posting',['slug'=>$firstpost->slug])}}">Lirer En Suite...</a>
 						</div>
 						<div class="col-md-6 welcome-right1">
 							<div class="free">
@@ -70,11 +70,12 @@
 									<a href="singlepage.html"><img src="/images/images/img9.jpg" class="img-responsive" alt="" /></a>
 								</div>
 								<div class="free-right">
-									<h5><a href="singlepage.html">Design Professional User Interfaces</a></h5>
+									<h5><a href="singlepage.html">Web Design Trends for 2014</a></h5>
 									<p>Proin gravida nibh vel velit auctor aliquet. </p>
 								</div>
 								<div class="clearfix"> </div>
 							</div>
+							
 							<div class="free">
 								<div class="free-left">
 									<a href="singlepage.html"><img src="/images/images/img10.jpg" class="img-responsive" alt="" /></a>

@@ -95,7 +95,7 @@ class SettingsController extends Controller
        
         $setting->save();
         Session::flash('success','Les Paramétres ont été modifiées avec succès');
-        return redirect('/');
+        return redirect()->back();
 
 
        

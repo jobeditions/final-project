@@ -1,7 +1,5 @@
 @extends ('layouts.master')
-@section('title')
-Blog écrivain-contacter nous
-@endsection
+
 @section ('content')
 
 			<div class="col-md-9 top-right">
@@ -27,12 +25,11 @@ Blog écrivain-contacter nous
 			  </div>
 			  <div class="col-md-6 company_address">		 
 					<h4>GET IN TOUCH</h4>
-					<p>500 Lorem Ipsum Dolor Sit,</p>
-					<p>22-56-2-9 Sit Amet, Lorem,</p>
-					<p>USA</p>
-					<p>Phone:(00) 222 666 444</p>
-					<p>Fax: (000) 123 456 78 0</p>
-					<p>Email: <a href="mailto:info@example.com">info@mycompany.com</a></p>
+					<p>{{$setting->address}}</p>
+					<p></p>
+					<p>FRANCE</p>
+					<p>{{$setting->contact_number}}</p>
+					<p>Email: <a href="mailto:{{$setting->contact_mail}}">{{$setting->contact_email}}</a></p>
 					<p>Follow on: <a href="#">Facebook</a>, <a href="#">Twitter</a></p>
 			 </div>
 			  <div class="clearfix"></div>

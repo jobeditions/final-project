@@ -10,6 +10,7 @@ use App\Post;
 use App\Category;
 use App\User;
 use App\Tag;
+use App\Settings;
 use Image;
 
 class PostController extends Controller
@@ -127,9 +128,12 @@ class PostController extends Controller
      */
     public function show( $id)
     {
-        $post = Post::find($id);
+        // $post = Post::find($id);
+         $post = Post::find($id);
          $category=Category::get();
-        return view('pages.posts',compact('post','category'));
+         $setting = Settings::first();
+         $tags=Tag::get();
+        return view('pages.posts',compact('post','category','setting','tags'));
     }
 
     /**

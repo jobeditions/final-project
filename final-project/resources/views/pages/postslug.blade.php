@@ -1,9 +1,9 @@
 
 @extends('layouts.master')
 @section('content')
-			<div class="col-md-9 top-right">
+              <div class="col-md-9 top-right">
 				<div class="content">
-				<div class="grids">
+				  <div class="grids">
 					<div class="grid box">
 						<div class="grid-header">
 						<h1>{{$post->title}}</h1>
@@ -27,6 +27,5 @@
 							</ul>
 						</div>
 					</div>
-					
-	
-	@endsection
+
+@endsection

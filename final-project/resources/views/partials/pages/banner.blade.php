@@ -2,13 +2,13 @@
 			<!-- banner -->
 				<div class="banner">
 					<div class="col-md-8 banner-left">
-						<h2> <a href="singlepage.html">Hand made design</a></h2>
-						<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin.</p>
+						<h2> <a href="/articles">{{$setting->title}}</a></h2>
+						<p>{{$setting->description}}</p>
 					</div>
 					<div class="col-md-4 banner-right">
-						<img src="/images/images/img16.jpg" class="img-responsive" alt="" />
-						<img src="/images/images/img18.jpg" class="img-responsive" alt="" />
-						<img src="/images/images/img171.jpg" class="img-responsive" alt="" />
+						<img src="{{$setting->image1}}" class="img-responsive" />
+						<img src="{{$setting->image2}}" class="img-responsive" />
+						<img src="{{$setting->image3}}" class="img-responsive" />
 					</div>
 						<div class="clearfix"> </div>
 				</div>

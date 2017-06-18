@@ -18,10 +18,10 @@ class SettingTableSeeder extends Seeder
             'title'=> 'Blog de Marcella',
             'description'=>'Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin.',
             'address' => '49 Place Nicole Neuburger Bondy France',
-            'image1' => '/images/settings/img16.jpg',
-            'image2' => '/images/settings/img18.jpg',
-            'image3' => '/images/settings/img171.jpg',
-            'image4' => '/images/settings/logo.png',
+            'image1' => '/images/seed/img16.JPG',
+            'image2' => '/images/seed/img18.JPG',
+            'image3' => '/images/seed/img171.JPG',
+            'image4' => '/images/seed/logo.png',
 
             
            ]);

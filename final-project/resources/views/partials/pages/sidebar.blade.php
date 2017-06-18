@@ -4,7 +4,7 @@
         <div class="container">
             <div class="col-md-3 top-left">
                 <div class="logo">
-                    <a href="/"><img src="/images/images/logo.png" class="img-responsive" alt="" /></a>
+                    <a href="/"><img src="{{$setting->image4}}" class="img-responsive" alt="" /></a>
                 </div>
                 <h4 class="menn">Menu</h4>
                 <label></label>
@@ -14,7 +14,7 @@
                             <li class="active"><a href="/">Page d'Accueil</a></li>
                             <li><a href="/about">À propos</a></li>
                             <li><a href="/archive">Des Archives</a></li>
-                            <li><a href="/posts">Articles</a></li>
+                            <li><a href="/posts/blog">Articles</a></li>
                             <!--<li><a href="404.html">Shop</a></li>-->
                             <li><a href="/contact">Contact</a></li>
                         
