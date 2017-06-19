@@ -129,11 +129,11 @@ class PostController extends Controller
     public function show( $id)
     {
         // $post = Post::find($id);
-         $post = Post::find($id);
-         $category=Category::get();
-         $setting = Settings::first();
-         $tags=Tag::get();
-        return view('pages.posts',compact('post','category','setting','tags'));
+        // $post = Post::find($id);
+        // $category=Category::get();
+        // $setting = Settings::first();
+        // $tags=Tag::get();
+        //return view('pages.posts',compact('post','category','setting','tags'));
     }
 
     /**

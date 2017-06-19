@@ -8,7 +8,7 @@
 						<div class="grid-header">
 						<h1>{{$post->title}}</h1>
 						<ul>
-							<li><span>Post By <a href="#">Admin</a> {{$post->created_at->format('F d,Y')}}</span></li>
+							<li><span>Écrit par <a href="#"></a>{{$post->created_at->format('F d,Y')}}</span></li>
 							<li><a href="#">Catégorie: {{$post->category->name}}</a></li>
 						</ul>
 						</div>
@@ -26,6 +26,20 @@
 								<li></li>
 							</ul>
 						</div>
+						</br>
+						</br>
+						<div id="button-box">
+						<div id="button-previous">
+						 <a href="#" class="next">&laquo; Précédent</a>
+						 <b>  Lorem Ipsum</b>
+						</div>
+						<div id="button-next">
+                         <a href="#" class="next">Prochaine &raquo;</a>
+                         <b>  Lorem Ipsum</b>
+                        </div>
+                        </div>
+                       
+
 					</div>
 
 @endsection

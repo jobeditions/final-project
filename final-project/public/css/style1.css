@@ -17,6 +17,29 @@ body a{
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
 }
+.next {
+    background-color: #4CAF50;
+    color: white;
+   
+}
+#button-previous a,#button-next a{
+	text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    font-weight: bold;
+}
+#button-previous a:hover,#button-next a:hover{
+	background-color: #ddd;
+    color: black;
+}
+#button-previous, #button-next {
+	width:19%;
+}
+#button-box{
+	display:flex;
+	flex-direction:row;
+	justify-content: space-between;
+}
 .logo {
 	text-align: center;
 	background:#354157;
@@ -498,7 +521,7 @@ transition: all .5s;
 float: right;
 color: #fff;
 font-size: 1em;
-background:#b4db92;
+background:#3b8e31;
 padding: 10px 12px;
 -webkit-transition: all .5s;
 -moz-transition: all .5s;
@@ -507,7 +530,7 @@ padding: 10px 12px;
 transition: all .5s;
 }
 .readmore:hover{
-	background: #3b8e31;
+	background: #b4db92;
 	color:#fff;
 }
 .grid ul{
