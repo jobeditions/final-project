@@ -18,13 +18,9 @@ class PageController extends Controller
         $firstpost=Post::orderby('created_at','desc')->first();
         $secondpost=Post::orderby('created_at','desc')->skip(1)->take(1)->get()->first();
         $thirdpost=Post::orderby('created_at','desc')->skip(2)->take(1)->get()->first();
-
         return view ('pages.welcome',compact('category','tags','setting','firstpost','secondpost','thirdpost'));
     }
 
-    //function archive(){
-    	//return view ('pages.archives');
-   // }
     function blog()
     {
          $posts=Post::orderby('order','desc')->get();
@@ -32,8 +28,7 @@ class PageController extends Controller
          $category=Category::get();
          $setting=Settings::first();
          $tags=Tag::get();
-        
-        return view('pages.blog',compact('posts','category','tags','setting'));
+         return view('pages.blog',compact('posts','category','tags','setting'));
     }
     
     function contact(){
@@ -46,7 +41,7 @@ class PageController extends Controller
     function about(){
      $category=Category::get();
      $tags=Tag::get();
-    $setting=Settings::first();
+     $setting=Settings::first();
      return view ('pages.about',compact('category','tags','setting'));
     }
     
@@ -56,7 +51,28 @@ class PageController extends Controller
      $tags=Tag::get();
      $setting=Settings::first();
      $post = Post::where('slug',$slug)->first();
-     return view ('pages.postslug',compact('category','tags','setting','post'));
+     $next_id = Post::where('id', '>', $post->id)->min('id');
+     $next = Post::find($next_id);
+     $previous_id = Post::where('id', '<', $post->id)->max('id');
+     $previous = Post::find($previous_id);
+     return view ('pages.postslug',compact('category','tags','setting','post','next','previous'));
+    }
+
+    function categorie($slug){
+    // $category=Category::find($id)->first();
+     
+    // $tags=Tag::get();
+    // $setting=Settings::first();
+     //$posts = Post::get();
+
+        //$category = Category::find($id);
+
+        return view('pages.categorie')->with('category',  Category::find($slug))
+                                      ->with('tags', Tag::get())
+                               //->with('title', $category->name)
+                                      ->with('setting', Settings::first())
+                                      ->with('category', Category::take(5)->get());
+     
     }
 }
 

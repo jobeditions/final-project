@@ -14,7 +14,7 @@
                             <li class="active"><a href="/">Page d'Accueil</a></li>
                             <li><a href="/about">À propos</a></li>
                             <li><a href="/archive">Des Archives</a></li>
-                            <li><a href="/posts/blog">Articles</a></li>
+                            <li><a href="/blog">Articles</a></li>
                             <!--<li><a href="404.html">Shop</a></li>-->
                             <li><a href="/contact">Contact</a></li>
                         
@@ -50,7 +50,7 @@
                     <label></label>
                     <ul>
                     @foreach($category as $categ)
-                        <li><a href="#">{{$categ->name}}</a></li>
+                        <li><a href="{{route('categorie.single',['slug'=>$categ->slug])}}">{{$categ->name}}</a></li>
                     @endforeach
                         
                     </ul>

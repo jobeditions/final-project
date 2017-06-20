@@ -23,15 +23,8 @@ class Post extends Model
         return $this->belongsTo('App\Category');
     }
 
-    public function scopeSearch($query,$s)
-    {
-        return $query->where('title','LIKE','%'.$s.'%');
-                     //->orWhere('content','L','%'.$s.'%');
-                     //->orWhere('excerpt','LIKE','%'.$s.'%');
-    }
-
     public function tags()
     {
-       return $this->belongsToMany('App\Tag');
+       return $this->belongsToMany(Tag::class);
     }
 }

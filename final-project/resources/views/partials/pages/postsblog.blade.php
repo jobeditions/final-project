@@ -4,7 +4,7 @@
 				<h3><a href="{{route('single.posting',['slug'=>$posting->slug])}}">{{ $posting->title }}</a></h3>
 				<ul>
 				<li><span>Écrit par <a href="#"></a> le {{ $posting->created_at->format('F d,Y')}} </span></li>
-				<li><a href="#">Catégorie:{{$posting->category->name}}</a></li>
+				<li><a href="{{route('categorie.single',['slug'=>$posting->category->slug])}}">Catégorie:{{$posting->category->name}}</a></li>
 				</ul>
 			</div>
 			<div class="grid-img-content">

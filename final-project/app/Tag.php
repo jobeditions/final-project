@@ -6,13 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
-    
-     protected $fillable = [
-       'tags','order'
-      ]; 
-    
-     public function posts()
+    public function posting()
     {
-       return $this->belongsToMany('App\Post');
+       return $this->belongsToMany(Post::class);
     }
 }

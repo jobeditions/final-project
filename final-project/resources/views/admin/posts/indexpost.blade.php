@@ -35,7 +35,7 @@
                                  
                                  <td>
                                  </td>
-                                 <td><a href="articles/{{ $posting->id }}"><img src="{{$posting->featured}}" width="140px" height="90px"/></a></td>
+                                 <td><a href="{{route('single.posting',['slug'=>$posting->slug])}}"><img src="{{$posting->featured}}" width="140px" height="90px"/></a></td>
                                  <td>{{$posting->title}}</td>
                                  <td>{{$posting->category->name}}</td>
                                  <td></td>

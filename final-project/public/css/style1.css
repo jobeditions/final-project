@@ -40,6 +40,43 @@ body a{
 	flex-direction:row;
 	justify-content: space-between;
 }
+
+.row {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.case-item {
+    padding: 35px;
+    margin:0 -100px 30px 90px;
+    background-color: #f7f9f9;
+    transition: all .3s ease;
+}
+.case-item:hover {
+    background-color: #4cc2c0;
+}
+.case-item .case-item__thumb {
+    margin-bottom: 34px;
+    box-shadow: 0 16px 16px -8px rgba(0, 0, 0, 0.3);
+}
+.case-item__thumb img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.case-item .case-item__title {
+    text-transform: uppercase;
+    color: #2f2c2c;
+    margin-bottom: 5px;
+    font-size:1.2em;
+    font-weight:bold;
+}
+
+.case-item:hover .case-item__title {
+    color: #fff;
+}
 .logo {
 	text-align: center;
 	background:#354157;

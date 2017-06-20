@@ -9,7 +9,7 @@
 						<h1>{{$post->title}}</h1>
 						<ul>
 							<li><span>Écrit par <a href="#"></a>{{$post->created_at->format('F d,Y')}}</span></li>
-							<li><a href="#">Catégorie: {{$post->category->name}}</a></li>
+							<li><a href="{{route('categorie.single',['slug'=>$post->category->slug])}}">Catégorie: {{$post->category->name}}</a></li>
 						</ul>
 						</div>
 						<div class="singlepage">
@@ -29,14 +29,19 @@
 						</br>
 						</br>
 						<div id="button-box">
-						<div id="button-previous">
-						 <a href="#" class="next">&laquo; Précédent</a>
-						 <b>  Lorem Ipsum</b>
-						</div>
+						
+						@if($previous)
 						<div id="button-next">
-                         <a href="#" class="next">Prochaine &raquo;</a>
-                         <b>  Lorem Ipsum</b>
+                         <a href="{{route('single.posting',['slug'=>$previous->slug])}}" class="next">&laquo; Précedent </a>
+                         <b>{{$previous->title}}</b>
                         </div>
+                        @endif
+                        @if($next)
+						<div id="button-previous">
+						 <a href="{{route('single.posting',['slug'=>$next->slug])}}" class="next"> Prochaine &raquo;</a>
+						 <b>{{$next->title}}</b>
+						</div>
+						@endif
                         </div>
                        
 
