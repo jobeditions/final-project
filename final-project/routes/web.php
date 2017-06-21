@@ -13,11 +13,11 @@
 
 
     
-Route::resource('articles','PostController');
-Route::resource('categorie','CategoriesController');
+Route::resource('articles','PostController', ['except' => ['show']]);
+Route::resource('categorie','CategoriesController', ['except' => ['create']]);
 Route::resource('utilisateurs','UserController');
 Route::resource('profile','ProfileController');
-Route::resource('tags','TagController');
+Route::resource('tags','TagController', ['except' => ['create']]);
 //Route::resource('settings','SettingsController@index');
 
 Auth::routes();
@@ -57,6 +57,7 @@ Route::get('/', 'PageController@frontpage');
 Route::get('/contact', 'PageController@contact');
 Route::get('/about', 'PageController@about');
 Route::get('/blog', 'PageController@blog');
+Route::get('archives/{month}/{year}', 'PageController@archives');
 
 
 

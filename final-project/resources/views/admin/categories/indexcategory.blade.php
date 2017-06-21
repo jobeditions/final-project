@@ -5,8 +5,55 @@ Modifier une Categorie
 
 	  @section('content')
 
+
+              <div class="col-md-3"> 
+                
+                         @include('partials.error')    
+                        <section class="panel panel-default">
+
+                             
+                          <header class="panel-heading">
+                          Ajouter une catégorie 
+                          </header>
+                                  
+
+                          <div class="panel-body">
+                              <div class="form">
+                                    <form action="{{route('categorie.store')}}" method="POST" class="form-horizontal" >
+                                              {{csrf_field()}}
+
+                                              
+                                              <div class="col-sm-12">
+                                                 <label class="control-label col-sm-1" for="name">Catégorie</label>
+                                                 <input class="form-control" type="text" id="name" name="name">
+                                              </div>
+
+                                              <div class="col-sm-12">
+                                                 <label class="control-label col-sm-1" for="order">Ordre</label>
+                                                 <input class="form-control" type="number" id="order" name="order">
+                                              </div>
+
+
+
+                                              <div class="col-sm-12"><p></p><p></p></div>
+                                              
+                                              <div class="col-sm-10">
+                                                  <button class="btn- btn-primary" type="submit">Soumettre</button>
+                                              </div>
+                                               
+
+
+                                    </form>
+                              </div>
+                          </div>
+                              
+                      </section>
+
+              </div>
+    
+                 
 	             <div class="row">
-                  <div class="col-lg-12">
+                  <div class="col-md-8">
                       <section class="panel">
                           <header class="panel-heading">
                               Liste des Catégories
@@ -21,9 +68,9 @@ Modifier une Categorie
                                  <th><i class=""></i> Ordre</th>
                                  <th><i class="icon_tag"></i> Catégorie</th>
                                  <th><i class="icon_tags"></i> Slug</th>
-                                 <th><i class="icon_calendar"></i> Date</th>
-                                 <th><i class="icon_calendar"></i> Modifié le</th>
-                                 <th></th>
+                                 <th><i class="icon_calendar"></i> Créé le</th>
+                                 
+                                 
                                  <th><i class="icon_cogs"></i> Action</a></th>
                               </thead>
                               <tbody>
@@ -37,10 +84,9 @@ Modifier une Categorie
                                  <td>{{$categ->order}}</td>
                                  <td>{{$categ->name}}</td>
                                  <td>{{$categ->slug}}</td>
-                                 <td>{{$categ->created_at->format('F d,Y')}}</td>
-                                 <td>{{$categ->created_at->format('F d,Y')}}</td>
+                                 <td>{{$categ->created_at}}</td>
                                   
-                                 <td></td>
+                                 
                                  <td>
                                  @if($categ->id==1)
                                  <div class="btn-group"></div>
@@ -67,4 +113,6 @@ Modifier une Categorie
                       </section>
                   </div>
               </div>
+              
+              
               @endsection

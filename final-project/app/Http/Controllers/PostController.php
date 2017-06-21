@@ -81,7 +81,7 @@ class PostController extends Controller
           'featured' => 'sometimes|image',
           'content' => 'required',
           'excerpt' => 'required',
-          'category_id' => 'required',
+          'category_id' => 'required|integer',
           'tags'=> 'required',
           
            ]);
@@ -126,15 +126,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show( $id)
-    {
-        // $post = Post::find($id);
-        // $post = Post::find($id);
-        // $category=Category::get();
-        // $setting = Settings::first();
-        // $tags=Tag::get();
-        //return view('pages.posts',compact('post','category','setting','tags'));
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -160,6 +152,8 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
        
+      
+
         $this -> validate($request,[
           
           'title' => 'required|max:255',
@@ -167,9 +161,9 @@ class PostController extends Controller
           'excerpt' => 'required',
           'slug' => 'required',
           'featured' => 'sometimes|image',
-          //'category_id' => 'required',
-          
-           ]);
+          'category_id' => 'required|integer',
+          'tags'=> 'required',
+          ]);
 
         $posts=Post::find($id);
        
@@ -191,8 +185,10 @@ class PostController extends Controller
         $posts->content=Purifier::clean($request->content, 'youtube');
         $posts->excerpt=Purifier::clean($request->excerpt, 'youtube');
         $posts->category_id=$request->category_id;
-
         $posts->save();
+
+        $posts->tags()->attach($request->tags);
+        
         Session::flash('success','La catégorie a été modifiée avec succès');
         return redirect('/articles');
     }

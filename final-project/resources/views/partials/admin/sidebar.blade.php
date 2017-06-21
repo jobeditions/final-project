@@ -28,7 +28,7 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="/categorie/create">Ajouter une catégorie</a></li>
+                          
                           <li><a class="" href="/categorie">Modifier une catégorie</a></li>
                           
                       </ul>
@@ -40,7 +40,7 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="/tags/create">Ajouter une Étiquette</a></li>
+                          
                           <li><a class="" href="/tags">Modifier une Étiquette</a></li>
                           
                       </ul>

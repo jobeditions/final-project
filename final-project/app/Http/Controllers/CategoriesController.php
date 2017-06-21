@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use App\Category;
+use Carbon\Carbon;
 
 class CategoriesController extends Controller
 {
@@ -27,10 +28,6 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('admin.categories.createcategory');
-    }
 
     /**
      * Store a newly created resource in storage.

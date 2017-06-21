@@ -6,15 +6,15 @@
                 <div class="logo">
                     <a href="/"><img src="{{$setting->image4}}" class="img-responsive" alt="" /></a>
                 </div>
+
                 <h4 class="menn">Menu</h4>
                 <label></label>
                 <div class="head-nav">
                     <span class="menu"> </span>
                         <ul>
-                            <li class="active"><a href="/">Page d'Accueil</a></li>
-                            <li><a href="/about">À propos</a></li>
-                            <li><a href="/archive">Des Archives</a></li>
-                            <li><a href="/blog">Articles</a></li>
+                            <li class="{{ url('/') }}"><a href="/">Page d'Accueil</a></li>
+                            <li><a href="{{ url('/about') }}">À propos</a></li>
+                            <li><a href="{{ url('/blog') }}">Articles</a></li>
                             <!--<li><a href="404.html">Shop</a></li>-->
                             <li><a href="/contact">Contact</a></li>
                         
@@ -69,11 +69,11 @@
                     <h4>Archives</h4>
                     <label></label>
                     <ul>
-                        <li><a href="#"> January 2017</a></li>
-                        <li><a href="#"> February 2017</a></li>
-                        <li><a href="#"> March 2017 </a></li>
-                        <li><a href="#"> April 2017</a></li>
-                        <li><a href="#"> May 2017</a></li>
+                    @foreach($archives as $stats)
+                        <li><a href="/archives/{{$stats['month']}}/{{$stats['year']}}">{{$stats['month'].''.$stats['year']}} </a></li>
+                       
+                    @endforeach
+                        
                     </ul>
                 </div>
                 <div class="project">

@@ -5,8 +5,58 @@ Modifier/Tags
 
 	  @section('content')
 
+    @section('content')
+
+                         <div class="col-md-3"> 
+                         @include('partials.error')    
+                              <section class="panel panel-default">
+
+                             
+                                  <header class="panel-heading">
+                                     Ajouter une Étiquette
+                                  </header>
+                                  
+
+                                  <div class="panel-body">
+                                      <div class="form">
+                                          <form action="{{route('tags.store')}}" method="POST" class="form-horizontal" >
+                                              {{csrf_field()}}
+
+                                              
+                                              <div class="col-sm-12">
+                                                 <label class="control-label col-sm-1" for="tags">Étiquette</label>
+                                                 <input class="form-control" type="text" id="tags" name="tags">
+                                              </div>
+
+                                              <div class="col-sm-12">
+                                                 <label class="control-label col-sm-1" for="order">Ordre</label>
+                                                 <input class="form-control" type="number" id="order" name="order">
+                                              </div>
+
+
+
+                                              <div class="col-sm-12"><p></p><p></p></div>
+                                              
+                                              <div class="col-sm-12">
+                                                  <button class="btn- btn-primary" type="submit">Soumettre</button>
+                                              </div>
+                                               
+
+
+                                          </form>
+                                      </div>
+                                      
+                                  </div>
+                              </section>
+
+                              
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
 	             <div class="row">
-                  <div class="col-lg-12">
+                  <div class="col-md-8">
                       <section class="panel">
                           <header class="panel-heading">
                               Liste des Étiquettes
@@ -19,8 +69,8 @@ Modifier/Tags
 
                                  <th><i class=""></i></th>
                                  <th><i class=""></i> Ordre</th>
-                                 <th><i class="icon_tag"></i> Tags</th>
-                                 <th><i class="icon_calendar"></i> Date</th>
+                                 <th><i class="icon_tag"></i> Étiquettes</th>
+                                 <th><i class="icon_calendar"></i> Créé le</th>
                                  <th><i class="icon_calendar"></i> Modifié le</th>
                                  <th></th>
                                  <th><i class="icon_cogs"></i> Action</a></th>

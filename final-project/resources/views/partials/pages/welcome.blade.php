@@ -38,7 +38,7 @@
 				<!-- welcome-bottom -->
 					<div class="welcome-bottom">
 						<div class="col-md-6 welcome-left1">
-							<a href=""><img src="{{$firstpost->featured}}" class="img-responsive" alt="" /></a>
+							<a href="{{route('single.posting',['slug'=>$firstpost->slug])}}"><img src="{{$firstpost->featured}}" class="img-responsive" alt="" /></a>
 							<h3><a href="{{route('single.posting',['slug'=>$firstpost->slug])}}">{{$firstpost->title}}</a></h3>
 							<h6>{{ $firstpost->created_at->diffForHumans()}}</h6>
 							<p>{!!$firstpost->excerpt!!}</p>

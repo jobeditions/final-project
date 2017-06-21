@@ -13,6 +13,8 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+   
+    
     public function index()
     {
         $tags=Tag::orderby('order','asc')->get();
@@ -25,10 +27,7 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('admin.tags.createtag');
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -41,7 +40,7 @@ class TagController extends Controller
         $this -> validate($request,[
           
           'tags' => 'required|max:255',
-          'order'=>  'required',
+          'order'=>  'required|integer',
                      ]);
 
          $tags = Tag::create([
@@ -50,7 +49,7 @@ class TagController extends Controller
         ]);
 
        
-        Session::flash('success','Vous avez créé la tag avec succès');
+        Session::flash('success','Vous avez créé la étiquette avec succès');
         return redirect('/tags');
     }
 
@@ -62,7 +61,8 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        
+       $tag = Tag::find($id);
+       return view('pages.tagshow','tag');
     }
 
     /**
