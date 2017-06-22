@@ -83,32 +83,42 @@ class PageController extends Controller
      return view ('pages.postslug',compact('category','tags','setting','post','next','previous','archives'));
     }
 
-    function categorie($slug){
-    // $category=Category::find($id)->first();
-     
-    // $tags=Tag::get();
-    // $setting=Settings::first();
-     //$posts = Post::get();
+    function categorie($slugs)
+    {
 
-        //$category = Category::find($id);
+   $categoring=Category::where('slug',$slugs)->first();
+   $category=Category::take(5)->get();
+   $tags=Tag::get();
+   $setting=Settings::first();
+   $posts = Post::get();
 
-       $archives=Post::selectRaw('year(created_at) year, monthname(created_at) month,count(*) published')
-     ->groupBy('year','month')
-     ->orderByRaw('min(created_at)','desc')
-     ->get()
-     ->toArray();
+        
 
-        return view('pages.categorie')->with('category',  Category::find($slug))
-                                      ->with('tags', Tag::get())
-                               //->with('title', $category->name)
-                                      ->with('setting', Settings::first())
-                                      ->with('category', Category::take(5)->get())
-                                      ->with('archives', Post::selectRaw('year(created_at) year, monthname(created_at) month,count(*) published')
-     ->groupBy('year','month')
-     ->orderByRaw('min(created_at)','desc')
-     ->get()
-     ->toArray());
-     
+    $archives=Post::selectRaw('year(created_at) year, monthname(created_at) month,count(*) published')
+    ->groupBy('year','month')
+    ->orderByRaw('min(created_at)','desc')
+    ->get()
+    ->toArray();
+        return view('pages.categorie',compact('categoring','category','tags','setting','post','next','previous','archives'));
+    }
+    
+     function tagname($slugger)
+    {
+
+   $tagger=Tag::where('tags',$slugger)->first();
+   $tags=Tag::get();
+   $category=Category::get();
+   $setting=Settings::first();
+   $posts = Post::get();
+
+        
+
+    $archives=Post::selectRaw('year(created_at) year, monthname(created_at) month,count(*) published')
+    ->groupBy('year','month')
+    ->orderByRaw('min(created_at)','desc')
+    ->get()
+    ->toArray();
+        return view('pages.tagindex',compact('categoring','category','tags','tagger','setting','post','next','previous','archives'));
     }
 
      function archives(){

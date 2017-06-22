@@ -17,7 +17,7 @@ Route::resource('articles','PostController', ['except' => ['show']]);
 Route::resource('categorie','CategoriesController', ['except' => ['create']]);
 Route::resource('utilisateurs','UserController');
 Route::resource('profile','ProfileController');
-Route::resource('tags','TagController', ['except' => ['create']]);
+Route::resource('tags','TagController', ['except' => ['create','show']]);
 //Route::resource('settings','SettingsController@index');
 
 Auth::routes();
@@ -49,9 +49,13 @@ Route::get('/posts/{slug}',[
 	'uses'=>'PageController@slugpost',
 	'as'=>'single.posting']);
 
-Route::get('/cat/{slug}',[
+Route::get('/cat/{slugs}',[
 	'uses'=>'PageController@categorie',
 	'as'=>'categorie.single']);
+
+Route::get('/etiquettes/{slugger}',[
+	'uses'=>'PageController@tagname',
+	'as'=>'etiquettes.single']);
 
 Route::get('/', 'PageController@frontpage');
 Route::get('/contact', 'PageController@contact');

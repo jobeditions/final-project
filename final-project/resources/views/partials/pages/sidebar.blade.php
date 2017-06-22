@@ -50,7 +50,7 @@
                     <label></label>
                     <ul>
                     @foreach($category as $categ)
-                        <li><a href="{{route('categorie.single',['slug'=>$categ->slug])}}">{{$categ->name}}</a></li>
+                        <li><a href="{{route('categorie.single',['slugs'=>$categ->slug])}}">{{$categ->name}}</a></li>
                     @endforeach
                         
                     </ul>
@@ -60,7 +60,7 @@
                     <label></label>
                     <ul>
                     @foreach($tags as $tegeg)
-                        <li><a href="#">{{$tegeg->tags}}</a></li>
+                        <li><a href="{{route('etiquettes.single',['slugger'=>$tegeg->tags])}}">{{$tegeg->tags}}</a></li>
                     @endforeach
                         
                     </ul>

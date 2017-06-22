@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use App\Tag;
+use App\Post;
 
 class TagController extends Controller
 {
@@ -59,12 +60,7 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-       $tag = Tag::find($id);
-       return view('pages.tagshow','tag');
-    }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -110,6 +106,7 @@ class TagController extends Controller
     public function destroy($id)
     {
         $tags=Tag::find($id);
+        $tags=posts()->detach();
         $tags->delete();
         Session::flash('success','La tag a été supprimée avec succès');
         return redirect('/tags');

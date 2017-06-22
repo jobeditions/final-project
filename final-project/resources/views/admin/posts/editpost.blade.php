@@ -88,7 +88,15 @@
                                               <div class="col-sm-10">
                                               <label class="control-label col-sm-1" for="category" >Étiquettes:</label></br>
                                                    @foreach($tags as $tageg)
-                                                  <label class="checkbox-inline"><input type="checkbox" name="tags[]" value="{{$tageg->id}}">{{$tageg->tags}}</label>
+                                                  <label class="checkbox-inline"><input type="checkbox" name="tags[]" value="{{$tageg->id}}"
+                                                   @foreach($posts->tags as $t)
+                                                   
+                                                   @if($tageg->id==$t->id)
+                                                   checked
+                                                   @endif
+                                                   
+                                                  @endforeach
+                                                  >{{$tageg->tags}}</label>
                                                    @endforeach
                                               </div>
                                                   

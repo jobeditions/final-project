@@ -65,7 +65,9 @@ body a{
     display: inline-block;
     vertical-align: middle;
 }
-
+.case-item__thumb a:hover{
+	text-decoration: none !important;
+}
 .case-item .case-item__title {
     text-transform: uppercase;
     color: #2f2c2c;
@@ -77,6 +79,17 @@ body a{
 .case-item:hover .case-item__title {
     color: #fff;
 }
+.case-item-wrap {
+   margin:20px 0 0 20px;
+}
+#cat-page{
+	text-align: left;
+	margin:auto 50px;
+	font-weight: bold;
+	color: rgb(155, 155, 155);
+	font-size: 1.9em;
+}
+
 .logo {
 	text-align: center;
 	background:#354157;

@@ -38,7 +38,11 @@
                                  <td><a href="{{route('single.posting',['slug'=>$posting->slug])}}"><img src="{{$posting->featured}}" width="140px" height="90px"/></a></td>
                                  <td>{{$posting->title}}</td>
                                  <td>{{$posting->category->name}}</td>
-                                 <td></td>
+                                 <td>
+                                   @foreach($posting->tags as $taging)
+                                   {{$taging->tags}}</br>
+                                   @endforeach
+                                   </td>
                                  <td>{{$posting->created_at->format('F d,Y')}}</td>
                                  <td></td>
                                  <td>
