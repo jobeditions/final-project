@@ -14,11 +14,18 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+
+        $this->middleware('author');
+     }
+
+
     public function index()
 
     {   
         $cat=Category::orderby('order','asc')->get();
         $cat=Category::paginate(7);
+
         return view('admin.categories.indexcategory',compact('cat'));
         
     }

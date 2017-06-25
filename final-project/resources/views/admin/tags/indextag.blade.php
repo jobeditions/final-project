@@ -7,47 +7,18 @@ Modifier/Tags
 
     @section('content')
 
-                         <div class="col-md-3"> 
+                         <div class="col-md-12"> 
                          @include('partials.error')    
-                              <section class="panel panel-default">
+                          <section class="panel panel-default">
 
-                             
-                                  <header class="panel-heading">
-                                     Ajouter une Étiquette
-                                  </header>
+                             <header class="panel-heading">
+                                <b>Ajouter une Étiquettes</b>
+                          
+
+                                  <a class="btn btn-primary btn-s pull-right" data-toggle="modal" data-target="#myModal" ><i class="icon_plus_alt2"></i>  Ajouter</a>
+                            </header>
                                   
-
-                                  <div class="panel-body">
-                                      <div class="form">
-                                          <form action="{{route('tags.store')}}" method="POST" class="form-horizontal" >
-                                              {{csrf_field()}}
-
-                                              
-                                              <div class="col-sm-12">
-                                                 <label class="control-label col-sm-1" for="tags">Étiquette</label>
-                                                 <input class="form-control" type="text" id="tags" name="tags">
-                                              </div>
-
-                                              <div class="col-sm-12">
-                                                 <label class="control-label col-sm-1" for="order">Ordre</label>
-                                                 <input class="form-control" type="number" id="order" name="order">
-                                              </div>
-
-
-
-                                              <div class="col-sm-12"><p></p><p></p></div>
-                                              
-                                              <div class="col-sm-12">
-                                                  <button class="btn- btn-primary" type="submit">Soumettre</button>
-                                              </div>
-                                               
-
-
-                                          </form>
-                                      </div>
-                                      
-                                  </div>
-                              </section>
+                          </section>
 
                               
                           </div>
@@ -56,7 +27,7 @@ Modifier/Tags
               </div>
 
 	             <div class="row">
-                  <div class="col-md-8">
+                  <div class="col-md-11">
                       <section class="panel">
                           <header class="panel-heading">
                               Liste des Étiquettes
@@ -115,4 +86,5 @@ Modifier/Tags
                       </section>
                   </div>
               </div>
+               @include('partials.admin.modals.modalcreatetags')
               @endsection

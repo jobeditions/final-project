@@ -7,20 +7,21 @@ Blog écrivain-Articles
   <div class="content">
 	<div class="grids">
 	
-	@foreach($posts as $posting)
-		@include ('partials.pages.postsblog')
+	@foreach($postingg as $poster)
+		@include ('partials.pages.archivesblog')
 	@endforeach	
-		
+	{{$postingg->links()}}	
 		<div class="clearfix"> </div>
 	</div>
 	<div class="clearfix"> </div>
  </div>
         <div class="clearfix"> </div>
-		{{$posts->links()}}
+		
 		<div class="clearfix"> </div>
 		</div>
 		</div>
 		<div class="clearfix"> </div>
 	</div>
 	</div>
+
 @endsection

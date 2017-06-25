@@ -29,17 +29,5 @@ class Post extends Model
        return $this->belongsToMany(Tag::class);
     }
 
-    public function scopeFilter($query, $filters){
-
-       if($month=$filters['month'])
-      {
-        $query=whereMonth('created_at', Carbon::parse($month)->month);
-      }
-
-
-     if($year=$filters['year'])
-     {
-       $query=whereMonth('created_at', Carbon::parse($year)->year);
-     }
-   }
+    
 }

@@ -20,13 +20,21 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+     public function __construct(){
+
+        $this->middleware('author');
+     }
 
     public function index()
     {
-         $posts=Post::orderby('created_at','desc')->get();
+         $posts=Post::orderBy('order','asc')->get();
+
+         
          $category=Category::get();
+
          $tags=Tag::get();
-         $posts=Post::paginate(7);
+         $posts=Post::paginate(4);
         return view('admin.posts.indexpost',compact('posts','category','tags'));
     }
 
@@ -82,7 +90,6 @@ class PostController extends Controller
           'content' => 'required',
           'excerpt' => 'required',
           'category_id' => 'required|integer',
-          'tags'=> 'required',
           
            ]);
 
@@ -109,7 +116,6 @@ class PostController extends Controller
             //'featured'=>$filename,
             'excerpt' => Purifier::clean($request->excerpt, 'youtube'),
             'category_id' => $request->category_id,
-
             'slug' => str_slug($request->title),
         ]);
 
@@ -153,10 +159,11 @@ class PostController extends Controller
     {
        
       
-
+    
         $this -> validate($request,[
           
           'title' => 'required|max:255',
+          'order' => 'required',
           'content' => 'required',
           'excerpt' => 'required',
           'slug' => 'required',
@@ -181,7 +188,9 @@ class PostController extends Controller
        }
 
         $posts->title=$request->title;
+        $posts->order=$request->order;
         $posts->slug=$request->slug;
+
         $posts->content=Purifier::clean($request->content, 'youtube');
         $posts->excerpt=Purifier::clean($request->excerpt, 'youtube');
         $posts->category_id=$request->category_id;

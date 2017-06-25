@@ -27,7 +27,7 @@
 						</ul>
 						</div>
 						<div class="singlepage">
-							<img src="/{{$post->featured}}" width="750px" height="400px"/>
+							<img src="{{$post->featured}}" width="750px" height="400px"/>
 							{!! $post->content !!}
 							
 							<div class="clearfix"> </div>

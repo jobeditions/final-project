@@ -26,6 +26,7 @@
 									<div class="mask" >
 										<h4>{{$thirdpost->title}}</h4>
 										<p>{!!$thirdpost->excerpt!!}</p>
+										
 										<a href="{{route('single.posting',['slug'=>$thirdpost->slug])}}"><h5>Continue reading...</h5></a>
 									</div>
 									</div>

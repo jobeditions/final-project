@@ -18,7 +18,8 @@
                            
                               <thead>
 
-                                 <th><i class=""></i></th>
+
+                                 <th><i class=""></i>N°</th>
                                  <th><i class="icon_image"></i> Image</th>
                                  <th><i class="icon_document_alt"></i> Titre</th>
                                  <th><i class="icon_tag"></i> Catégorie</th>
@@ -33,9 +34,9 @@
 
                               <tr>
                                  
-                                 <td>
-                                 </td>
+                                 <td>{{$posting->order}}</td>
                                  <td><a href="{{route('single.posting',['slug'=>$posting->slug])}}"><img src="{{$posting->featured}}" width="140px" height="90px"/></a></td>
+                                 
                                  <td>{{$posting->title}}</td>
                                  <td>{{$posting->category->name}}</td>
                                  <td>

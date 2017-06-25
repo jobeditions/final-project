@@ -1,4 +1,6 @@
 @extends('layouts.master')
+@section('title')
+@endsection
 @section('content')
 <div class="case-item-wrap">
        
@@ -23,7 +25,7 @@
 
                         @endforeach
                             
-                            
+                   {{$posts->links()}}         
 
 </div>
 </div>

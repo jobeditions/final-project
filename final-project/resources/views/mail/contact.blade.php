@@ -9,12 +9,13 @@
 			 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Contrary to popular belief.</p>
 		     </div>
 			 <div class="contact-details">				 
-			 <form>
-				 <input type="text" placeholder="Votre Nom" required/>
-				 <input type="text" placeholder="Votre mail-électronique" required/>
-				 <input type="text" placeholder="Numéro de Contact" required/>
-				 <input type="text" placeholder="Ville" required/>
-				 <textarea placeholder="Laissez votre Message"></textarea>
+			 <form action="{{route('sendmail.single')}}" method="post">
+			 {{csrf_field()}}
+				 <input type="text" placeholder="Votre Nom" name="name1" required/>
+				 <!--<input type="text" placeholder="Votre mail-électronique" name="email1" required/>
+				 <input type="text" placeholder="Numéro de Contact" name="number1" required/>
+				 <input type="text" placeholder="Ville" name="city1" required/>-->
+				 <textarea placeholder="Laissez votre Message" name="content1" ></textarea>
 				 <input type="submit" value="Envoyer">
 			 </form>
 		  </div>
@@ -25,11 +26,11 @@
 			  </div>
 			  <div class="col-md-6 company_address">		 
 					<h4>GET IN TOUCH</h4>
-					<p>{{$setting->address}}</p>
+					<p><b>{{$setting->address}}</b></p>
 					<p></p>
-					<p>FRANCE</p>
-					<p>{{$setting->contact_number}}</p>
-					<p>Email: <a href="mailto:{{$setting->contact_mail}}">{{$setting->contact_email}}</a></p>
+					<p><b>FRANCE</b></p>
+					<p><b>{{$setting->contact_number}}</b></p>
+					<p>Email: <a href="mailto:{{$setting->contact_mail}}"><b>{{$setting->contact_email}}</b></a></p>
 					<p>Follow on: <a href="#">Facebook</a>, <a href="#">Twitter</a></p>
 			 </div>
 			  <div class="clearfix"></div>

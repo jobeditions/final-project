@@ -28,8 +28,8 @@ class PageController extends Controller
 
     function blog()
     {
-         $posts=Post::orderby('order','desc')->get();
-         $posts=Post::paginate(7);
+         $posts=Post::orderBy('order','desc')->get();
+         $posts=Post::paginate(4);
          $category=Category::get();
          $setting=Settings::first();
          $tags=Tag::get();
@@ -38,19 +38,7 @@ class PageController extends Controller
          ->orderByRaw('min(created_at)','desc')
          ->get()
          ->toArray();
-         return view('pages.blog',compact('posts','category','tags','setting','archives'));
-    }
-    
-    function contact(){
-         $category=Category::get();
-         $tags=Tag::get();
-         $setting=Settings::first();
-         $archives=Post::selectRaw('year(created_at) year, monthname(created_at) month,count(*) published')
-         ->groupBy('year','month')
-         ->orderByRaw('min(created_at)','desc')
-         ->get()
-         ->toArray();
-    	return view ('pages.contact',compact('category','tags','setting','archives'));
+         return view('pages.blog',compact('posts','postss','category','tags','setting','archives'));
     }
 
     function about(){
@@ -65,7 +53,6 @@ class PageController extends Controller
      return view ('pages.about',compact('category','tags','setting','archives'));
     }
     
-
     function slugpost($slug){
      $category=Category::get();
      $tags=Tag::get();
@@ -77,7 +64,7 @@ class PageController extends Controller
      $previous = Post::find($previous_id);
      $archives=Post::selectRaw('year(created_at) year, monthname(created_at) month,count(*) published')
      ->groupBy('year','month')
-     ->orderByRaw('min(created_at)','desc')
+     ->orderByRaw('min(created_at)','des')
      ->get()
      ->toArray();
      return view ('pages.postslug',compact('category','tags','setting','post','next','previous','archives'));
@@ -91,15 +78,14 @@ class PageController extends Controller
    $tags=Tag::get();
    $setting=Settings::first();
    $posts = Post::get();
-
-        
+   $posts = Post::paginate(6);     
 
     $archives=Post::selectRaw('year(created_at) year, monthname(created_at) month,count(*) published')
     ->groupBy('year','month')
     ->orderByRaw('min(created_at)','desc')
     ->get()
     ->toArray();
-        return view('pages.categorie',compact('categoring','category','tags','setting','post','next','previous','archives'));
+        return view('pages.categorie',compact('categoring','category','tags','setting','posts','next','previous','archives'));
     }
     
      function tagname($slugger)
@@ -110,42 +96,43 @@ class PageController extends Controller
    $category=Category::get();
    $setting=Settings::first();
    $posts = Post::get();
-
-        
+   $posts = Post::paginate(6);
 
     $archives=Post::selectRaw('year(created_at) year, monthname(created_at) month,count(*) published')
     ->groupBy('year','month')
     ->orderByRaw('min(created_at)','desc')
     ->get()
     ->toArray();
-        return view('pages.tagindex',compact('categoring','category','tags','tagger','setting','post','next','previous','archives'));
+        return view('pages.tagindex',compact('categoring','category','tags','tagger','setting','posts','next','previous','archives'));
     }
 
-     function archives(){
+     function archiving(){
      $category=Category::get();
      $tags=Tag::get();
      $setting=Settings::first();
 
-     $posts=Post::latest()
-     ->filter(request(['month','year']))
-     ->get();
-     $posts=Post::paginate(7);
-
-     $archives=Post::selectRaw('year(created_at) year, monthname(created_at) month,count(*) published')
+      $archives=Post::selectRaw('year(created_at) year, monthname(created_at) month,count(*) published')
      ->groupBy('year','month')
      ->orderByRaw('min(created_at)','desc')
      ->get()
      ->toArray();
+     $postingg=Post::latest();
+     //->filter(request(['month','year']))
+     //->get();
+     
+    // $postingg=Post::paginate(3);
 
-    // if($month=request('month')){
-    //    $post=whereMonth('created_at',Carbon::parse($month)->month);
-    // }
-    // if($year=request('year')){
-    //    $post=whereMonth('created_at',Carbon::parse($year)->year);
-    // }
+     if($month=request('month')){
+    $postingg->whereMonth('created_at',Carbon::parse($month)->month);
+    }
+    if($year=request('year')){
+    $postingg->whereYear('created_at',Carbon::parse($year)->year);
+    }
+    $postingg = $postingg->get();
+    $postingg=Post::paginate(3);
+    
 
-
-     return view ('pages.archives',compact('posts','category','tags','setting','archives'));
+     return view ('pages.archives',compact('postingg','category','tags','setting','archives'));
     }
 }
 

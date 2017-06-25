@@ -2,7 +2,7 @@
 			<!-- banner -->
 				<div class="banner">
 					<div class="col-md-8 banner-left">
-						<h2> <a href="/articles">{{$setting->title}}</a></h2>
+						<h2> <a href="{{url('/blog')}}">{{$setting->title}}</a></h2>
 						<p>{{$setting->description}}</p>
 					</div>
 					<div class="col-md-4 banner-right">

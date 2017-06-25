@@ -16,9 +16,11 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
+                        @if(Auth::user()->admin)
                           <li><a href="/articles/create" class="">Ajouter un article</a></li>                          
                           <li><a class="" href="/articles">Modifier un Article</a></li>
                           <li><a class="" href="/trash">Corbeille</a></li>
+                        @endif
                       </ul>
                   </li>       
                   <li class="sub-menu">
@@ -29,8 +31,8 @@
                       </a>
                       <ul class="sub">
                           
-                          <li><a class="" href="/categorie">Modifier une catégorie</a></li>
-                          
+                          <li><a class="" href="/categorie">Ajouter une catégorie</a></li>
+                         
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -41,8 +43,8 @@
                       </a>
                       <ul class="sub">
                           
-                          <li><a class="" href="/tags">Modifier une Étiquette</a></li>
-                          
+                          <li><a class="" href="/tags">Ajouter une Étiquette</a></li>
+                        
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -52,23 +54,22 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
+                         @if(Auth::user()->admin)
                           <li><a class="" href="/utilisateurs/create"> Ajouter un Utilisateur</a></li>
                           <li><a class="" href="/utilisateurs"> Modifier un Utilisateur</a></li>
+                         @endif
                           <li><a class="" href="/profile"> Profile</a></li>
                           
                       </ul>
                   </li>
                    
-              @if(Auth::user()->admin) 
+                    @if(Auth::user()->admin)
+             
                    <li>                
-                      <a class="" href="{{route('settings')}}">
-                          <i class="icon_cogs"></i>
-                          <span>Paramètres</span>
-                          
-                      </a>
+                      <a class="" href="{{route('settings')}}"><i class="icon_cogs"></i><span>Paramètres</span></a>
                    </li>
-             @endif                   
-            
+                              
+                   @endif
                   
               </ul>
               <!-- sidebar menu end-->

@@ -38,7 +38,7 @@ Route::get('/pagenotfound',[
 
 Route::get('/settings',[
 	'uses'=>'SettingsController@index',
-	'as'=>'settings']);
+	'as'=>'settings'])->middleware('author');
 
 Route::post('/settings/updating',[
     'uses'=>'SettingsController@updating',
@@ -57,11 +57,23 @@ Route::get('/etiquettes/{slugger}',[
 	'uses'=>'PageController@tagname',
 	'as'=>'etiquettes.single']);
 
+Route::get('/archi',[
+	'uses'=>'PageController@archiving',
+	'as'=>'marcellaarchives.single']);
+
+Route::get('/contact',[
+	'uses'=>'MailController@contact',
+	'as'=>'contactmail.single']);
+
+Route::post('/send',[
+	'uses'=>'MailController@send',
+	'as'=>'sendmail.single']);
+
 Route::get('/', 'PageController@frontpage');
-Route::get('/contact', 'PageController@contact');
+//Route::get('/contact', 'PageController@contact');
 Route::get('/about', 'PageController@about');
 Route::get('/blog', 'PageController@blog');
-Route::get('archives/{month}/{year}', 'PageController@archives');
+
 
 
 

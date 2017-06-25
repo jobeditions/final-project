@@ -6,54 +6,25 @@ Modifier une Categorie
 	  @section('content')
 
 
-              <div class="col-md-3"> 
+              <div class="col-md-11"> 
                 
                          @include('partials.error')    
                         <section class="panel panel-default">
 
                              
                           <header class="panel-heading">
-                          Ajouter une catégorie 
-                          </header>
-                                  
+                          <b>Ajouter une catégorie </b>
+                          
 
-                          <div class="panel-body">
-                              <div class="form">
-                                    <form action="{{route('categorie.store')}}" method="POST" class="form-horizontal" >
-                                              {{csrf_field()}}
-
-                                              
-                                              <div class="col-sm-12">
-                                                 <label class="control-label col-sm-1" for="name">Catégorie</label>
-                                                 <input class="form-control" type="text" id="name" name="name">
-                                              </div>
-
-                                              <div class="col-sm-12">
-                                                 <label class="control-label col-sm-1" for="order">Ordre</label>
-                                                 <input class="form-control" type="number" id="order" name="order">
-                                              </div>
-
-
-
-                                              <div class="col-sm-12"><p></p><p></p></div>
-                                              
-                                              <div class="col-sm-10">
-                                                  <button class="btn- btn-primary" type="submit">Soumettre</button>
-                                              </div>
-                                               
-
-
-                                    </form>
-                              </div>
-                          </div>
-                              
+                           <a class="btn btn-primary btn-s pull-right" data-toggle="modal" data-target="#myModal" ><i class="icon_plus_alt2"></i>  Ajouter</a>
+                          </header>   
                       </section>
 
               </div>
     
                  
 	             <div class="row">
-                  <div class="col-md-8">
+                  <div class="col-md-11">
                       <section class="panel">
                           <header class="panel-heading">
                               Liste des Catégories
@@ -94,7 +65,6 @@ Modifier une Categorie
                                   <div class="btn-group">
                                   <div class="btn-group">
                                       <a class="btn btn-primary btn-s" href="{{'/categorie/'.$categ->id.'/edit'}}"><i class="icon_plus_alt2"></i>  Modifier</a>
-                                      <!--<a class="btn btn-success btn-s" href="#"><i class="icon_check_alt2"></i></a>-->
                                       <form  class="form-group pull-left" action="{{'/categorie/'.$categ->id}}" method="POST">
                                       {{csrf_field()}}
                                       {{method_field('DELETE')}}
@@ -114,5 +84,5 @@ Modifier une Categorie
                   </div>
               </div>
               
-              
+              @include('partials.admin.modals.modalwin')
               @endsection

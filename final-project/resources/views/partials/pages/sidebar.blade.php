@@ -12,11 +12,11 @@
                 <div class="head-nav">
                     <span class="menu"> </span>
                         <ul>
-                            <li class="{{ url('/') }}"><a href="/">Page d'Accueil</a></li>
+                            <li class=""><a href="{{ url('/')}}">Page d'Accueil</a></li>
                             <li><a href="{{ url('/about') }}">À propos</a></li>
                             <li><a href="{{ url('/blog') }}">Articles</a></li>
-                            <!--<li><a href="404.html">Shop</a></li>-->
-                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="{{ url('/contact') }}">Contact</a></li>
+                            
                         
                             <div class="clearfix"> </div>
                         </ul>
@@ -70,7 +70,7 @@
                     <label></label>
                     <ul>
                     @foreach($archives as $stats)
-                        <li><a href="/archives/{{$stats['month']}}/{{$stats['year']}}">{{$stats['month'].''.$stats['year']}} </a></li>
+                        <li><a href="/archi/?month={{$stats['month']}} &year={{$stats['year']}}">{{$stats['month'].'-'.$stats['year']}} </a></li>
                        
                     @endforeach
                         
