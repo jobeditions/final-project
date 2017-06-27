@@ -7,7 +7,7 @@
 				</ul>
 			</div>
 			<div class="grid-img-content">
-				<a href="{{route('single.posting',['slug'=>$poster->slug])}}"><img src="/{{$poster->featured}}" width="350px" height="250px"/></a>
+				<a href="{{route('single.posting',['slug'=>$poster->slug])}}"><img src="{{$poster->featured}}" width="350px" height="250px"/></a>
 				
 				{!! $poster->excerpt !!}
 

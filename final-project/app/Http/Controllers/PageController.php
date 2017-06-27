@@ -70,6 +70,23 @@ class PageController extends Controller
      return view ('pages.postslug',compact('category','tags','setting','post','next','previous','archives'));
     }
 
+    function sluggerpost($slug){
+     $category=Category::get();
+     $tags=Tag::get();
+     $setting=Settings::first();
+     $post = Post::where('slug',$slug)->first();
+     $next_id = Post::where('id', '>', $post->id)->min('id');
+     $next = Post::find($next_id);
+     $previous_id = Post::where('id', '<', $post->id)->max('id');
+     $previous = Post::find($previous_id);
+     $archives=Post::selectRaw('year(created_at) year, monthname(created_at) month,count(*) published')
+     ->groupBy('year','month')
+     ->orderByRaw('min(created_at)','des')
+     ->get()
+     ->toArray();
+     return view ('pages.postslugger',compact('category','tags','setting','post','next','previous','archives'));
+    }
+
     function categorie($slugs)
     {
 

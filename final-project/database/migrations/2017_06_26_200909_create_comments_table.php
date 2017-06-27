@@ -15,8 +15,22 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('post_id')->unsigned();   
+            $table->string('author');
+            $table->string('email');
+            $table->string('website')->nullable();
+            $table->text('body');
+            $table->boolean('approved');
             $table->timestamps();
+
+           
         });
+
+        Schema::table('comments', function (Blueprint $table) {
+
+        $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade'); 
+       });
+       
     }
 
     /**
@@ -26,6 +40,13 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
+        
+        Schema::table('comments', function (Blueprint $table) {
+
+         
+       });
+
+
         Schema::dropIfExists('comments');
     }
 }

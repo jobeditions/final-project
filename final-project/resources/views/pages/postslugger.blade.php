@@ -50,14 +50,14 @@
 						
 			@if($previous)
 			   <div id="button-next">
-                  <a href="{{route('single.posting',['slug'=>$previous->slug])}}" class="next">&laquo; Précedent </a>
+                  <a href="{{route('single.postslugger',['slug'=>$previous->slug])}}" class="next">&laquo; Précedent </a>
                      <b>{{$previous->title}}</b>
                </div>
             @endif
             
             @if($next)
 			   <div id="button-previous">
-				  <a href="{{route('single.posting',['slug'=>$next->slug])}}" class="next"> Prochaine &raquo;</a>
+				  <a href="{{route('single.postslugger',['slug'=>$next->slug])}}" class="next"> Prochaine &raquo;</a>
 					 <b>{{$next->title}}</b>
 			   </div>
 			@endif
@@ -70,15 +70,13 @@
 <div class="clearfix"> </div>
 					</div>
 					<div class="clearfix"> </div>
-				@foreach($post->comments as $commenting)
-					@include('partials.pages.comments')
-				@endforeach
+				
 			</div>
 			      
                
 
 			<div class="clearfix"> </div>
-					
+				@include ('partials.pages.commentform')	
 			</div>
 		</div>
 		<div class="clearfix"> </div>

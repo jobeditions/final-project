@@ -22,7 +22,24 @@
                           <li><a class="" href="/trash">Corbeille</a></li>
                         @endif
                       </ul>
-                  </li>       
+                  </li>  
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="icon_tags"></i>
+                          <span>Commentaires</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          
+                          <li><a class="" href="/commentaires">Ajouter Commentaire</a></li>
+                          
+                        @if(Auth::user()->admin)
+                          <li><a class="" href=""> Modérer Commentaire</a></li>
+                        @endif 
+                      </ul>
+                  
+
+
                   <li class="sub-menu">
                       <a href="javascript:;" class="">
                           <i class="icon_tag"></i>

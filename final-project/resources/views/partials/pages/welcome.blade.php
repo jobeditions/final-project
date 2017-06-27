@@ -10,7 +10,7 @@
 									<div class="mask" >
 										<h4>{{$secondpost->title}}</h4>
 										<p>{!!$secondpost->excerpt!!}</p>
-										<h5>Continue reading...</h5>
+										<h5>Lirer En Suite...</h5>
 									</div>
 									</div>
 								 </div>
@@ -27,7 +27,7 @@
 										<h4>{{$thirdpost->title}}</h4>
 										<p>{!!$thirdpost->excerpt!!}</p>
 										
-										<a href="{{route('single.posting',['slug'=>$thirdpost->slug])}}"><h5>Continue reading...</h5></a>
+										<a href="{{route('single.posting',['slug'=>$thirdpost->slug])}}"><h5>Lirer En Suite...</h5></a>
 									</div>
 									</div>
 								 </div>
@@ -41,7 +41,7 @@
 						<div class="col-md-6 welcome-left1">
 							<a href="{{route('single.posting',['slug'=>$firstpost->slug])}}"><img src="{{$firstpost->featured}}" class="img-responsive" alt="" /></a>
 							<h3><a href="{{route('single.posting',['slug'=>$firstpost->slug])}}">{{$firstpost->title}}</a></h3>
-							<h6>{{ $firstpost->created_at->diffForHumans()}}</h6>
+							<h6>{{ $firstpost->created_at->diffForHumans()}} .<b> <i class="glyphicon glyphicon-comment"></i></b>   {{$firstpost->comments->count()}} Commentaires</h6>
 							<p>{!!$firstpost->excerpt!!}</p>
 							<a href="{{route('single.posting',['slug'=>$firstpost->slug])}}">Lirer En Suite...</a>
 						</div>

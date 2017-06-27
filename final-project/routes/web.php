@@ -18,7 +18,7 @@ Route::resource('categorie','CategoriesController', ['except' => ['create']]);
 Route::resource('utilisateurs','UserController');
 Route::resource('profile','ProfileController');
 Route::resource('tags','TagController', ['except' => ['create','show']]);
-//Route::resource('settings','SettingsController@index');
+Route::resource('commentaires','CommentsController');
 
 Auth::routes();
 
@@ -49,6 +49,11 @@ Route::get('/posts/{slug}',[
 	'uses'=>'PageController@slugpost',
 	'as'=>'single.posting']);
 
+Route::get('/commentaire/{slug}',[
+	'uses'=>'PageController@sluggerpost',
+	'as'=>'single.postslugger'])->middleware('auth');
+;
+
 Route::get('/cat/{slugs}',[
 	'uses'=>'PageController@categorie',
 	'as'=>'categorie.single']);
@@ -57,9 +62,6 @@ Route::get('/etiquettes/{slugger}',[
 	'uses'=>'PageController@tagname',
 	'as'=>'etiquettes.single']);
 
-Route::get('/archi',[
-	'uses'=>'PageController@archiving',
-	'as'=>'marcellaarchives.single']);
 
 Route::get('/contact',[
 	'uses'=>'MailController@contact',
@@ -73,6 +75,9 @@ Route::get('/', 'PageController@frontpage');
 //Route::get('/contact', 'PageController@contact');
 Route::get('/about', 'PageController@about');
 Route::get('/blog', 'PageController@blog');
+Route::get('/archi',[
+	'uses'=>'PageController@archiving',
+	'as'=>'marcellaarchives.single']);
 
 
 

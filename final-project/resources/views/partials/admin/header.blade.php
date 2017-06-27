@@ -13,7 +13,7 @@
                     <li>
                         <form class="navbar-form" action={{route('articles.index')}} method="get">
                         {{csrf_field()}}
-                            <input class="form-control" placeholder="Chercher des Articles" type="text" id="s" name="s" >
+                            <input class="form-control" placeholder="Chercher des Articles" type="text" id="s" name="query" >
                         
                         <button class="btn btn-primary" type="submit">Q</button>
                     

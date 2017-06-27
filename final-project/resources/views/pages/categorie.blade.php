@@ -1,4 +1,8 @@
 @extends('layouts.master')
+
+@section('title')
+    | Catégories
+    @endsection 
 @section('content')
 <div class="case-item-wrap">
        
@@ -14,7 +18,7 @@
                                 <div class="case-item">
                                  
                                     <div class="case-item__thumb">
-                                    <a href="{{route('single.posting',['slug'=>$categ->slug])}}"><img src="/{{$categ->featured}}" alt="{{$categ->title}}"></a>
+                                    <a href="{{route('single.posting',['slug'=>$categ->slug])}}"><img src="{{$categ->featured}}" alt="{{$categ->title}}"></a>
                                     </div>
                                    
                                     <a href="{{route('single.posting',['slug'=>$categ->slug])}}"><h6 class="case-item__title">{{$categ->title}}</h6></a>
