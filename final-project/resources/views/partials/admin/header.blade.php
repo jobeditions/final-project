@@ -45,16 +45,21 @@
                         
                             </li>
                             <li>
-                                <a href="/home"><i class="icon_key_alt"></i>You are logged in</a>
+                                <a href="/home"><i class="icon_key_alt"></i>Vous êtes connecté</a>
                             </li>
                             <li>
                                 <a href="/profile"><i class="icon_key_alt"></i>Profile</a>
                             </li>
+                             @if(Auth::user()->admin)
+                            <li>
+                                <a href="/settings"><i class="icon_cogs"></i>Paramétres</a>
+                            </li>
+                            @endif
                             <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            <i class="icon_cogs"></i>Logout</i>
+                                            <i class="icon_cogs"></i>Déconnexion</i>
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

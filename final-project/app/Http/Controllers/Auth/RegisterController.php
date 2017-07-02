@@ -7,7 +7,10 @@ use App\User;
 use App\Profile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use\Illuminate\Support\Str;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Mail\ConfirmationAccount;
+
 
 class RegisterController extends Controller
 {
@@ -71,16 +74,29 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'admin' =>0,
             'approve'=>0,
+            'token'=>Str::random(40),
         ]);
 
 
          $profile = Profile::create([
             'user_id' => $user->id,
-            'avatar' => '/images/img-admin/default.png',
+            'avatar' => '/images/img-admin/default.jpg',
         ]);
 
          return $user;
          return $profile;
 
+        
+            
+        return redirect()->back();
+
+
     }
+
+    public function confirmEmail($token)
+    {
+        User::whereToken($token)->firstOrFail()->hasVerified();
+        return redirect('login')->with('status', 'Votre adress mail à été confirmé.Vous allez recevoir un email de confirmation lorsque votre profil est accepté par Admin');;
+    }
+
 }

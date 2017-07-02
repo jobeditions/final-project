@@ -24,6 +24,7 @@ class PostController extends Controller
      public function __construct(){
 
         $this->middleware('author');
+        $this->middleware('auth');
      }
 
     public function index()

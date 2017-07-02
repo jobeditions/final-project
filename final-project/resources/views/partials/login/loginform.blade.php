@@ -2,6 +2,7 @@
 {{ csrf_field() }}       
         <div class="login-wrap">
             <p class="login-img"><i class="icon_lock_alt"></i></p>
+            @include('partials.login.messages')
             <div class="input-group{{ $errors->has('email') ? ' has-error' : '' }}">
               <span class="input-group-addon"><i class="icon_mail"></i></span>
               <input type="email" id="email" name="email" class="form-control" placeholder="

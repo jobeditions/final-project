@@ -10,9 +10,10 @@ use App\User;
 
 class SettingsController extends Controller
 {
-    //public function __construct(){
-    //	this->middleware('admin');
-    //}
+    public function __construct(){
+    $this->middleware('auth');
+    $this->middleware('author');
+    }
 
     public function index()
     {
@@ -20,26 +21,47 @@ class SettingsController extends Controller
         $setting = Settings::first();
         return view ('admin.settings.settings',compact('setting'));
     }
+    public function index1()
+    {
+       
+        $setting = Settings::first();
+        return view ('admin.settings.settings1',compact('setting'));
+    }
+
+    public function index2()
+    {
+       
+        $setting = Settings::first();
+        return view ('admin.settings.setting2',compact('setting'));
+    }
 
     public function updating(Request $request)
     {
         //dd($request->all());
 
       
-         $this -> validate($request,[
+           $this->validate($request,[
           
-          'site_name' => 'required|max:255',
-          'title' => 'required',
-          'description' => 'required',
+          'site_name' => 'sometimes|min:3|max:255',
+          'title' => 'sometimes|min:3|max:255',
+          'propos_title1' => 'sometimes|min:3|max:255',
+          'propos_title2' => 'sometimes|min:3|max:255',
+          'author_name' => 'sometimes|min:3|max:255',
+          'description' => 'sometimes|max:250',
+          'contact_email' => 'sometimes|max:255',
+          'contact_number' => 'sometimes',
           'image1' => 'sometimes|image',
           'image2' => 'sometimes|image',
           'image3' => 'sometimes|image',
           'image4' => 'sometimes|image',
-          'contact_number' => 'required',
-          'contact_email' => 'required', 
-          'address' => 'required',
+          'image5' => 'sometimes|image',
+          'para1' => 'sometimes|max:1500',
+          'para2' => 'sometimes|max:1500',
+          'para3' => 'sometimes|max:1500',
           
            ]);
+
+
        $setting = Settings::first();
 
        if($request->hasFile('image1'))
@@ -85,14 +107,68 @@ class SettingsController extends Controller
         $setting->image4 = 'images/settings/'.$featuredNew4;
         Storage::delete($oldfile4);
        }
+        
+       if($request->hasFile('image5'))
 
-        $setting->site_name=$request->site_name;
-        $setting->title=$request->title;
-        $setting->description=$request->description;
-        $setting->contact_number=$request->contact_number;
-        $setting->contact_email=$request->contact_email;
-        $setting->address=$request->address;
-       
+        {
+         $featuredImage5 = $request->image5;
+        $featuredNew5 = time().$featuredImage5->getClientOriginalName();
+        $oldfile5 = $setting->image5;
+        $featuredImage5 ->move('images/settings',$featuredNew5);
+        $setting->image5 = 'images/settings/'.$featuredNew5;
+        Storage::delete($oldfile5);
+       } 
+
+        if ($request->has('site_name')) 
+        {
+          $setting->site_name=$request->site_name;
+        }
+        if ($request->has('title')) 
+        {
+          $setting->title=$request->title;
+        }
+        if ($request->has('description')) 
+        {
+          $setting->description=$request->description;
+        }
+         if ($request->has('author_name')) 
+        {
+          $setting->author_name=$request->author_name;
+        }
+
+        if ($request->has('contact_number')) 
+        {
+          $setting->contact_number=$request->contact_number;
+        }
+        if ($request->has('contact_email')) 
+        {
+          $setting->contact_email=$request->contact_email;
+        }
+        if ($request->has('address')) 
+        {
+          $setting->address=$request->address;
+        }
+         if ($request->has('propos_title1')) 
+        {
+          $setting->propos_title1=$request->propos_title1;
+        }
+         if ($request->has('propos_title2')) 
+        {
+          $setting->propos_title2=$request->propos_title2;
+        }
+         if ($request->has('para1')) 
+        {
+          $setting->para1=$request->para1;
+        }
+         if ($request->has('para2')) 
+        {
+          $setting->para2=$request->para2;
+        }
+         if ($request->has('para3')) 
+        {
+          $setting->para3=$request->para3;
+        }
+        
         $setting->save();
         Session::flash('success','Les Paramétres ont été modifiées avec succès');
         return redirect()->back();

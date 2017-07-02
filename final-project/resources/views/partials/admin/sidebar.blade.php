@@ -3,13 +3,15 @@
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">                
+                  
                   <li class="active">
                       <a class="" href="/home">
                           <i class="icon_house_alt"></i>
                           <span>Tableau de bord</span>
                       </a>
                   </li>
-				        <li class="sub-menu">
+				       
+                <li class="sub-menu">
                       <a href="javascript:;" class="">
                           <i class="icon_document_alt"></i>
                           <span>Articles</span>
@@ -32,9 +34,10 @@
                       <ul class="sub">
                           
                           <li><a class="" href="/commentaires">Ajouter Commentaire</a></li>
+                          <li><a class="" href="/hellcat">Modifier Commentaire</a></li>
                           
                         @if(Auth::user()->admin)
-                          <li><a class="" href=""> Modérer Commentaire</a></li>
+                          <li><a class="" href="/moderate"> Modérer Commentaire</a></li>
                         @endif 
                       </ul>
                   
@@ -80,14 +83,27 @@
                       </ul>
                   </li>
                    
-                    @if(Auth::user()->admin)
-             
-                   <li>                
-                      <a class="" href="{{route('settings')}}"><i class="icon_cogs"></i><span>Paramètres</span></a>
-                   </li>
-                              
-                   @endif
-                  
+                    
+                     @if(Auth::user()->admin)
+                    <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="icon_cogs"></i>
+                          <span>Paramètres</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                        
+                          <li><a class="" href="{{route('settings')}}"> Page d'Accueil</a></li>
+                          <li><a class="" href="{{route('settings2')}}"> À propos </a></li>
+                          <li><a class="" href="{{route('settings1')}}"> Page de Contact </a></li>
+                          
+                      </ul>                  
+                    
+                   </li> 
+                  @endif
+              
+
+              </li>
               </ul>
               <!-- sidebar menu end-->
           </div>

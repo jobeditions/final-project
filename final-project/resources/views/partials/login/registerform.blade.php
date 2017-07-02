@@ -3,6 +3,7 @@
         {{ csrf_field() }}       
         <div class="login-wrap">
             <p class="login-img"><i class="icon_lock_alt"></i></p>
+            @include('partials.login.messages')
 
             <div class="input-group{{ $errors->has('name') ? ' has-error' : '' }}">
               <span class="input-group-addon"><i class="icon_profile"></i></span>

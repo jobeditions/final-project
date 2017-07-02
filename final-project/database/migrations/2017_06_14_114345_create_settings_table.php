@@ -15,16 +15,23 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('site_name');
-            $table->string('title');
-            $table->text('description');
-            $table->string('contact_number');
-            $table->string('contact_email');
-            $table->string('address');
-            $table->string('image1');
-            $table->string('image2');
-            $table->string('image3');
-            $table->string('image4');
+            $table->string('site_name')->nullable();
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->string('author_name')->nullable();
+            $table->string('contact_number')->nullable();
+            $table->string('contact_email')->nullable();
+            $table->string('address')->nullable();
+            $table->string('propos_title1')->nullable();
+            $table->string('propos_title2')->nullable();
+            $table->text('para1')->nullable();
+            $table->text('para2')->nullable();
+            $table->text('para3')->nullable();
+            $table->string('image1')->nullable();
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
+            $table->string('image4')->nullable();
+            $table->string('image5')->nullable();
            
 
 

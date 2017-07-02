@@ -7,6 +7,7 @@ use Session;
 use Storage;
 use App\User;
 use App\Profile;
+use App\Mail\Welcome;
 
 class UserController extends Controller
 {
@@ -17,7 +18,7 @@ class UserController extends Controller
      */
 
     public function __construct(){
-
+        $this->middleware('auth');
         $this->middleware('author');
      }
 
@@ -183,9 +184,11 @@ public function util($id)
         $user->approve=1;
         $user->save();
         Session::flash('success','Vous avez ajouter un utilisateur avec succès');
+        
+         \Mail::to($user)->send(new Welcome ($user));
+
 
          return redirect('/utilisateurs');
-
     }
     public function noutil($id)
     {

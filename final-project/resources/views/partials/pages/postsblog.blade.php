@@ -3,7 +3,8 @@
 			<div class="grid-header">
 				<h3><a href="{{route('single.posting',['slug'=>$posting->slug])}}">{{ $posting->title }}</a></h3>
 				<ul>
-				<li><span>Écrit par Marcella Sandrine <a href="#"></a> le {{ $posting->created_at->format('F d,Y')}} </span></li>
+				<li><span>Écrit par {{$posting->user->name}} le {{ $posting->created_at->format('F d,Y')}} </span></li>
+
 				</ul>
 			</div>
 			<div class="grid-img-content">

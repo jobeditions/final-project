@@ -10,7 +10,7 @@
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                              Liste des Articles
+                              Liste des Commentaires
                               
                           </header>
                           
@@ -23,7 +23,7 @@
                                  <th><i class="icon_image"></i> Image</th>
                                  <th><i class="icon_document_alt"></i> Titre</th>
                                  <th><i class="icon_tag"></i> Catégorie</th>
-                                 <th><i class="icon_tags"></i> Étiquettes</th>
+                                 <th><i class="icon_tags"></i> Comments</th>
                                  <th><i class="icon_calendar"></i> Créé le</th>
                                  <th></th>
                                  <th><i class="icon_cogs"></i> Ajouter un Commentaire</a></th>
@@ -39,12 +39,11 @@
                                  
                                  <td>{{$posting->title}}</td>
                                  <td>{{$posting->category->name}}</td>
-                                 <td></td>
+
+                                 <td>{{$posting->comments->count()}}</td>
                                  <td>{{$posting->created_at->format('F d,Y')}}</td>
                                  <td>
-                                   @foreach($posting->tags as $taging)
-                                   {{$taging->tags}}</br>
-                                   @endforeach
+                                   
                                    </td>
                                  <td>
                                   <!--<div class="btn-group">-->

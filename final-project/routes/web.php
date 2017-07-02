@@ -36,14 +36,22 @@ Route::get('/pagenotfound',[
 	'uses'=>'HomeController@pagenotfound',
 	'as'=>'errors']);
 
-Route::get('/settings',[
+Route::get('settings-page-daccueil',[
 	'uses'=>'SettingsController@index',
 	'as'=>'settings'])->middleware('author');
+
+Route::get('settings-contact',[
+	'uses'=>'SettingsController@index1',
+	'as'=>'settings1'])->middleware('author');
+
+Route::get('settings-a-propos',[
+	'uses'=>'SettingsController@index2',
+	'as'=>'settings2'])->middleware('author');
 
 Route::post('/settings/updating',[
     'uses'=>'SettingsController@updating',
     'as'=>'settings.updating',
-	]);
+	])->middleware('author');
 
 Route::get('/posts/{slug}',[
 	'uses'=>'PageController@slugpost',
@@ -80,7 +88,11 @@ Route::get('/archi',[
 	'as'=>'marcellaarchives.single']);
 
 
-
+Route::post('/posts/{post}/{user}/comments','CommentsController@addcomment')->middleware('auth');
+Route::get('/moderate','CommentsController@moderate')->middleware('author');
+Route::get('/moderate/{id}', 'CommentsController@util')->middleware('author');
+Route::get('/no-moderate/{id}', 'CommentsController@noutil')->middleware('author');
+Route::get('/hellcat', 'CommentsController@hellcat')->middleware('auth');
 
 
 

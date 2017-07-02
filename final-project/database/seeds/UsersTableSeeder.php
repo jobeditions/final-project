@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('password'),
             'admin' => 2,
             'approve' =>1,
+            'verify'=>1,
            ]);
 
         App\Profile::create([
@@ -31,6 +32,7 @@ class UsersTableSeeder extends Seeder
             'birthday' => '23rd March 1987',
             'occupation' => 'Écrivain',
             'mobile' => '0651634750',
+
             
             
         ]);

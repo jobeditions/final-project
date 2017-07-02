@@ -12,7 +12,7 @@
 						<div class="grid-header">
 						<h1>{{$post->title}}</h1>
 						<ul>
-							<li><span>Écrit par <b>Marcella Sandrine</b>
+							<li><span>Écrit par <b>{{$post->user->name}}</b>
 							<a href="#"></a> ,le {{$post->created_at->format('F d,Y')}}</span></li></br>
 							<li><a href="{{route('categorie.single',['slugs'=>$post->category->slug])}}"><b>Catégorie:</b> {{$post->category->name}}</a>  <i class="glyphicon glyphicon-comment"></i><b> {{$post->comments->count()}} Commentaires </b></li></br>
 
@@ -70,7 +70,9 @@
 <div class="clearfix"> </div>
 					</div>
 					<div class="clearfix"> </div>
-				
+				@foreach($post->comments as $commenting)
+					@include('partials.pages.comments')
+				@endforeach
 			</div>
 			      
                

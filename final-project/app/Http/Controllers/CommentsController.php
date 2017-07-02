@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Comment;
+use Illuminate\Support\Facades\Auth;
+
+
+use App\Comments;
 use App\Post;
 use App\Category;
+use App\User;
+use App\Mail\CommentsMail;
+use App\Mail\CommentsPending;
+
 use Session;
 
 class CommentsController extends Controller
@@ -15,6 +22,10 @@ class CommentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function __construct(){
+    $this->middleware('auth');
+    }
+
     public function index()
     {
          $posts=Post::orderBy('order','asc')->get();
@@ -43,9 +54,24 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Post $post)
+    public function addcomment(Post $post, $user)
     {
+      Comments::create([
+            
+             'body'=>request('body'),
+             'post_id'=>$post->id,
+             'user_id'=>Auth::user()->id,
+             'approved' => false,
+            ]);
       
+      $user = User::first();
+      $comments= Comments::orderBy('created_at', 'desc')->first();
+     
+       Session::flash('info',"Votre commentaire doit être approuvé par l'administrateur");
+
+       \Mail::to($user)->send(new CommentsPending ($comments));
+            return redirect()->back();
+        
 
     }
     
@@ -56,10 +82,7 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -69,9 +92,11 @@ class CommentsController extends Controller
      */
     public function edit($id)
     {
-        //
+    
     }
+    public function show($id){
 
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -92,6 +117,58 @@ class CommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comments = Comments::find($id);
+        $comments->delete();
+        Session::flash('success','Vous avez supprimer un commentaire avec succès');
+
+         return redirect()->back();
     }
+  public function moderate()
+    {   
+
+        $posts=Post::orderBy('order','asc')->get();
+
+         
+         $comments=Comments::get();
+
+        return view('admin.commentaires.moderate',compact('posts','comments'));
+    }
+    public function util($id)
+    {
+        $comments = Comments::find($id);
+        $user_id = $comments->user->id;
+        $user = User::find($user_id);
+        $comments->approved=true;
+        $comments->save();
+        Session::flash('success','Vous avez ajouter un commentaire avec succès');
+
+         \Mail::to($user)->send(new CommentsMail ($comments));
+
+         return redirect()->back();
+
+         
+    }
+
+    public function noutil($id)
+    {
+        $comments = Comments::find($id);
+
+        $comments->approved=false;
+        $comments->save();
+        Session::flash('success','Vous avez retirer un commentaire avec succès');
+
+         return redirect()->back();
+
+    }
+    public function hellcat()
+    {   
+
+        $posts=Post::orderBy('order','asc')->get();
+
+         
+         $comments=Comments::get();
+
+        return view('admin.commentaires.hellcat',compact('posts','comments'));
+    }
+
 }

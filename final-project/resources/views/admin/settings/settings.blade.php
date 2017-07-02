@@ -10,7 +10,7 @@ Paramétres
 
                              
                                   <header class="panel-heading">
-                                     Paramétres
+                                     Paramétres|Page d'Accueil
                                   </header>
                                   
 
@@ -21,8 +21,8 @@ Paramétres
                                               {{csrf_field()}}
                                               
                                               
-                                              
-                                              <div class="col-sm-10">
+
+                                               <div class="col-sm-10">
                                                  <label class="control-label col-sm-1" for="site_name">Titre_du_site</label>
                                                  <input class="form-control" type="text" id="site_name" name="site_name" value="{{$setting->site_name}}">
                                               </div>
@@ -55,21 +55,6 @@ Paramétres
                                               <div class="col-sm-10">
                                                   <label class="control-label col-sm-1">La_Description</label>
                                                   <textarea class="form-control" name="description" rows="6">{{$setting->description}}</textarea>
-                                              </div>
-
-                                              <div class="col-sm-10">
-                                                 <label class="control-label col-sm-1" for="contact_number">Numéro_de_Contact</label>
-                                                 <input class="form-control" type="text" id="contact_number" name="contact_number" value="{{$setting->contact_number}}">
-                                              </div>
-
-                                              <div class="col-sm-10">
-                                                 <label class="control-label col-sm-1" for="contact_email">Mail_électronique</label>
-                                                 <input class="form-control" type="text" id="contact_email" name="contact_email" value="{{$setting->contact_email}}">
-                                              </div>
-
-                                              <div class="col-sm-10">
-                                                 <label class="control-label col-sm-1" for="address">Adresse</label>
-                                                 <input class="form-control" type="text" id="address" name="address"  value="{{$setting->address}}">
                                               </div>
 
                                               

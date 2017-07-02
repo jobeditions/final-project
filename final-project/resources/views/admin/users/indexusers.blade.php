@@ -29,7 +29,7 @@
                               <tbody>
                                 
                                 @foreach($users as $using)
-
+                                @if($using->verify)
                               <tr>
                                  
                                  <td>
@@ -77,7 +77,7 @@
                                     @endif
                                   </td>
                               </tr>
-                             
+                              @endif
                               @endforeach
                                                      
                            </tbody>
