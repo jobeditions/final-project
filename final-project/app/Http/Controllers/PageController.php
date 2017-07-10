@@ -20,7 +20,7 @@ class PageController extends Controller
         $thirdpost=Post::orderby('created_at','desc')->skip(2)->take(1)->get()->first();
         $archives=Post::selectRaw('year(created_at) year, monthname(created_at) month,count(*) published')
         ->groupBy('year','month')
-        ->orderByRaw('min(created_at)','desc')
+        ->orderByRaw('min(created_at)','desc')->limit(5)
         ->get()
         ->toArray();
         return view ('pages.welcome',compact('category','tags','setting','firstpost','secondpost','thirdpost','archives'));

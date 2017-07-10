@@ -60,7 +60,7 @@ Route::get('/posts/{slug}',[
 Route::get('/commentaire/{slug}',[
 	'uses'=>'PageController@sluggerpost',
 	'as'=>'single.postslugger'])->middleware('auth');
-;
+
 
 Route::get('/cat/{slugs}',[
 	'uses'=>'PageController@categorie',
@@ -94,5 +94,15 @@ Route::get('/moderate/{id}', 'CommentsController@util')->middleware('author');
 Route::get('/no-moderate/{id}', 'CommentsController@noutil')->middleware('author');
 Route::get('/hellcat', 'CommentsController@hellcat')->middleware('auth');
 
+Route::get('/articles-index',[
+	'uses'=>'IndexController@articleindex',
+	'as'=>'articles.indexpage']);
 
+Route::get('/commentaires-index',[
+	'uses'=>'IndexController@commentsindex',
+	'as'=>'comments.indexpage']);
+
+Route::get('/utilisateurs-index',[
+	'uses'=>'IndexController@userindex',
+	'as'=>'user.indexpage']);
 

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Post;
+use App\Comments;
 
 class HomeController extends Controller
 {
@@ -23,7 +26,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        
+        $user=User::get();
+        $comments=Comments::get();
+        $posts=Post::get();
+
+        return view('home',compact('user','comments','posts'));
     }
 
     public function pagenotfound()

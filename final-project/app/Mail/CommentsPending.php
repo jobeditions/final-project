@@ -20,7 +20,7 @@ class CommentsPending extends Mailable
 
     public $comments;
     
-    public function __construct(comments $comments)
+    public function __construct(Comments $comments)
     {
         $this->comments=$comments;
     }

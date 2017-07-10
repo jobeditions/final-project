@@ -1811,11 +1811,12 @@ div[data-role="editor-toolbar"] {
 
 .info-box {
 
-  min-height: 140px;
+  min-height: 250px;
+  min-width: 350px;
 
   margin-bottom: 30px;
 
-  padding: 20px;
+  padding: 10px;
 
   color: white;
 
@@ -1829,25 +1830,17 @@ div[data-role="editor-toolbar"] {
 
 .info-box i {
 
-  display: block;
-
-  height: 100px;
-
   font-size: 60px;
 
   line-height: 100px;
 
-  width: 100px;
-
-  float: left;
+  width: 30px;
 
   text-align: center;
 
-  margin-right: 20px;
-
-  padding-right: 20px;
-
-  color: rgba(255, 255, 255, 0.75);
+  margin:auto 0 auto 40%;
+  
+ color: rgba(255, 255, 255, 0.75);
 
 }
 
@@ -1918,6 +1911,86 @@ div[data-role="editor-toolbar"] {
   border: 1px solid #61a434;
 
 }
+
+.image-dash { 
+ 
+ height: 400px;
+  width: 390px;
+
+position: relative; 
+  
+   background:rgba(0,0,0,.4);
+   z-index: 0;
+}
+
+
+
+
+.image-dash i {
+
+   position: absolute; 
+   top: 35px;  
+   
+   width: 35%;
+   margin-left:32%;
+
+   background-color: rgba(0,0,0,.7);
+   border-radius: 50%;
+border: 1x solid grey;
+ padding:10px;
+ z-index: 2;
+}
+
+.image-dash h2 { 
+   position: absolute; 
+   top: 175px; 
+   margin:auto auto auto auto;
+
+   text-align: center;
+   width: 100%; 
+
+   font-size: 34px;
+
+  font-weight: 700;
+z-index: 2;
+}
+
+.image-dash h5{ 
+   position: absolute; 
+   top: 225px;
+   margin:auto ;
+
+   text-align: center;
+   width: 100%; 
+
+   font-size: 12;
+
+  font-weight: 600;
+
+  z-index: 2;
+
+}
+
+.image-dash img {
+   
+  height: 400px;
+  width: 390px;
+
+  margin-bottom: 30px;
+
+  padding: 20px;
+z-index:0;
+}
+
+.image-dash button{
+
+position: absolute; 
+top: 300px;
+margin:auto 30%;
+z-index: 2;
+}
+
+
 
 /*----------------	color------------------------*/
 

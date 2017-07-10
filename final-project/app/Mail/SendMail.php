@@ -11,16 +11,17 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class SendMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $name1;
+    
+    public $mailing;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($name1)
+    public function __construct($mailing)
     {
-        this->name1=$name1; 
+       $this->mailing= $mailing;
     }
 
     /**
@@ -28,9 +29,11 @@ class SendMail extends Mailable
      *
      * @return $this
      */
-    public function build(request $request)
+    public function build()
     {
-        return $this->view('mail.mail')->to('jobeditions@gmail.com');
+       
+
+        return $this->view('mail.sendmail',compact('mailing'));
     }
                                                             
 }

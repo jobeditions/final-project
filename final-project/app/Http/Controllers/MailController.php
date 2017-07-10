@@ -7,6 +7,7 @@ use App\Post;
 use App\Category;
 use App\Tag;
 use App\Settings;
+use App\User;
 use Carbon\Carbon;
 use Mail;
 use App\Mail\SendMail;
@@ -28,8 +29,21 @@ class MailController extends Controller
     	return view ('mail.contact',compact('category','tags','setting','archives'));
     }
 
-    function send(){
-         Mail::send(new SendMail());
-         return view ('mail.mail');
+    function send(Request $request){
+         
+          $user = User::first();
+
+           $mailing=([
+            
+             'name1'=>request('name1'),
+             'email1'=>request('email1'),
+             'number1'=>request('number1'),
+             'city1' =>request('city1'),
+             'content1' =>request('content1'),
+            ]);
+          
+          \Mail::to($user)->send(new SendMail($mailing));
+            return redirect()->back();
+            
     }
 }

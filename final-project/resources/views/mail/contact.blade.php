@@ -12,7 +12,7 @@
 			 <form action="{{route('sendmail.single')}}" method="post">
 			 {{csrf_field()}}
 				 <input type="text" placeholder="Votre Nom" name="name1" required/>
-				 <!--<input type="text" placeholder="Votre mail-électronique" name="email1" required/>
+				 <input type="text" placeholder="Votre mail-électronique" name="email1" required/>
 				 <input type="text" placeholder="Numéro de Contact" name="number1" required/>
 				 <input type="text" placeholder="Ville" name="city1" required/>-->
 				 <textarea placeholder="Laissez votre Message" name="content1" ></textarea>

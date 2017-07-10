@@ -18,6 +18,7 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
+                      <li><a class="" href="{{route('articles.indexpage')}}">Liste des Articles</a></li>
                         @if(Auth::user()->admin)
                           <li><a href="/articles/create" class="">Ajouter un article</a></li>                          
                           <li><a class="" href="/articles">Modifier un Article</a></li>
@@ -32,12 +33,12 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          
+                           <li><a class="" href="{{route('comments.indexpage')}}">Liste des Commentaires</a></li>
                           <li><a class="" href="/commentaires">Ajouter Commentaire</a></li>
-                          <li><a class="" href="/hellcat">Modifier Commentaire</a></li>
+                          <li><a class="" href="{{url('/hellcat')}}">Modifier Commentaire</a></li>
                           
                         @if(Auth::user()->admin)
-                          <li><a class="" href="/moderate"> Modérer Commentaire</a></li>
+                          <li><a class="" href="{{url('/moderate')}}"> Modérer Commentaire</a></li>
                         @endif 
                       </ul>
                   
@@ -73,10 +74,12 @@
                           <span>Utilisateurs</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
+
                       <ul class="sub">
+                          <li><a class="" href="{{route('user.indexpage')}}"> Liste des Utilisateurs</a></li>
                          @if(Auth::user()->admin)
-                          <li><a class="" href="/utilisateurs/create"> Ajouter un Utilisateur</a></li>
-                          <li><a class="" href="/utilisateurs"> Modifier un Utilisateur</a></li>
+                          <li><a class="" href="{{url('/utilisateurs/create')}}"> Ajouter un Utilisateur</a></li>
+                          <li><a class="" href="{{url('/utilisateurs')}}"> Modifier un Utilisateur</a></li>
                          @endif
                           <li><a class="" href="/profile"> Profile</a></li>
                           
