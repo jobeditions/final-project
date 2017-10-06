@@ -35,7 +35,7 @@
                               </thead>
                               <tbody>
                               
-                                @foreach($posts as $posting)
+                              @foreach($posts as $posting)
 
                               <tr>
                                  
@@ -43,8 +43,7 @@
                                  <td><a href="{{route('single.posting',['slug'=>$posting->slug])}}"><img src="{{$posting->featured}}" width="140px" height="90px"/></a></td>
                                  
                                  <td>{{$posting->title}}</td>
-                                 <td>
-                                  {{$posting->category->name}} </td>
+                                 <td> {{$posting->category->name}} </td>
                                  <td>
                                    @foreach($posting->tags as $taging)
                                    {{$taging->tags}}</br>

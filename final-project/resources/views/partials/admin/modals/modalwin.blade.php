@@ -26,7 +26,7 @@
 
                                               <div class="col-sm-12">
                                                  <label class="control-label col-sm-1" for="order">Ordre</label>
-                                                 <input class="form-control" type="number" id="order" name="order">
+                                                 <input class="form-control" type="number" id="order" name="order" min="1" step="1">
                                               </div>
 
 

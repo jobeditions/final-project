@@ -75,7 +75,7 @@
 
                                               <div class="col-sm-10">
                                                  <label class="control-label col-sm-1" for="order">Ordre</label>
-                                                 <input class="form-control" type="number" id="order" name="order" value="{{$posts->order}}">
+                                                 <input class="form-control" type="number" id="order" name="order" min="1" step="1" value="{{$posts->order}}">
                                               </div>
 
                                               <div class="col-sm-10">

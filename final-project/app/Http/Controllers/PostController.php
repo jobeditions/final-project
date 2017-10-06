@@ -29,7 +29,7 @@ class PostController extends Controller
 
     public function index()
     {
-         $posts=Post::orderBy('order','ASC')->get();
+         $posts=Post::orderBy('order')->get();
 
          
          $category=Category::get();
