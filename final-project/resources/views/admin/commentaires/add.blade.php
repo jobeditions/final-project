@@ -4,6 +4,11 @@
     Ajouter un Commentaire
     @endsection
 
+    
+    @section('links')
+     @include('partials.admin.links')
+    @endsection
+
 	  @section('content')
 
 	             <div class="row">
@@ -62,4 +67,10 @@
               </div>
              
               
-              @endsection
+    @endsection
+
+    @section('scripts')
+         <script src="/js/jquery.js"></script>
+         @include('partials.admin.scripts')
+    @endsection
+

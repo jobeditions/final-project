@@ -4,12 +4,19 @@
     Modifier un Article
     @endsection
 
+    @section('links')
+     @include('partials.admin.links')
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    @endsection
+
 	  @section('content')
       
       
-      <script src="{{ URL::to('src/js/vendor/tinymce/js/tinymce/tinymce.min.js') }}"></script>
-<script>
-    var editor_config = {
+    <script src="{{ URL::to('src/js/vendor/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+    <script>
+        var editor_config = {
         path_absolute : "{{ URL::to('/') }}/",
         selector: "textarea",
         plugins: [
@@ -41,7 +48,7 @@
         }
     };
     tinymce.init(editor_config);
-</script>
+    </script>
 
       
                <div class="col-lg-12"> 
@@ -68,7 +75,7 @@
 
                                               <div class="col-sm-10">
                                                  <label class="control-label col-sm-1" for="order">Ordre</label>
-                                                 <input class="form-control" type="number" id="order" name="order" value="{{$posts->order}}>
+                                                 <input class="form-control" type="number" id="order" name="order" value="{{$posts->order}}">
                                               </div>
 
                                               <div class="col-sm-10">
@@ -91,19 +98,22 @@
                                               </div>
 
                                               <div class="col-sm-10">
-                                              <label class="control-label col-sm-1" for="category" >Étiquettes:</label></br>
-                                                   @foreach($tags as $tageg)
-                                                  <label class="checkbox-inline"><input type="checkbox" name="tags[]" value="{{$tageg->id}}"
-                                                   @foreach($posts->tags as $t)
-                                                   
-                                                   @if($tageg->id==$t->id)
-                                                   checked
-                                                   @endif
-                                                   
-                                                  @endforeach
-                                                  >{{$tageg->tags}}</label>
-                                                   @endforeach
+                                                <label class="control-label col-sm-1" for="tags">Select_tags</label>                                     
+                                                   <select class="form-control select2multi" name="tags[]" multiple="multiple" >
+                                                     @foreach($tags as $tageg)
+                                                     <option value="{{ $tageg->id }}"
+                                                         @foreach($posts->tags as $t)
+                                                            @if($tageg->id == $t->id)
+                                                               selected
+                                                            @endif
+                                                         @endforeach
+                                                         >{{ $tageg->tags }}</option>
+                                                     @endforeach
+
+                                                   </select>
                                               </div>
+
+                                              
                                                   
                                               <div class="col-sm-10">
                                                   <label class="control-label col-sm-1">TEXTE</label>
@@ -137,4 +147,12 @@
                       </div>
                   </div>
               </div>
-              @endsection
+       @endsection
+       @section('scripts')
+        @include('partials.admin.scripts')
+        <script>
+          $(document).ready(function() {
+          $('.select2multi').select2();
+          });
+        </script>
+      @endsection

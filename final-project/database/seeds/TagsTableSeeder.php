@@ -11,10 +11,9 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-         $user=App\Tag::create([
+         $tags=App\Tag::create([
             'tags' => 'Générale',
             'order' => '1',
-            'id' => '1',
         ]);
     }
 }

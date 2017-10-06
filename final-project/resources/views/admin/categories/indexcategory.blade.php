@@ -3,6 +3,10 @@
 Modifier une Categorie
 @endsection
 
+@section('links')
+  @include('partials.admin.links')
+@endsection
+
 	  @section('content')
 
 
@@ -85,4 +89,9 @@ Modifier une Categorie
               </div>
               
               @include('partials.admin.modals.modalwin')
-              @endsection
+     @endsection
+     @section('scripts')
+         <script src="/js/jquery.js"></script>
+         @include('partials.admin.scripts')
+     @endsection
+

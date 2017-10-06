@@ -29,7 +29,7 @@ class PostController extends Controller
 
     public function index()
     {
-         $posts=Post::orderBy('order','asc')->get();
+         $posts=Post::orderBy('order','ASC')->get();
 
          
          $category=Category::get();
@@ -82,7 +82,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //dd(request()->all());
 
         $this -> validate($request,[
           
@@ -170,7 +170,6 @@ class PostController extends Controller
           'slug' => 'required',
           'featured' => 'sometimes|image',
           'category_id' => 'required|integer',
-          'tags'=> 'required',
           ]);
 
         $posts=Post::find($id);
@@ -197,7 +196,7 @@ class PostController extends Controller
         $posts->category_id=$request->category_id;
         $posts->save();
 
-        $posts->tags()->attach($request->tags);
+        $posts->tags()->sync($request->tags);
         
         Session::flash('success','La catégorie a été modifiée avec succès');
         return redirect('/articles');
@@ -212,7 +211,6 @@ class PostController extends Controller
     public function destroy($id)
     {
         $posts=Post::find($id);
-        $posts->tags()->detach();
         $posts->delete();
         Session::flash('success','Article a été supprimée avec succès');
         return redirect('/articles');
@@ -222,6 +220,7 @@ class PostController extends Controller
     {
         $posts=Post::onlyTrashed()->where('id',$id)->first();
         Storage::delete($posts->featured);
+        $posts->tags()->detach();
         $posts->forcedelete();
         Session::flash('success','Article a été supprimée avec succès');
         return redirect('/trash');

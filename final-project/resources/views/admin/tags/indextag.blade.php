@@ -1,7 +1,11 @@
 @extends('layouts.app3')
-@section('title')
-Modifier/Tags
-@endsection
+    @section('title')
+     Modifier/Tags
+    @endsection
+
+    @section('links')
+     @include('partials.admin.links')
+    @endsection
 
 	  @section('content')
 
@@ -87,4 +91,8 @@ Modifier/Tags
                   </div>
               </div>
                @include('partials.admin.modals.modalcreatetags')
-              @endsection
+      @endsection
+      @section('scripts')
+         <script src="/js/jquery.js"></script>
+         @include('partials.admin.scripts')
+     @endsection

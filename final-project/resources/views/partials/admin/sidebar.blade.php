@@ -18,11 +18,11 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                      <li><a class="" href="{{route('articles.indexpage')}}">Liste des Articles</a></li>
+                      <li><a class="" href="{{action('IndexController@articleindex')}}">Liste des Articles</a></li>
                         @if(Auth::user()->admin)
-                          <li><a href="/articles/create" class="">Ajouter un article</a></li>                          
-                          <li><a class="" href="/articles">Modifier un Article</a></li>
-                          <li><a class="" href="/trash">Corbeille</a></li>
+                          <li><a href="{{action('PostController@create')}}" class="">Ajouter un article</a></li>                          
+                          <li><a class="" href="{{action('PostController@index')}}">Modifier un Article</a></li>
+                          <li><a class="" href="{{action('PostController@trash')}}">Corbeille</a></li>
                         @endif
                       </ul>
                   </li>  
@@ -33,7 +33,7 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                           <li><a class="" href="{{route('comments.indexpage')}}">Liste des Commentaires</a></li>
+                          <li><a class="" href="{{route('comments.indexpage')}}">Liste des Commentaires</a></li>
                           <li><a class="" href="/commentaires">Ajouter Commentaire</a></li>
                           <li><a class="" href="{{url('/hellcat')}}">Modifier Commentaire</a></li>
                           
@@ -52,7 +52,8 @@
                       </a>
                       <ul class="sub">
                           
-                          <li><a class="" href="/categorie">Ajouter une catégorie</a></li>
+                          <li><a class="" href="{{action('CategoriesController@index')}}">Ajouter une catégorie</a></li>
+                          <li><a class="" href="/categorie"><i class="icon_trash"></i>Corbeille</a></li>
                          
                       </ul>
                   </li>
@@ -65,6 +66,7 @@
                       <ul class="sub">
                           
                           <li><a class="" href="/tags">Ajouter une Étiquette</a></li>
+                          <li><a class="" href="/categorie"><i class="icon_trash"></i>Corbeille</a></li>
                         
                       </ul>
                   </li>

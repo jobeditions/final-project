@@ -20,14 +20,14 @@ class CreateTagsTable extends Migration
             $table->timestamps();
         });
     
-        Schema::create('post_tag', function (Blueprint $table) {
+        //Schema::create('post_tag', function (Blueprint $table) {
             
-        $table->integer('tag_id')->unsigned();
+        //$table->integer('tag_id')->unsigned();
         //$table->integer('tag_id')->references('id')->on('tags');
-        $table->integer('post_id')->unsigned();
+        //$table->integer('post_id')->unsigned();
         //$table->integer('post_id')->references('id')->on('posts');
-        $table->primary(['post_id','tag_id']);
-        });
+        //$table->primary(['post_id','tag_id']);
+        //});
     }
 
 

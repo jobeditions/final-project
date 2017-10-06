@@ -2,6 +2,11 @@
 @section('title')
 Accueil-Utilisateur
 @endsection
+
+
+@section('links')
+  @include('partials.admin.links')
+@endsection
 @section('content')
  <!--overview start-->
 			  <div class="row">
@@ -65,4 +70,8 @@ Accueil-Utilisateur
 			</div><!--/.row-->
 		
 
+@endsection
+@section('scripts')
+   <script src="/js/jquery.js"></script>
+   @include('partials.admin.scripts')
 @endsection

@@ -1,7 +1,12 @@
 @extends('layouts.app3')
 
     @section('title')
-    Liste des Articles
+    Modifier un Article
+    @endsection
+
+
+    @section('links')
+     @include('partials.admin.links')
     @endsection
 
 	  @section('content')
@@ -26,7 +31,7 @@
                                  <th><i class="icon_tags"></i> Étiquettes</th>
                                  <th><i class="icon_calendar"></i> Créé le</th>
                                  <th></th>
-                                 
+                        
                               </thead>
                               <tbody>
                               
@@ -58,4 +63,9 @@
                       {{ $posts->links() }}
                   </div>
               </div>
-              @endsection
+    @endsection
+
+    @section('scripts')
+         <script src="/js/jquery.js"></script>
+         @include('partials.admin.scripts')
+    @endsection
