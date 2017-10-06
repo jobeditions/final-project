@@ -3,6 +3,10 @@
     Modifier une Catégorie
     @endsection
 
+    @section('links')
+      @include('partials.admin.links')
+    @endsection
+
 	  @section('content')
 
 	                       <div class="col-lg-12"> 
@@ -17,7 +21,7 @@
 
                                   <div class="panel-body">
                                       <div class="form">
-                                          <form action="/catégorie/{{$cat->id}}" method="POST" class="form-horizontal">
+                                          <form action="{{action('CategoriesController@update',['id'=>$cat->id])}}" method="POST" class="form-horizontal">
                                           
                                               {{csrf_field()}}
                                               {{method_field('PUT')}}
@@ -59,4 +63,9 @@
                       </div>
                   </div>
               </div>
-              @endsection
+     @endsection
+     @section('scripts')
+        <script src="/js/jquery.js"></script>
+        @include('partials.admin.scripts')
+     @endsection
+

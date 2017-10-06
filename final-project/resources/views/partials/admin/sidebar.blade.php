@@ -53,7 +53,7 @@
                       <ul class="sub">
                           
                           <li><a class="" href="{{action('CategoriesController@index')}}">Ajouter une catégorie</a></li>
-                          <li><a class="" href="/categorie"><i class="icon_trash"></i>Corbeille</a></li>
+                          <li><a class="" href="{{action('CategoriesController@trash')}}"><i class="icon_trash"></i>Corbeille</a></li>
                          
                       </ul>
                   </li>
@@ -65,8 +65,8 @@
                       </a>
                       <ul class="sub">
                           
-                          <li><a class="" href="/tags">Ajouter une Étiquette</a></li>
-                          <li><a class="" href="/categorie"><i class="icon_trash"></i>Corbeille</a></li>
+                          <li><a class="" href="{{action('TagController@index')}}">Ajouter une Étiquette</a></li>
+                          <li><a class="" href="{{action('TagController@trash')}}"><i class="icon_trash"></i>Corbeille</a></li>
                         
                       </ul>
                   </li>

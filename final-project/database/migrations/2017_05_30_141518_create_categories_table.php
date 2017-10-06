@@ -18,6 +18,8 @@ class CreateCategoriesTable extends Migration
             $table->integer('order');
             $table->string('slug');
             $table->string('name')->unique();
+
+            $table->SoftDeletes();
             $table->timestamps();
         });
     }

@@ -70,9 +70,9 @@
                                  @else
                                   <div class="btn-group">
                                   <div class="btn-group">
-                                      <a class="btn btn-primary btn-s" href="{{'/tags/'.$tageg->id.'/edit'}}"><i class="icon_plus_alt2"></i>  Modifier</a>
+                                      <a class="btn btn-primary btn-s" href="{{action('TagController@edit',['id'=>$tageg->id])}}"><i class="icon_plus_alt2"></i>  Modifier</a>
                                       <!--<a class="btn btn-success btn-s" href="#"><i class="icon_check_alt2"></i></a>-->
-                                      <form  class="form-group pull-left" action="{{'/tags/'.$tageg->id}}" method="POST">
+                                      <form  class="form-group pull-left" action="{{action('TagController@destroy',['id'=>$tageg->id])}}" method="POST">
                                       {{csrf_field()}}
                                       {{method_field('DELETE')}}
                                       <button class="btn btn-danger" type="submit"><i class="icon_close_alt2"></i>  Supprimer</button>

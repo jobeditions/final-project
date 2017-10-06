@@ -53,9 +53,9 @@
                                  <td></td>
                                  <td>
                                   <!--<div class="btn-group">-->
-                                      <a class="btn btn-primary btn-s" href="{{'/articles/'.$posting->id.'/edit'}}"><i class="icon_plus_alt2"></i>  Modifier</a>
+                                      <a class="btn btn-primary btn-s" href="{{action('PostController@edit',['id'=>$posting->id])}}"><i class="icon_plus_alt2"></i>  Modifier</a>
                                       <!--<a class="btn btn-success btn-s" href="#"><i class="icon_check_alt2"></i></a>-->
-                                      <form  class="form-group pull-left" action="{{'/articles/'.$posting->id}}" method="POST">
+                                      <form  class="form-group pull-left" action="{{action('PostController@destroy',['id'=>$posting->id])}}" method="POST">
                                       {{csrf_field()}}
                                       {{method_field('DELETE')}}
                                       <button class="btn btn-danger" type="submit"><i class="icon_trash"></i>  Corbeille</button>

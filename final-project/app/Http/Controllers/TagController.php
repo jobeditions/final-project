@@ -55,7 +55,7 @@ class TagController extends Controller
 
        
         Session::flash('success','Vous avez créé la étiquette avec succès');
-        return redirect('/tags');
+        return redirect('admin/tags');
     }
 
     /**
@@ -98,7 +98,7 @@ class TagController extends Controller
          $tags->save();
        
         Session::flash('success','Vous avez modifiée la tag avec succès');
-        return redirect('/tags');
+        return redirect('admin/tags');
     }
 
     /**
@@ -110,9 +110,33 @@ class TagController extends Controller
     public function destroy($id)
     {
         $tags=Tag::find($id);
-        $tags=posts()->detach();
         $tags->delete();
         Session::flash('success','La tag a été supprimée avec succès');
-        return redirect('/tags');
+        return redirect('admin/tags');
+    }
+
+     public function trash()
+    {
+         $tags=Tag::onlyTrashed()->get();
+         
+        return view('admin.tags.trashtag',compact('tags'));
+    }
+    public function restoretrash($id)
+    {
+        $tags=Tag::onlyTrashed()->where('id',$id)->first();
+        $tags->restore();
+        Session::flash('success',"L'étiquette a été restaurer avec succès");
+        return redirect()->back();
+    }
+
+
+    public function kill($id)
+    {
+        $tags=Tag::onlyTrashed()->where('id',$id)->first();
+        $tags->posts()->detach();
+        
+        $tags->forcedelete();
+        Session::flash('success',"L'étiquette a été supprimée avec succès");
+        return redirect()->back();
     }
 }

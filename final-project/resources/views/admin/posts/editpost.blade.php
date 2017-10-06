@@ -63,7 +63,7 @@
 
                                   <div class="panel-body">
                                       <div class="form">
-                                          <form action="/articles/{{$posts->id}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                                          <form action="{{action('PostController@update',['id'=>$posts->id])}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                                               {{csrf_field()}}
                                               
                                               {{method_field('PUT')}}

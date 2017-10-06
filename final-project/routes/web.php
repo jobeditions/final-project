@@ -10,21 +10,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-   
-Route::resource('articles','PostController', ['except' => ['show']]);
-Route::resource('categorie','CategoriesController', ['except' => ['create']]);
-Route::resource('utilisateurs','UserController');
-Route::resource('profile','ProfileController');
-Route::resource('tags','TagController', ['except' => ['create','show']]);
-Route::resource('commentaires','CommentsController');
+
 //Resource Controllers Routes
 
-Auth::routes();
+   
+
+Route::resource('utilisateurs','UserController');
+Route::resource('profile','ProfileController');
+Route::resource('commentaires','CommentsController');
+
 //Auth Controllers Routes
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
+
+
 //Home Controllers Routes
+Route::get('/home', 'HomeController@index')->name('home');
 
-
+//Routes without any middleware
 Route::get('/trash', 'PostController@trash');
 Route::delete('/trash/{id}', 'PostController@kill');
 Route::delete('/restore/{id}', 'PostController@restoretrash');
@@ -44,11 +46,21 @@ Route::get('/utilisateurs-index','IndexController@userindex')->name('user.indexp
 Route::get('/contact','MailController@contact')->name('contactmail.single');
 Route::get('/send','MailController@send')->name('sendmail.single');
 
-
-//Routes without any middleware
-
-
+//Routes with middleware author
+Route::prefix('/admin')->group(function(){
 Route::group(['middleware' => 'author'], function () {
+Route::resource('articles','PostController', ['except' => ['show']]);
+
+Route::get('/categories/corbeille','CategoriesController@trash')->name('categorie.corbeille');
+Route::delete('/categories/restaurer/{id}','CategoriesController@restoretrash')->name('categorie.restore');
+Route::delete('/categories/kill/{id}','CategoriesController@kill')->name('categorie.kill');
+Route::resource('categorie','CategoriesController', ['except' => ['create','show']]);
+
+Route::get('/etiquette/corbeille','TagController@trash')->name('tags.corbeille');
+Route::delete('/etiquette/restaurer/{id}','TagController@restoretrash')->name('tags.restore');
+Route::delete('/etiquette/kill/{id}','TagController@kill')->name('tags.kill');
+Route::resource('tags','TagController', ['except' => ['create','show']]);
+
 Route::get('/settings-page-daccueuil','SettingsController@index')->name('settings');
 Route::get('/settings-contact','SettingsController@index1')->name('settings1');
 Route::get('/settings-a-propos','SettingsController@index2')->name('settings2');
@@ -57,8 +69,9 @@ Route::get('/moderate','CommentsController@moderate');
 Route::get('/moderate/{id}', 'CommentsController@util');
 Route::get('/no-moderate/{id}', 'CommentsController@noutil');
 });
+});
 
-//Routes with middleware author
+//Routes with middleware auth
 
 Route::group(['middleware' => 'auth'], function () {
 Route::get('/commentaire/{slug}','PageController@sluggerpost')->name('single.postslugger');

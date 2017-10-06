@@ -3,10 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Tag extends Model
 {
-     protected $fillable = ['tags', 'order'];
+    
+    use SoftDeletes;
+    protected $fillable = ['tags', 'order'];
+    protected $dates = ['deleted_at'];
 
     public function posts()
 

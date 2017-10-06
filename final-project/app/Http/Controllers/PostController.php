@@ -123,7 +123,7 @@ class PostController extends Controller
         $posts->tags()->attach($request->tags);
     Session::flash('success','Vous avez créé une article avec succès');
 
-    return redirect('/articles');
+    return redirect('admin/articles');
         
     }
 
@@ -199,7 +199,7 @@ class PostController extends Controller
         $posts->tags()->sync($request->tags);
         
         Session::flash('success','La catégorie a été modifiée avec succès');
-        return redirect('/articles');
+        return redirect('admin/articles');
     }
 
     /**
@@ -213,7 +213,7 @@ class PostController extends Controller
         $posts=Post::find($id);
         $posts->delete();
         Session::flash('success','Article a été supprimée avec succès');
-        return redirect('/articles');
+        return redirect('admin/articles');
     }
 
     public function kill($id)
@@ -223,7 +223,7 @@ class PostController extends Controller
         $posts->tags()->detach();
         $posts->forcedelete();
         Session::flash('success','Article a été supprimée avec succès');
-        return redirect('/trash');
+        return redirect('admin/trash');
     }
 
     public function restoretrash($id)
@@ -231,6 +231,6 @@ class PostController extends Controller
         $posts=Post::onlyTrashed()->where('id',$id)->first();
         $posts->restore();
         Session::flash('success','Article a été restaurer avec succès');
-        return redirect('/articles');
+        return redirect('admin/articles');
     }
 }

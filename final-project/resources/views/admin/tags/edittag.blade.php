@@ -3,6 +3,10 @@
     Modifier une Étiquette
     @endsection
 
+    @section('links')
+     @include('partials.admin.links')
+    @endsection
+
 	  @section('content')
 
 	                       <div class="col-lg-12"> 
@@ -17,7 +21,7 @@
 
                                   <div class="panel-body">
                                       <div class="form">
-                                          <form action="/tags/{{$tags->id}}" method="POST" class="form-horizontal">
+                                          <form action="{{action('TagController@update',['id'=>$tags->id])}}" method="POST" class="form-horizontal">
                                           
                                               {{csrf_field()}}
                                               {{method_field('PUT')}}
@@ -54,4 +58,8 @@
                       </div>
                   </div>
               </div>
-              @endsection
+      @endsection
+      @section('scripts')
+         <script src="/js/jquery.js"></script>
+         @include('partials.admin.scripts')
+      @endsection

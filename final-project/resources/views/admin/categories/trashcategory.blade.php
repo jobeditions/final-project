@@ -1,26 +1,23 @@
 @extends('layouts.app3')
-@section('title')
-Modifier une Categorie
-@endsection
+    @section('title')
+      Corbeille des Categories
+    @endsection
 
-@section('links')
-  @include('partials.admin.links')
-@endsection
+    @section('links')
+      @include('partials.admin.links')
+    @endsection
 
 	  @section('content')
 
 
               <div class="col-md-11"> 
                 
-                         @include('partials.error')    
+                         
                         <section class="panel panel-default">
 
                              
                           <header class="panel-heading">
-                          <b>Ajouter une catégorie </b>
-                          
-
-                           <a class="btn btn-primary btn-s pull-right" data-toggle="modal" data-target="#myModal" ><i class="icon_plus_alt2"></i>  Ajouter</a>
+                          <b>Liste des catégories supprimées </b>
                           </header>   
                       </section>
 
@@ -44,8 +41,7 @@ Modifier une Categorie
                                  <th><i class="icon_tag"></i> Catégorie</th>
                                  <th><i class="icon_tags"></i> Slug</th>
                                  <th><i class="icon_calendar"></i> Créé le</th>
-                                 
-                                 
+                                 <th><i class="icon_cogs"></i> Action</a></th>
                                  <th><i class="icon_cogs"></i> Action</a></th>
                               </thead>
                               <tbody>
@@ -63,35 +59,35 @@ Modifier une Categorie
                                   
                                  
                                  <td>
-                                 @if($categ->id==1)
-                                 <div class="btn-group"></div>
-                                 @else
-                                  <div class="btn-group">
-                                  <div class="btn-group">
-                                      <a class="btn btn-primary btn-s" href="{{action('CategoriesController@edit',['id'=>$categ->id])}}"><i class="icon_plus_alt2"></i>  Modifier</a>
-                                      <form  class="form-group pull-left" action="{{action('CategoriesController@destroy',['id'=>$categ->id])}}" method="POST">
+                                      <form  class="form-group " action="{{action('CategoriesController@restoretrash',['id'=>$categ->id])}}" method="POST">
                                       {{csrf_field()}}
                                       {{method_field('DELETE')}}
-                                      <button class="btn btn-danger" type="submit"><i class="icon_close_alt2"></i>  Supprimer</button>
+                                      <button class="btn btn-success" type="submit"><i class="icon_check"></i> Restaurer</button>
                                       </form>
-                                  </div>
-                                  @endif
-                                  </td>
+                                 </td>
+                                 <td>
+                                      <!--<a class="btn btn-success btn-s" href="#"><i class="icon_check_alt2"></i></a>-->
+                                      <form  class="form-group" action="{{action('CategoriesController@kill',['id'=>$categ->id])}}" method="POST">
+                                      {{csrf_field()}}
+                                      {{method_field('DELETE')}}
+                                      <button class="btn btn-danger" type="submit"><i class="icon_trash"></i> Supprimer</button>
+                                      </form>
+                                  <!--</div>-->
+                                 
+                                 </td>
                               </tr>
                              
                               @endforeach
                                                      
                            </tbody>
                         </table>
-                        {{$cat->links()}}
                       </section>
                   </div>
               </div>
-              
-              @include('partials.admin.modals.modalwin')
-     @endsection
-     @section('scripts')
-         <script src="/js/jquery.js"></script>
-         @include('partials.admin.scripts')
-     @endsection
+            
+      @endsection
 
+      @section('scripts')
+        <script src="/js/jquery.js"></script>
+        @include('partials.admin.scripts')
+      @endsection
