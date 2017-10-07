@@ -73,7 +73,14 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         $cat=Category::find($id);
-        $cat->delete();
+        $cater=Category::find($id);
+
+        foreach($cat->posts as $hellcat)
+        {
+        $hellcat->category_id=1;
+        $hellcat->save();
+        }
+        $cater->delete();
         Session::flash('success','La catégorie a été supprimée avec succès');
         return redirect('admin/categorie');
 

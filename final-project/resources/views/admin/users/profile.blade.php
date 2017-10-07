@@ -5,6 +5,11 @@
         Profile
       @endsection
 
+      @section('links')
+       @include('partials.admin.links')
+      @endsection
+
+
 
       @section('content')
       
@@ -201,5 +206,9 @@
       </section>
       <!--main content end-->
      
-  </section>
-  @endsection
+    </section>
+ @endsection
+ @section('scripts')
+    <script src="/js/jquery.js"></script>
+    @include('partials.admin.scripts')
+ @endsection

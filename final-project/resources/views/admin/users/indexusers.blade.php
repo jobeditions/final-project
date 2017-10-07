@@ -3,6 +3,10 @@
     Modifier un Utilisateur
     @endsection
 
+    @section('title')
+    Modifier un Article
+    @endsection
+
 	  @section('content')
 
 	             <div class="row">
@@ -87,4 +91,9 @@
                       </section>
                   </div>
               </div>
-              @endsection
+      @endsection
+      @section('scripts')
+         <script src="/js/jquery.js"></script>
+         @include('partials.admin.scripts')
+      @endsection
+

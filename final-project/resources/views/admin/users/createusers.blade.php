@@ -2,7 +2,13 @@
     @section('title')
     Ajouter un Compte
     @endsection
+  
+    @section('links')
+     @include('partials.admin.links')
+    @endsection
+
     @section('content')
+
 
                          <div class="col-lg-12"> 
                          @include('partials.error')    
@@ -57,4 +63,9 @@
                       </div>
                   </div>
               </div>
-              @endsection
+     @endsection
+     @section('scripts')
+         <script src="/js/jquery.js"></script>
+         @include('partials.admin.scripts')
+     @endsection
+
