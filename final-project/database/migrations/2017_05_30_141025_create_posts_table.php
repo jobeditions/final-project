@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->text('content');
             $table->text('excerpt');
             $table->integer('category_id');
+            $table->integer('restore_id')->nullable();
             $table->string('featured');
             
             $table->SoftDeletes();

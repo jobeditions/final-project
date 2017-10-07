@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use App\Category;
+use App\Post;
 use Carbon\Carbon;
 
 class CategoriesController extends Controller
@@ -74,9 +75,9 @@ class CategoriesController extends Controller
     {
         $cat=Category::find($id);
         $cater=Category::find($id);
-
         foreach($cat->posts as $hellcat)
         {
+        $hellcat->restore_id=$hellcat->category_id;
         $hellcat->category_id=1;
         $hellcat->save();
         }
@@ -96,6 +97,14 @@ class CategoriesController extends Controller
     public function restoretrash($id)
     {
         $cat=Category::onlyTrashed()->where('id',$id)->first();
+        $posting=Post::get();
+        foreach ($posting as $posts) {
+         if($posts->restore_id==$cat->id){
+            $posts->category_id = $cat->id;
+            $posts->save();
+           }
+        }
+
         $cat->restore();
         Session::flash('success','La catégorie a été restaurer avec succès');
         return redirect()->back();
