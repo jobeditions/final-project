@@ -1,8 +1,12 @@
 @extends('layouts.app3')
-@section('title')
-Paramétres
-@endsection
-@section('content')
+   @section('title')
+     Paramétres
+   @endsection
+
+   @section('links')
+     @include('partials.admin.links')
+   @endsection
+   @section('content')
 
 	                       <div class="col-lg-12"> 
                          @include('partials.error')    
@@ -17,7 +21,7 @@ Paramétres
                                   <div class="panel-body">
                                       <div class="form">
                                          
-                                              <form action="/settings/updating" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                                              <form action="{{action('SettingsController@updating')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                                               {{csrf_field()}}
                                               
                                               
@@ -78,4 +82,9 @@ Paramétres
                       </div>
                   </div>
               </div>
-              @endsection
+      @endsection
+
+      @section('scripts')
+         <script src="/js/jquery.js"></script>
+         @include('partials.admin.scripts')
+      @endsection

@@ -98,9 +98,9 @@
                       </a>
                       <ul class="sub">
                         
-                          <li><a class="" href="{{route('settings')}}"> Page d'Accueil</a></li>
-                          <li><a class="" href="{{route('settings2')}}"> À propos </a></li>
-                          <li><a class="" href="{{route('settings1')}}"> Page de Contact </a></li>
+                          <li><a class="" href="{{action('SettingsController@index')}}"> Page d'Accueil</a></li>
+                          <li><a class="" href="{{action('SettingsController@index1')}}"> À propos </a></li>
+                          <li><a class="" href="{{action('SettingsController@index2')}}"> Page de Contact </a></li>
                           
                       </ul>                  
                     

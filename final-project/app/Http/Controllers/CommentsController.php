@@ -22,13 +22,13 @@ class CommentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function __construct(){
+    public function __construct(){
     $this->middleware('auth');
     }
 
     public function index()
     {
-         $posts=Post::orderBy('order','asc')->get();
+         $posts=Post::orderBy('posts.order','asc')->get();
 
          
          $category=Category::get();
@@ -38,15 +38,6 @@ class CommentsController extends Controller
         return view('admin.commentaires.add',compact('posts','category'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -70,45 +61,11 @@ class CommentsController extends Controller
        Session::flash('info',"Votre commentaire doit être approuvé par l'administrateur");
 
        \Mail::to($user)->send(new CommentsPending ($comments));
-            return redirect()->back();
+        return redirect()->back();
         
 
     }
-    
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-    
-    }
-    public function show($id){
-
-    }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
+   
     /**
      * Remove the specified resource from storage.
      *

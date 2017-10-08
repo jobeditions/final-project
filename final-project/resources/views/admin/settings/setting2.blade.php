@@ -1,11 +1,15 @@
 @extends('layouts.app3')
 @section('title')
-Paramétres
+  Paramétres
+@endsection
+
+@section('links')
+  @include('partials.admin.links')
 @endsection
 @section('content')
 
-<script src="{{ URL::to('src/js/vendor/tinymce/js/tinymce/tinymce.min.js') }}"></script>
-<script>
+   <script src="{{ URL::to('src/js/vendor/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+   <script>
     var editor_config = {
         path_absolute : "{{ URL::to('/') }}/",
         selector: "textarea",
@@ -38,7 +42,7 @@ Paramétres
         }
     };
     tinymce.init(editor_config);
-</script>
+  </script>
 
 
 	                       <div class="col-lg-12"> 
@@ -54,7 +58,7 @@ Paramétres
                                   <div class="panel-body">
                                       <div class="form">
                                          
-                                              <form action="/settings/updating" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                                              <form action="{{action('SettingsController@updating')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                                               {{csrf_field()}}
                                               
                                               
@@ -110,4 +114,8 @@ Paramétres
                       </div>
                   </div>
               </div>
-              @endsection
+     @endsection
+     @section('scripts')
+         <script src="/js/jquery.js"></script>
+         @include('partials.admin.scripts')
+     @endsection

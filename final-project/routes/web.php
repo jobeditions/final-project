@@ -16,8 +16,6 @@
    
 
 Route::resource('utilisateurs','UserController');
-Route::resource('profile','ProfileController');
-Route::resource('commentaires','CommentsController');
 
 //Auth Controllers Routes
 Auth::routes();
@@ -65,9 +63,11 @@ Route::get('/settings-page-daccueuil','SettingsController@index')->name('setting
 Route::get('/settings-contact','SettingsController@index1')->name('settings1');
 Route::get('/settings-a-propos','SettingsController@index2')->name('settings2');
 Route::get('/settings/updating','SettingsController@updating')->name('settings.updating');
-Route::get('/moderate','CommentsController@moderate');
-Route::get('/moderate/{id}', 'CommentsController@util');
-Route::get('/no-moderate/{id}', 'CommentsController@noutil');
+
+Route::get('/delete-comments','CommentadminController@destroy');
+Route::get('/moderate','CommentadminController@moderate');
+Route::get('/moderate/{id}', 'CommentadminController@util');
+Route::get('/no-moderate/{id}', 'CommentadminController@noutil');
 });
 });
 
@@ -77,6 +77,9 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/commentaire/{slug}','PageController@sluggerpost')->name('single.postslugger');
 Route::post('/posts/{post}/{user}/comments','CommentsController@addcomment');
 Route::get('/hellcat', 'CommentsController@hellcat');
+Route::resource('profile','ProfileController');
+Route::resource('commentaires','CommentsController',['except' => ['create','show','edit','update']]);
+
 });
 
 //Routes with middleware auth

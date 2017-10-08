@@ -15,13 +15,9 @@ use Image;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     
-     public function __construct(){
+    public function __construct(){
 
         $this->middleware('author');
         $this->middleware('auth');

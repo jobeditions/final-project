@@ -7,6 +7,11 @@
     Modifier un Article
     @endsection
 
+
+    @section('links')
+      @include('partials.admin.links')
+    @endsection
+
 	  @section('content')
 
 	             <div class="row">

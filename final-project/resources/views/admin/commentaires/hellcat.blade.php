@@ -1,8 +1,13 @@
 @extends('layouts.app3')
 
     @section('title')
-    Modifier un Article
+       Modifier un Article
     @endsection
+
+    @section('links')
+       @include('partials.admin.links')
+    @endsection
+
 
 	  @section('content')
 
@@ -68,4 +73,8 @@
                       
                   </div>
               </div>
-              @endsection
+      @endsection
+      @section('scripts')
+         <script src="/js/jquery.js"></script>
+         @include('partials.admin.scripts')
+      @endsection

@@ -1,13 +1,13 @@
 @extends('layouts.app3')
-@section('title')
-Modifier une Categorie
-@endsection
+     @section('title')
+       Modifier une Categorie
+     @endsection
 
-@section('links')
-  @include('partials.admin.links')
-@endsection
+     @section('links')
+       @include('partials.admin.links')
+     @endsection
 
-	  @section('content')
+	   @section('content')
 
 
               <div class="col-md-11"> 
