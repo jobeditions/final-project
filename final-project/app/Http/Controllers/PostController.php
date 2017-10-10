@@ -108,7 +108,7 @@ class PostController extends Controller
             'title' => $request->title,
             'order' => $request->order,
             'content' => Purifier::clean($request->content, 'youtube'),
-            'featured' => '/images/image/'.$featuredNew,
+            'featured' => 'images/image/'.$featuredNew,
             //'featured'=>$filename,
             'excerpt' => Purifier::clean($request->excerpt, 'youtube'),
             'category_id' => $request->category_id,
@@ -178,7 +178,7 @@ class PostController extends Controller
         $featuredNew = time().$featuredImage->getClientOriginalName();
         $oldfile = $posts->featured;
         $featuredImage ->move('images/image',$featuredNew);
-        $posts->featured = 'images/image/'.$featuredNew;
+        $posts->featured = '/images/image/'.$featuredNew;
         Storage::delete($oldfile);
        }
 

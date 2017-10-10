@@ -40,7 +40,7 @@
                               <tr>
                                  
                                  <td>{{$posting->order}}</td>
-                                 <td><a href="{{route('single.posting',['slug'=>$posting->slug])}}"><img src="{{$posting->featured}}" width="140px" height="90px"/></a></td>
+                                 <td><a href="{{action('PageController@slugpost',['slug'=>$posting->slug])}}"><img src="/{{$posting->featured}}" width="140px" height="90px"/></a></td>
                                  
                                  <td>{{$posting->title}}</td>
                                  <td>{{$posting->category->name}}</td>
@@ -76,6 +76,6 @@
     @endsection
 
     @section('scripts')
-         <script src="/js/jquery.js"></script>
-         @include('partials.admin.scripts')
+      <script src="/js/jquery.js"></script>
+      @include('partials.admin.scripts')
     @endsection
