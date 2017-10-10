@@ -33,8 +33,8 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="{{route('comments.indexpage')}}">Liste des Commentaires</a></li>
-                          <li><a class="" href="/commentaires">Ajouter Commentaire</a></li>
+                          <li><a class="" href="{{action('IndexController@commentsindex')}}">Liste des Commentaires</a></li>
+                          <li><a class="" href="{{action('CommentsController@index')}}">Ajouter Commentaire</a></li>
                           <li><a class="" href="{{url('/hellcat')}}">Modifier Commentaire</a></li>
                           
                         @if(Auth::user()->admin)

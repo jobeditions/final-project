@@ -25,13 +25,12 @@ class PostController extends Controller
 
     public function index()
     {
-         $posts=Post::orderBy('posts.order','DESC')->get();
+         $posts=Post::orderBy('posts.order','DESC')->paginate(4);
 
          
          $category=Category::get();
 
          $tags=Tag::get();
-         $posts=Post::paginate(4);
         return view('admin.posts.indexpost',compact('posts','category','tags'));
     }
 
@@ -109,7 +108,7 @@ class PostController extends Controller
             'title' => $request->title,
             'order' => $request->order,
             'content' => Purifier::clean($request->content, 'youtube'),
-            'featured' => 'images/image/'.$featuredNew,
+            'featured' => '/images/image/'.$featuredNew,
             //'featured'=>$filename,
             'excerpt' => Purifier::clean($request->excerpt, 'youtube'),
             'category_id' => $request->category_id,

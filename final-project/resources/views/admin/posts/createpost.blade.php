@@ -65,7 +65,7 @@
 
                                   <div class="panel-body">
                                       <div class="form">
-                                          <form action="/articles" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                                          <form action="{{action('PostController@store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                                               {{csrf_field()}}
                                               
                                               <div class="col-sm-10">

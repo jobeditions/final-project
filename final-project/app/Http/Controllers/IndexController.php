@@ -20,16 +20,10 @@ class IndexController extends Controller
 
     public function articleindex()
     {
-         $posts=Post::orderBy('order','asc')->get();
-
-         
+         $posts=Post::orderBy('posts.order','ASC')->paginate(4);
          $category=Category::get();
-
          $tags=Tag::get();
-         $posts=Post::paginate(4);
         return view('admin.posts.articleindex',compact('posts','category','tags'));
-
-
     }
 
 

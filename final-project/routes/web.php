@@ -78,7 +78,7 @@ Route::get('/commentaire/{slug}','PageController@sluggerpost')->name('single.pos
 Route::post('/posts/{post}/{user}/comments','CommentsController@addcomment');
 Route::get('/hellcat', 'CommentsController@hellcat');
 Route::resource('profile','ProfileController');
-Route::resource('commentaires','CommentsController',['except' => ['create','show','edit','update']]);
+Route::resource('commentaires','CommentsController',['except' => ['create','show','edit','update','destroy']]);
 
 });
 

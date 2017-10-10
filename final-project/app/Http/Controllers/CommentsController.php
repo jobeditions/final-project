@@ -35,7 +35,7 @@ class CommentsController extends Controller
 
          
          $posts=Post::paginate(4);
-        return view('admin.commentaires.add',compact('posts','category'));
+        return view('admin.commentaires.indexcomments',compact('posts','category'));
     }
 
 
@@ -120,7 +120,7 @@ class CommentsController extends Controller
     public function hellcat()
     {   
 
-        $posts=Post::orderBy('order','asc')->get();
+        $posts=Post::orderBy('posts.order','asc')->get();
 
          
          $comments=Comments::get();
