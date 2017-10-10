@@ -22,8 +22,7 @@ class TagController extends Controller
     
     public function index()
     {
-        $tags=Tag::orderby('order','asc')->get();
-        $tags=Tag::paginate(7);
+        $tags=Tag::orderby('order','asc')->paginate(7);
         return view ('admin.tags.indextag',compact('tags'));
     }
 
@@ -117,7 +116,7 @@ class TagController extends Controller
 
      public function trash()
     {
-         $tags=Tag::onlyTrashed()->get();
+         $tags=Tag::onlyTrashed()->paginate(7);;
          
         return view('admin.tags.trashtag',compact('tags'));
     }

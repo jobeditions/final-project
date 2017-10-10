@@ -61,8 +61,6 @@
                                  <td>{{$tageg->order}}</td>
                                  <td>{{$tageg->tags}}</td>
                                  <td>{{$tageg->created_at->format('F d,Y')}}</td>
-                                 <td>{{$tageg->created_at->format('F d,Y')}}</td>
-                                  
                                  <td></td>
                                  <td>
                                  @if($tageg->id==1)

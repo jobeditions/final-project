@@ -42,8 +42,8 @@
                                  <th><i class=""></i></th>
                                  <th><i class=""></i> Ordre</th>
                                  <th><i class="icon_tag"></i> Étiquette</th>
-                                 <th><i class="icon_tags"></i> Slug</th>
-                                 <th><i class="icon_calendar"></i> Créé le</th>
+                                 <th><i class="icon_tags"></i> Créé le</th>
+                                 <th><i class="icon_calendar"></i> Supriméé le</th>
                                  <th><i class="icon_cogs"></i> Action</a></th>
                                  <th><i class="icon_cogs"></i> Action</a></th>
                               </thead>
@@ -53,12 +53,11 @@
 
                               <tr>
                                  
-                                 <td>
-                                 </td>
+                                 <td></td>
                                  <td>{{$tagging->order}}</td>
-                                 <td>{{$tagging->name}}</td>
-                                 <td>{{$tagging->slug}}</td>
-                                 <td>{{$tagging->created_at}}</td>
+                                 <td>{{$tagging->tags}}</td>
+                                 <td>{{$tagging->created_at->format('F d,Y')}}</td>
+                                 <td>{{$tagging->deleted_at->format('F d,Y')}}</td>
                                   
                                  
                                  <td>
@@ -84,6 +83,7 @@
                                                      
                            </tbody>
                         </table>
+                      {{$tags->links()}}
                       </section>
                   </div>
               </div>

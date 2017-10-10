@@ -24,9 +24,7 @@ class CategoriesController extends Controller
     public function index()
 
     {   
-        $cat=Category::orderby('order','asc')->get();
-        $cat=Category::paginate(7);
-
+        $cat=Category::orderby('order','asc')->paginate(7);
         return view('admin.categories.indexcategory',compact('cat'));
         
     }
@@ -90,7 +88,7 @@ class CategoriesController extends Controller
 
     public function trash()
     {
-         $cat=Category::onlyTrashed()->get();
+         $cat=Category::onlyTrashed()->paginate(7);
          
         return view('admin.categories.trashcategory',compact('cat'));
     }

@@ -18,10 +18,10 @@
                                 <div class="case-item">
                                  
                                     <div class="case-item__thumb">
-                                    <a href="{{route('single.posting',['slug'=>$categ->slug])}}"><img src="{{$categ->featured}}" alt="{{$categ->title}}"></a>
+                                    <a href="{{action('PageController@slugpost',['slug'=>$categ->slug])}}"><img src="/{{$categ->featured}}" alt="{{$categ->title}}"></a>
                                     </div>
                                    
-                                    <a href="{{route('single.posting',['slug'=>$categ->slug])}}"><h6 class="case-item__title">{{$categ->title}}</h6></a>
+                                    <a href="{{action('PageController@slugpost',['slug'=>$categ->slug])}}"><h6 class="case-item__title">{{$categ->title}}</h6></a>
                                 </div>
                             </div>
 

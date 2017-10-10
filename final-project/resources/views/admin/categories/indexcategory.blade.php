@@ -59,7 +59,7 @@
                                  <td>{{$categ->order}}</td>
                                  <td>{{$categ->name}}</td>
                                  <td>{{$categ->slug}}</td>
-                                 <td>{{$categ->created_at}}</td>
+                                 <td>{{$categ->created_at->format('F d,Y')}}</td>
                                   
                                  
                                  <td>

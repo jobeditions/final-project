@@ -40,7 +40,7 @@
                                  <th><i class=""></i> Ordre</th>
                                  <th><i class="icon_tag"></i> Catégorie</th>
                                  <th><i class="icon_tags"></i> Slug</th>
-                                 <th><i class="icon_calendar"></i> Créé le</th>
+                                 <th><i class="icon_calendar"></i> Suppriméé le</th>
                                  <th><i class="icon_cogs"></i> Action</a></th>
                                  <th><i class="icon_cogs"></i> Action</a></th>
                               </thead>
@@ -55,7 +55,7 @@
                                  <td>{{$categ->order}}</td>
                                  <td>{{$categ->name}}</td>
                                  <td>{{$categ->slug}}</td>
-                                 <td>{{$categ->created_at}}</td>
+                                 <td>{{$categ->deleted_at->format('F d,Y')}}</td>
                                   
                                  
                                  <td>
@@ -81,6 +81,7 @@
                                                      
                            </tbody>
                         </table>
+                        {{$cat->links()}}
                       </section>
                   </div>
               </div>
